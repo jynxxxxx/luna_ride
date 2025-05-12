@@ -7,9 +7,9 @@ const Footer = ({setActiveTab}) => {
           <div>
             <div className="flex items-center gap-2">
               <div className="h-8 w-8 rounded-full bg-lady-primary flex items-center justify-center">
-                <span className="font-bold text-white">LR</span>
+                <span className="font-bold text-white">UC</span>
               </div>
-              <span className="text-lady-primary font-bold">LunaRide</span>
+              <span className="text-lady-primary font-bold">UnnieCar</span>
             </div>
             <p className="mt-4 text-sm text-zinc-600">
               여성의 안전한 이동을 위한 여성 전용 대리운전 서비스
