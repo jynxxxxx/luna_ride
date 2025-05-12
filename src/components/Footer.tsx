@@ -82,8 +82,17 @@ const Footer = ({setActiveTab}) => {
             </ul>
           </div> */}
         </div>
+
         <div className="border-t mt-8 pt-6 text-center text-sm text-zinc-600">
           <p>© 2025 여성 대리운전 서비스. 모든 권리 보유.</p>
+        </div>
+        <div className="text-right">
+          <a 
+            href="https://www.vecteezy.com/free-vector/auto"
+            className="text-[10px] text-zinc-600 hover:text-lady-primary"
+          >
+            Auto Vectors by Vecteezy
+          </a>
         </div>
       </div>
     </footer>
