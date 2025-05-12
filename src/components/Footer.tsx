@@ -7,9 +7,9 @@ const Footer = ({setActiveTab}) => {
           <div>
             <div className="flex items-center gap-2">
               <div className="h-8 w-8 rounded-full bg-lady-primary flex items-center justify-center">
-                <span className="font-bold text-white">여</span>
+                <span className="font-bold text-white">LR</span>
               </div>
-              <span className="text-lady-primary font-bold">여성 대리운전</span>
+              <span className="text-lady-primary font-bold">LunaRide</span>
             </div>
             <p className="mt-4 text-sm text-zinc-600">
               여성의 안전한 이동을 위한 여성 전용 대리운전 서비스
@@ -23,7 +23,7 @@ const Footer = ({setActiveTab}) => {
                   서비스 소개
                 </a>
               </li>
-              <li>
+              {/* <li>
                 <a href="#" className="hover:text-lady-primary">
                   요금 안내
                 </a>
@@ -32,7 +32,7 @@ const Footer = ({setActiveTab}) => {
                 <a href="#" className="hover:text-lady-primary">
                   안전 정책
                 </a>
-              </li>
+              </li> */}
             </ul>
           </div>
           <div>
@@ -49,7 +49,7 @@ const Footer = ({setActiveTab}) => {
                   기사 등록
                 </button>
               </li>
-              <li>
+              {/* <li>
                 <a href="#" className="hover:text-lady-primary">
                   자주 묻는 질문
                 </a>
@@ -58,10 +58,10 @@ const Footer = ({setActiveTab}) => {
                 <a href="#" className="hover:text-lady-primary">
                   교육 일정
                 </a>
-              </li>
+              </li> */}
             </ul>
           </div>
-          <div>
+          {/* <div>
             <h4 className="text-sm font-medium mb-4 text-lady-primary">고객센터</h4>
             <ul className="space-y-2 text-sm text-zinc-600">
               <li>
@@ -71,7 +71,7 @@ const Footer = ({setActiveTab}) => {
               </li>
               <li>
                 <a href="#" className="hover:text-lady-primary">
-                  이메일: info@womendrive.kr
+                  이메일: jnykim97@gmail.com
                 </a>
               </li>
               <li>
@@ -80,7 +80,7 @@ const Footer = ({setActiveTab}) => {
                 </a>
               </li>
             </ul>
-          </div>
+          </div> */}
         </div>
         <div className="border-t mt-8 pt-6 text-center text-sm text-zinc-600">
           <p>© 2025 여성 대리운전 서비스. 모든 권리 보유.</p>

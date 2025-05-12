@@ -12,8 +12,8 @@ const DriverRegistration = () => {
     name: "",
     email: "",
     phone: "",
-    licenseImage: null,
-    businessCardImage: null
+    // licenseImage: null,
+    // businessCardImage: null
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -50,8 +50,8 @@ const DriverRegistration = () => {
         name: "",
         email: "",
         phone: "",
-        licenseImage: null,
-        businessCardImage: null
+        // licenseImage: null,
+        // businessCardImage: null
       });
     }, 1500);
   };
@@ -108,7 +108,7 @@ const DriverRegistration = () => {
             />
           </div>
 
-          <div className="space-y-2">
+          {/* <div className="space-y-2">
             <Label htmlFor="licenseImage">운전면허증 사진</Label>
             <div className="border rounded-md p-4">
               <Input
@@ -141,7 +141,7 @@ const DriverRegistration = () => {
                 기존 대리운전 명함이 있으신 경우 업로드해주세요.
               </p>
             </div>
-          </div>
+          </div> */}
 
           <div className="bg-lady-light p-4 rounded-md">
             <h4 className="font-medium text-lady-primary mb-2">개인정보 수집 및 이용 동의</h4>
@@ -173,7 +173,11 @@ const DriverRegistration = () => {
         </form>
       </Card>
 
-      <div className="mt-8 space-y-6">
+      <p className="text-zinc-700 mb-4 text-center mt-8">
+        곧 출시될 예정입니다. 관심주셔서 감사합니다!
+      </p>
+
+      {/* <div className="mt-8 space-y-6">
         <Card className="p-6">
           <h3 className="text-xl font-medium text-lady-primary mb-4">자주 묻는 질문</h3>
           <div className="space-y-4">
@@ -199,7 +203,7 @@ const DriverRegistration = () => {
             </div>
           </div>
         </Card>
-      </div>
+      </div> */}
     </div>
   );
 };
