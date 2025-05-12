@@ -13,9 +13,9 @@ const Header = ({ activeTab, setActiveTab }) => {
         <div className="flex items-center gap-2">
           <a href="/" className="flex items-center gap-2">
             <div className="h-8 w-8 rounded-full bg-lady-primary flex items-center justify-center">
-              <span className="font-bold text-white">LR</span>
+              <span className="font-bold text-white">UC</span>
             </div>
-            <span className="text-lady-primary font-bold">LunaRide</span>
+            <span className="text-lady-primary font-bold">UnnieCar</span>
           </a>
         </div>
         <nav className="hidden md:flex gap-6">

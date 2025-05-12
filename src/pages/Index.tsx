@@ -178,7 +178,7 @@ const Index = () => {
                       실시간 위치 공유와 안전 알림 시스템을 통해 언제나 안심할 수 있습니다.
                     </p>
                   </Card>
-                  <Card className="p-6">
+                  {/* <Card className="p-6">
                     <h3 className="text-xl font-bold text-lady-primary mb-2">문의하기</h3>
                     <p className="text-zinc-700 mb-4">
                       서비스에 대한 문의사항이 있으신가요?
@@ -196,7 +196,7 @@ const Index = () => {
                     >
                       {isSubmittingInquiry ? "전송 중..." : "보내기"}
                     </Button>
-                  </Card>
+                  </Card> */}
                 </div>
               </div>
             </section>
