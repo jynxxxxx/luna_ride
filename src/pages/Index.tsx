@@ -117,7 +117,7 @@ const Index = () => {
                       </Button>
                     </div>
                   </div>
-                  <div className="lg:order-last">
+                  <div className="hidden lg:block lg:order-last w-full">
                     <img
                       alt="여성 대리운전"
                       className="mx-auto w-full max-w-[550px] aspect-video rounded-xl object-cover object-center"
