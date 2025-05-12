@@ -101,7 +101,7 @@ const Index = () => {
             <section className="bg-gradient-to-b from-lady-light to-white py-16 md:py-24">
               <div className="container px-4 md:px-6">
                 <div className="grid gap-6 lg:grid-cols-2 lg:gap-12 items-center">
-                  <div className="space-y-4">
+                  <div className="pl-8 space-y-4">
                     <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tighter text-lady-primary">
                       여성을 위한 안전한 대리운전 서비스
                     </h1>
