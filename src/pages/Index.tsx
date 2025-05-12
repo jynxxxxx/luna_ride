@@ -118,13 +118,13 @@ const Index = () => {
                     </div>
                   </div>
                   <div className="lg:order-last">
-                    {/* <img
+                    <img
                       alt="여성 대리운전"
                       className="mx-auto aspect-video overflow-hidden rounded-xl object-cover object-center sm:w-full"
                       height="310"
-                      src="/placeholder.svg"
+                      src="/car.png"
                       width="550"
-                    /> */}
+                    />
                   </div>
                 </div>
               </div>

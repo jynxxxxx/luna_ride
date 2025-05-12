@@ -11,7 +11,6 @@ const DriverRegistration = () => {
   const { toast } = useToast();
   const [formData, setFormData] = useState({
     name: "",
-    email: "",
     phone: "",
     consent: false,
   });
@@ -29,7 +28,7 @@ const DriverRegistration = () => {
     e.preventDefault();
     
     // Validation
-    if (!formData.name || !formData.email || !formData.phone || !formData.consent) {
+    if (!formData.name || !formData.phone || !formData.consent) {
       toast({
         title: "모든 필드를 입력해주세요",
         description: "개인정보 수집 동의에 체크하셔야 합니다.",
@@ -45,7 +44,6 @@ const DriverRegistration = () => {
         .from('driver_registrations')
         .insert([{
           name: formData.name,
-          email: formData.email,
           phone: formData.phone,
           consent_given: formData.consent
         }]);
@@ -66,7 +64,6 @@ const DriverRegistration = () => {
         // Reset form
         setFormData({
           name: "",
-          email: "",
           phone: "",
           consent: false
         });
@@ -106,19 +103,6 @@ const DriverRegistration = () => {
                 placeholder="홍길동"
                 required
                 value={formData.name}
-                onChange={handleInputChange}
-                disabled={isSubmitting}
-              />
-            </div>
-            <div className="space-y-2">
-              <Label htmlFor="email">이메일</Label>
-              <Input
-                id="email"
-                name="email"
-                type="email"
-                placeholder="example@email.com"
-                required
-                value={formData.email}
                 onChange={handleInputChange}
                 disabled={isSubmitting}
               />

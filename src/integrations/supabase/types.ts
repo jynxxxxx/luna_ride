@@ -13,7 +13,6 @@ export type Database = {
         Row: {
           consent_given: boolean
           created_at: string
-          email: string
           id: string
           name: string
           phone: string
@@ -21,7 +20,6 @@ export type Database = {
         Insert: {
           consent_given?: boolean
           created_at?: string
-          email: string
           id?: string
           name: string
           phone: string
@@ -29,7 +27,6 @@ export type Database = {
         Update: {
           consent_given?: boolean
           created_at?: string
-          email?: string
           id?: string
           name?: string
           phone?: string
