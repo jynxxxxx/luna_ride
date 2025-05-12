@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -61,6 +62,14 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
+				},
+				// Custom color scheme for women's driving service
+				lady: {
+					primary: '#8A4F7D', // Purple tone
+					secondary: '#E8B4BC', // Light coral
+					accent: '#3D7B80', // Teal
+					light: '#F9F5F6', // Almost white with slight warmth
+					dark: '#4A4A4A', // Dark gray for text
 				}
 			},
 			borderRadius: {
