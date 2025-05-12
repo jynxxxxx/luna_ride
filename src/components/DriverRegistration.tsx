@@ -5,6 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Card } from "@/components/ui/card";
 import { useToast } from "@/components/ui/use-toast";
+import { supabase } from "@/integrations/supabase/client";
 
 const DriverRegistration = () => {
   const { toast } = useToast();
@@ -12,48 +13,74 @@ const DriverRegistration = () => {
     name: "",
     email: "",
     phone: "",
-    // licenseImage: null,
-    // businessCardImage: null
+    consent: false,
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
+    const { name, value, type, checked } = e.target;
     setFormData((prev) => ({
       ...prev,
-      [name]: value
+      [name]: type === "checkbox" ? checked : value
     }));
   };
 
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files && e.target.files[0]) {
-      const { name } = e.target;
-      setFormData((prev) => ({
-        ...prev,
-        [name]: e.target.files?.[0] || null
-      }));
-    }
-  };
-
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    
+    // Validation
+    if (!formData.name || !formData.email || !formData.phone || !formData.consent) {
+      toast({
+        title: "모든 필드를 입력해주세요",
+        description: "개인정보 수집 동의에 체크하셔야 합니다.",
+        variant: "destructive",
+      });
+      return;
+    }
+    
     setIsSubmitting(true);
     
-    // Simulate form submission
-    setTimeout(() => {
+    try {
+      const { error } = await supabase
+        .from('driver_registrations')
+        .insert([{
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          consent_given: formData.consent
+        }]);
+      
+      if (error) {
+        console.error("Error submitting form:", error);
+        toast({
+          title: "오류가 발생했습니다",
+          description: "잠시 후 다시 시도해주세요.",
+          variant: "destructive",
+        });
+      } else {
+        toast({
+          title: "등록 신청이 완료되었습니다",
+          description: "검토 후 이메일로 안내드리겠습니다.",
+        });
+        
+        // Reset form
+        setFormData({
+          name: "",
+          email: "",
+          phone: "",
+          consent: false
+        });
+      }
+    } catch (error) {
+      console.error("Error:", error);
       toast({
-        title: "등록 신청이 완료되었습니다",
-        description: "검토 후 이메일로 안내드리겠습니다.",
+        title: "오류가 발생했습니다",
+        description: "잠시 후 다시 시도해주세요.",
+        variant: "destructive", 
       });
+    } finally {
       setIsSubmitting(false);
-      setFormData({
-        name: "",
-        email: "",
-        phone: "",
-        // licenseImage: null,
-        // businessCardImage: null
-      });
-    }, 1500);
+    }
   };
 
   return (
@@ -80,6 +107,7 @@ const DriverRegistration = () => {
                 required
                 value={formData.name}
                 onChange={handleInputChange}
+                disabled={isSubmitting}
               />
             </div>
             <div className="space-y-2">
@@ -92,6 +120,7 @@ const DriverRegistration = () => {
                 required
                 value={formData.email}
                 onChange={handleInputChange}
+                disabled={isSubmitting}
               />
             </div>
           </div>
@@ -105,43 +134,9 @@ const DriverRegistration = () => {
               required
               value={formData.phone}
               onChange={handleInputChange}
+              disabled={isSubmitting}
             />
           </div>
-
-          {/* <div className="space-y-2">
-            <Label htmlFor="licenseImage">운전면허증 사진</Label>
-            <div className="border rounded-md p-4">
-              <Input
-                id="licenseImage"
-                name="licenseImage"
-                type="file"
-                accept="image/*"
-                required
-                onChange={handleFileChange}
-                className="cursor-pointer"
-              />
-              <p className="text-sm text-zinc-500 mt-2">
-                면허증 앞면을 선명하게 찍어 업로드해주세요.
-              </p>
-            </div>
-          </div>
-
-          <div className="space-y-2">
-            <Label htmlFor="businessCardImage">기존 대리운전 명함 (선택사항)</Label>
-            <div className="border rounded-md p-4">
-              <Input
-                id="businessCardImage"
-                name="businessCardImage"
-                type="file"
-                accept="image/*"
-                onChange={handleFileChange}
-                className="cursor-pointer"
-              />
-              <p className="text-sm text-zinc-500 mt-2">
-                기존 대리운전 명함이 있으신 경우 업로드해주세요.
-              </p>
-            </div>
-          </div> */}
 
           <div className="bg-lady-light p-4 rounded-md">
             <h4 className="font-medium text-lady-primary mb-2">개인정보 수집 및 이용 동의</h4>
@@ -154,8 +149,12 @@ const DriverRegistration = () => {
               <input
                 type="checkbox"
                 id="consent"
+                name="consent"
+                checked={formData.consent}
+                onChange={handleInputChange}
                 required
                 className="w-4 h-4 rounded border-gray-300"
+                disabled={isSubmitting}
               />
               <Label htmlFor="consent" className="text-sm font-normal">
                 개인정보 수집 및 이용에 동의합니다
@@ -173,37 +172,9 @@ const DriverRegistration = () => {
         </form>
       </Card>
 
-      <p className="text-zinc-700 mb-4 text-center mt-8">
+      <p className="text-zinc-700 text-center mt-8">
         곧 출시될 예정입니다. 관심주셔서 감사합니다!
       </p>
-
-      {/* <div className="mt-8 space-y-6">
-        <Card className="p-6">
-          <h3 className="text-xl font-medium text-lady-primary mb-4">자주 묻는 질문</h3>
-          <div className="space-y-4">
-            <div>
-              <h4 className="font-medium text-lady-dark">지원 후 절차는 어떻게 되나요?</h4>
-              <p className="text-sm text-zinc-700">
-                지원서 검토 후 적합하다고 판단되면 면접 일정을 이메일로 안내드립니다. 
-                면접 이후 교육 과정을 거쳐 정식 기사로 활동하게 됩니다.
-              </p>
-            </div>
-            <div>
-              <h4 className="font-medium text-lady-dark">근무 시간은 어떻게 되나요?</h4>
-              <p className="text-sm text-zinc-700">
-                원하는 시간대에 자유롭게 활동할 수 있습니다. 풀타임, 파트타임 모두 가능합니다.
-              </p>
-            </div>
-            <div>
-              <h4 className="font-medium text-lady-dark">수입은 어떻게 되나요?</h4>
-              <p className="text-sm text-zinc-700">
-                건당 수수료 방식으로, 월평균 활동량에 따라 수입이 달라집니다. 
-                자세한 내용은 면접 시 안내드립니다.
-              </p>
-            </div>
-          </div>
-        </Card>
-      </div> */}
     </div>
   );
 };
