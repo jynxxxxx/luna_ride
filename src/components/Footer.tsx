@@ -1,5 +1,5 @@
 
-const Footer = () => {
+const Footer = ({setActiveTab}) => {
   return (
     <footer className="bg-lady-light py-8 md:py-12 border-t">
       <div className="container px-4 md:px-6">
@@ -39,9 +39,15 @@ const Footer = () => {
             <h4 className="text-sm font-medium mb-4 text-lady-primary">기사님</h4>
             <ul className="space-y-2 text-sm text-zinc-600">
               <li>
-                <a href="#" className="hover:text-lady-primary">
+                <button 
+                  onClick={() => {
+                    setActiveTab("register");
+                    window.scrollTo({ top: 0, behavior: "smooth" });
+                  }} 
+                  className="hover:text-lady-primary"
+                >
                   기사 등록
-                </a>
+                </button>
               </li>
               <li>
                 <a href="#" className="hover:text-lady-primary">

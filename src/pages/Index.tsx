@@ -18,13 +18,13 @@ const Index = () => {
 
   return (
     <div className="flex flex-col min-h-screen">
-      <Header />
+      <Header activeTab={activeTab} setActiveTab={setActiveTab} />
       <main className="flex-1">
-        <Tabs defaultValue="home" className="w-full" onValueChange={setActiveTab}>
-          <TabsList className="grid w-full max-w-md mx-auto grid-cols-2 mb-8">
+        <Tabs value={activeTab} className="w-full" onValueChange={setActiveTab}>
+          {/* <TabsList className="grid w-full max-w-md mx-auto grid-cols-2 mb-8">
             <TabsTrigger value="home">홈</TabsTrigger>
             <TabsTrigger value="register">기사 등록</TabsTrigger>
-          </TabsList>
+          </TabsList> */}
           <TabsContent value="home">
             <section className="bg-gradient-to-b from-lady-light to-white py-16 md:py-24">
               <div className="container px-4 md:px-6">
@@ -129,7 +129,7 @@ const Index = () => {
           </TabsContent>
         </Tabs>
       </main>
-      <Footer />
+      <Footer setActiveTab={setActiveTab}/>
     </div>
   );
 };
