@@ -1,5 +1,5 @@
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -12,8 +12,10 @@ import Footer from "@/components/Footer";
 import FeatureSection from "@/components/FeatureSection";
 import DriverRegistration from "@/components/DriverRegistration";
 import { supabase } from "@/integrations/supabase/client";
+import CustomerRegistration from "@/components/CustomerRegistration";
 
 const Index = () => {
+  const contentRef = useRef(null);
   const { toast } = useToast();
   const [activeTab, setActiveTab] = useState("home");
   const [inlineEmail, setInlineEmail] = useState("");
@@ -70,27 +72,6 @@ const Index = () => {
     }
   };
 
-  const handleInquirySubmit = () => {
-    if (!inquiryText.trim()) {
-      toast({
-        title: "문의 내용을 입력해주세요",
-        variant: "destructive",
-      });
-      return;
-    }
-    
-    setIsSubmittingInquiry(true);
-    
-    // For now, we'll just show success - could be expanded to store inquiries in Supabase
-    setTimeout(() => {
-      toast({
-        title: "메시지가 전송되었습니다",
-        description: "빠른 시일 내에 답변 드리겠습니다.",
-      });
-      setInquiryText("");
-      setIsSubmittingInquiry(false);
-    }, 1000);
-  };
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -99,36 +80,57 @@ const Index = () => {
         <Tabs value={activeTab} className="w-full" onValueChange={setActiveTab}>
           <TabsContent value="home">
             <section className="bg-gradient-to-b from-lady-light to-white py-16 md:py-24">
-              <div className="container px-4 md:px-6">
-                <div className="grid gap-6 lg:grid-cols-2 lg:gap-12 items-center">
-                  <div className="pl-8 space-y-4">
-                    <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tighter text-lady-primary">
-                      여성을 위한 안전한 대리운전 서비스
-                    </h1>
-                    <p className="max-w-[600px] text-zinc-700 md:text-xl">
-                      여성 기사가 여성 고객을 모십니다. 안전하고 편안한 대리운전 서비스를 경험해보세요.
+              <div className="pl-4 pr-4 md:pl-12 md:pr-6 container">
+                <div className="grid gap-6 sm:grid-cols-[1.5fr_1fr] sm:gap-12 items-center">
+                  <div>
+                    <p className="break-normal font-bold text-lady-primary md:text-2xl lg:text-3xl">
+                      여성 고객과 여성 기사님을 이어 믿음을 만드는
                     </p>
-                    <div className="space-y-4 sm:space-x-4 sm:space-y-0 sm:flex sm:items-center">
-                      <Button className="bg-lady-primary hover:bg-lady-primary/90 text-white" onClick={() => setActiveTab("register")}>
-                        기사 등록하기
+                    <h1 className="mt-4 break-normal text-4xl md:text-5xl lg:text-6xl font-bold tracking-tighter text-lady-primary">
+                      여성전용 대리운전 서비스
+                    </h1>
+                    <p className="mt-12 mb-8 break-normal text-zinc-700 md:text-xl">
+                      밤늦은 귀가, 여성 기사님과 편안하게 귀가하세요.  
+                      기사님 입장에서도 안전한 콜을 더 많이 받을 수 있도록 서포트 하겠습니다
+                    </p>
+
+                    <div className="flex flex-col sm:flex-row sm:items-center sm:space-x-4 space-y-4 sm:space-y-0">
+                      <Button 
+                        className="bg-lady-primary hover:bg-lady-primary/90 text-white" 
+                        onClick={() => setActiveTab("customer")}
+                      >
+                        고객으로 이용하기기
                       </Button>
-                      <Button variant="outline" className="border-lady-primary text-lady-primary hover:text-lady-primary/90 hover:bg-lady-light">
+                      <Button 
+                        className="bg-lady-primary hover:bg-lady-primary/90 text-white" 
+                        onClick={() => setActiveTab("driver")}
+                      >
+                        기사로 이용하기기
+                      </Button>
+                      <Button variant="outline" 
+                        className="border-lady-primary text-lady-primary hover:text-lady-primary/90 hover:bg-lady-light"
+                        onClick={() => {
+                          if (contentRef.current) {
+                            contentRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
+                          }
+                        }}
+                      >
                         더 알아보기
                       </Button>
                     </div>
                   </div>
-                  <div className="hidden lg:block lg:order-last w-full">
+                  <div className="hidden sm:block overflow-visible">
                     <img
                       alt="여성 대리운전"
-                      className="mx-auto w-full max-w-[550px] aspect-video rounded-xl object-cover object-center"
-                      src="/car.png"
+                      className="mx-auto w-full max-w-[400px] aspect-video rounded-xl object-cover object-center overflow-visible"
+                      src="/logo.png"
                     />
                   </div>
                 </div>
               </div>
             </section>
             
-            <FeatureSection />
+            <FeatureSection ref={contentRef}/>
             
             <section className="py-12 md:py-16 lg:py-20 bg-lady-light">
               <div className="container px-4 md:px-6">
@@ -140,7 +142,13 @@ const Index = () => {
                     안전함과 편안함을 최우선으로 생각하는 여성 대리운전 서비스입니다.
                     지금 기사로 등록하고 함께 안전한 이동 문화를 만들어보세요.
                   </p>
-                  <Button className="bg-lady-primary hover:bg-lady-primary/90 text-white" onClick={() => setActiveTab("register")}>
+                  <Button 
+                    className="bg-lady-primary hover:bg-lady-primary/90 text-white" 
+                    onClick={() => {
+                      window.scrollTo({ top: 0, behavior: "smooth" });
+                      setActiveTab("driver")
+                    }}
+                  >
                     지금 기사로 등록하기
                   </Button>
                 </div>
@@ -151,9 +159,10 @@ const Index = () => {
               <div className="container px-4 md:px-6">
                 <div className="grid gap-6 lg:grid-cols-3">
                   <Card className="p-6">
-                    <h3 className="text-xl font-bold text-lady-primary mb-2">고객으로 이용하기</h3>
+                    <h3 className="text-xl font-bold text-lady-primary mb-2">고객으로 등록하기</h3>
                     <p className="text-zinc-700 mb-4">
-                      곧 출시될 앱을 통해 여성 대리운전 서비스를 이용할 수 있습니다.
+                      밤늦은 귀가, 여성 기사님과 안전하게 귀가해보세요. 
+                      아래 이메일을 남겨주시면 누구보다 빠르게 서비스 출시 소식을 전해드릴게요
                     </p>
                     <div className="flex items-center mt-4">
                       <Input 
@@ -169,38 +178,14 @@ const Index = () => {
                       </Button>
                     </div>
                   </Card>
-                  <Card className="p-6">
-                    <h3 className="text-xl font-bold text-lady-primary mb-2">안전 보장</h3>
-                    <p className="text-zinc-700">
-                      모든 기사는 철저한 신원 확인과 교육을 거친 검증된 여성 기사만 활동합니다.
-                      실시간 위치 공유와 안전 알림 시스템을 통해 언제나 안심할 수 있습니다.
-                    </p>
-                  </Card>
-                  {/* <Card className="p-6">
-                    <h3 className="text-xl font-bold text-lady-primary mb-2">문의하기</h3>
-                    <p className="text-zinc-700 mb-4">
-                      서비스에 대한 문의사항이 있으신가요?
-                    </p>
-                    <Textarea 
-                      placeholder="문의 내용을 입력하세요" 
-                      className="mb-4"
-                      value={inquiryText}
-                      onChange={(e) => setInquiryText(e.target.value)}
-                      disabled={isSubmittingInquiry}
-                    />
-                    <Button 
-                      onClick={handleInquirySubmit}
-                      disabled={isSubmittingInquiry}
-                    >
-                      {isSubmittingInquiry ? "전송 중..." : "보내기"}
-                    </Button>
-                  </Card> */}
                 </div>
               </div>
             </section>
           </TabsContent>
-          
-          <TabsContent value="register">
+          <TabsContent value="customer">
+            <CustomerRegistration />
+          </TabsContent>
+          <TabsContent value="driver">
             <DriverRegistration />
           </TabsContent>
         </Tabs>

@@ -81,14 +81,14 @@ const DriverRegistration = () => {
   };
 
   return (
-    <div className="container py-12 px-4 md:px-6 max-w-4xl">
+    <div className="container py-12 px-4 md:px-6 max-w-3xl">
       <div className="mb-8 text-center">
         <h1 className="text-3xl font-bold text-lady-primary mb-4">
           여성 대리운전 기사 등록
         </h1>
         <p className="text-zinc-700 max-w-2xl mx-auto">
-          안전하고 신뢰할 수 있는 여성 대리운전 서비스를 함께 만들어갈 기사님을 모십니다.
-          아래 양식을 작성하여 지원해주세요.
+          신뢰할 수 있는 여성 전용 대리운전 서비스를 함께 만들어갈 기사님을 모집합니다. 
+          <br />아래 양식을 통해 지원해주세요. 기사님께 안전하고 좋은 콜을 많이 제공할 수 있도록 최선을 다해 지원하겠습니다. 
         </p>
       </div>
 
@@ -125,9 +125,8 @@ const DriverRegistration = () => {
           <div className="bg-lady-light p-4 rounded-md">
             <h4 className="font-medium text-lady-primary mb-2">개인정보 수집 및 이용 동의</h4>
             <p className="text-sm text-zinc-700 mb-4">
-              여성 대리운전 서비스는 기사 등록을 위해 개인정보를 수집합니다. 
-              수집된 정보는 기사 자격 심사 및 등록을 위해서만 사용되며, 
-              이외의 목적으로는 사용되지 않습니다.
+              제출해주신 정보는 기사 등록 정보 제공 만을 위해 사용되며, 이외의 목적으로는 사용 되지 않습니다. 
+              정보는 기사 정보 제공 이후 자동적으로 자체 폐기될 예정입니다. 
             </p>
             <div className="flex items-center gap-2">
               <input
@@ -157,7 +156,8 @@ const DriverRegistration = () => {
       </Card>
 
       <p className="text-zinc-700 text-center mt-8">
-        곧 출시될 예정입니다. 관심주셔서 감사합니다!
+        곧 서비스 정식 출시 예정입니다. 
+        <br />조금만 기다려주세요. 감사합니다
       </p>
     </div>
   );
