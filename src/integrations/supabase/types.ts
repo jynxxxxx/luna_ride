@@ -16,6 +16,7 @@ export type Database = {
           id: string
           name: string
           phone: string
+          experience: boolean
         }
         Insert: {
           consent_given?: boolean
@@ -23,6 +24,7 @@ export type Database = {
           id?: string
           name: string
           phone: string
+          experience: boolean
         }
         Update: {
           consent_given?: boolean
@@ -30,6 +32,7 @@ export type Database = {
           id?: string
           name?: string
           phone?: string
+          experience: boolean
         }
         Relationships: []
       }

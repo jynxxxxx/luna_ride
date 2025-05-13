@@ -6,6 +6,7 @@ import { Label } from "@/components/ui/label";
 import { Card } from "@/components/ui/card";
 import { useToast } from "@/components/ui/use-toast";
 import { supabase } from "@/integrations/supabase/client";
+import exp from "constants";
 
 const DriverRegistration = () => {
   const { toast } = useToast();
@@ -13,14 +14,23 @@ const DriverRegistration = () => {
     name: "",
     phone: "",
     consent: false,
+    experience: false,
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value, type, checked } = e.target;
+  const { name, value, type, checked } = e.target;
+    let parsedValue: string | boolean = value;
+
+    if (type === "checkbox") {
+      parsedValue = checked;
+    } else if (name === "experience") {
+      parsedValue = value === "true";
+    }
+
     setFormData((prev) => ({
       ...prev,
-      [name]: type === "checkbox" ? checked : value
+      [name]: parsedValue,
     }));
   };
 
@@ -28,7 +38,7 @@ const DriverRegistration = () => {
     e.preventDefault();
     
     // Validation
-    if (!formData.name || !formData.phone || !formData.consent) {
+    if (!formData.name || !formData.phone  || formData.experience === null || !formData.consent) {
       toast({
         title: "모든 필드를 입력해주세요",
         description: "개인정보 수집 동의에 체크하셔야 합니다.",
@@ -45,7 +55,8 @@ const DriverRegistration = () => {
         .insert([{
           name: formData.name,
           phone: formData.phone,
-          consent_given: formData.consent
+          consent_given: formData.consent,
+          experience: formData.experience
         }]);
       
       if (error) {
@@ -65,7 +76,8 @@ const DriverRegistration = () => {
         setFormData({
           name: "",
           phone: "",
-          consent: false
+          consent: false,
+          experience: false
         });
       }
     } catch (error) {
@@ -122,6 +134,37 @@ const DriverRegistration = () => {
             />
           </div>
 
+          <div className="space-y-2">
+            <Label htmlFor="name">대리기사 경험이 있으신가요? &#40;없어도 괜찮습니다&#41;</Label>
+            <div className="flex items-center gap-4">
+              <label className="flex items-center gap-1 text-sm font-normal">
+                <input
+                  type="radio"
+                  name="experience"
+                  value="true"
+                  checked={formData.experience===true}
+                  onChange={handleInputChange}
+                  disabled={isSubmitting}
+                  required
+                  className="w-4 h-4"
+                />
+                예
+              </label>
+              <label className="flex items-center gap-1 text-sm font-normal">
+                <input
+                  type="radio"
+                  name="experience"
+                  value="false"
+                  checked={formData.experience===false}
+                  onChange={handleInputChange}
+                  disabled={isSubmitting}
+                  required
+                  className="w-4 h-4"
+                />
+                아니오
+              </label>
+            </div>
+          </div>
           <div className="bg-lady-light p-4 rounded-md">
             <h4 className="font-medium text-lady-primary mb-2">개인정보 수집 및 이용 동의</h4>
             <p className="text-sm text-zinc-700 mb-4">
