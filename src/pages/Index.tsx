@@ -99,13 +99,13 @@ const Index = () => {
                         className="bg-lady-primary hover:bg-lady-primary/90 text-white" 
                         onClick={() => setActiveTab("customer")}
                       >
-                        고객으로 이용하기기
+                        고객으로 이용하기
                       </Button>
                       <Button 
                         className="bg-lady-primary hover:bg-lady-primary/90 text-white" 
                         onClick={() => setActiveTab("driver")}
                       >
-                        기사로 이용하기기
+                        기사로 이용하기
                       </Button>
                       <Button variant="outline" 
                         className="border-lady-primary text-lady-primary hover:text-lady-primary/90 hover:bg-lady-light"
