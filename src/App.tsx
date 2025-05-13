@@ -6,10 +6,13 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import React, { useEffect } from "react";
+import { useMetaPixel } from "./hooks/useMetaPixel";
 
 const queryClient = new QueryClient();
 
 const App = () => {
+
+  useMetaPixel("2066927637129256")
   // Google Analytics script injection
   useEffect(() => {
     const script1 = document.createElement("script");
