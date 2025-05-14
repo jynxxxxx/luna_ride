@@ -18,7 +18,7 @@ const DriverFeatureSection = forwardRef<HTMLDivElement>((props, ref) => {
             <h4 className="text-lg font-medium text-gray-800 mb-2">빠른 매칭과 낮은 수수료</h4>
             <p className="text-gray-600">
               실시간으로 매칭되는 시스템 덕분에, 기사님은 빠르게 고객과 연결될 수 있습니다.
-              <br/>수수료는 15%로 매우 경쟁력 있어, 더 많은 수익을 기사님께 돌려드립니다.
+              <br/>낮은 수수료는 매우 경쟁력 있어, 더 많은 수익을 기사님께 돌려드립니다.
             </p>
           </div>
         </div>
