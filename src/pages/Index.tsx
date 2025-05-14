@@ -79,7 +79,7 @@ const Index = () => {
       <main className="flex-1">
         <Tabs value={activeTab} className="w-full" onValueChange={setActiveTab}>
           <TabsContent value="home">
-            <section className="bg-gradient-to-b from-lady-light to-white py-16 md:py-24">
+            <section className="mt-[-8px] bg-gradient-to-b from-lady-light to-white py-16 md:py-32">
               <div className="pl-4 pr-4 md:pl-12 md:pr-6 container">
                 <div className="grid gap-6 sm:grid-cols-[1.5fr_1fr] sm:gap-12 items-center">
                   <div>
@@ -123,7 +123,7 @@ const Index = () => {
                     <img
                       alt="여성 대리운전"
                       className="mx-auto w-full max-w-[400px] aspect-video rounded-xl object-cover object-center overflow-visible"
-                      src="/logo.png"
+                      src="/logo_bgr.png"
                     />
                   </div>
                 </div>
@@ -132,7 +132,7 @@ const Index = () => {
             
             <FeatureSection ref={contentRef}/>
             
-            <section className="py-12 md:py-16 lg:py-20 bg-lady-light">
+            <section className="py-16 md:py-20 lg:py-28 bg-[linear-gradient(to_bottom,_white_0%,_#fff1d6_25%,_#fff1d6_75%,_white_100%)]">
               <div className="container px-4 md:px-6">
                 <div className="text-center max-w-3xl mx-auto">
                   <h2 className="text-2xl md:text-3xl font-bold text-lady-primary mb-4">
