@@ -67,6 +67,9 @@ const Index = ({activeTab}) => {
                       밤늦은 귀가, 여성 기사님과 편안하게 귀가하세요.  
                       기사님 입장에서도 안전한 콜을 더 많이 받을 수 있도록 서포트 하겠습니다
                     </p>
+                    <p className="mb-8 text-2xl font-semibold">
+                      지금 선등록하면 10,000원 쿠폰팩 제공!
+                    </p>
 
                     <div className="flex flex-col sm:flex-row sm:items-center sm:space-x-4 space-y-4 sm:space-y-0">
                       <Button 
@@ -121,7 +124,7 @@ const Index = ({activeTab}) => {
                   </p>
                   <Button 
                     className="bg-lady-primary hover:bg-lady-primary/90 text-white" 
-                    onClick={scrollToSignup}
+                    onClick={() => navigate("/driver", { state: { scrollToDriverSignup: true } })}
                   >
                     지금 기사로 등록하기
                   </Button>
