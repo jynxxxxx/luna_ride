@@ -13,26 +13,26 @@ export type Database = {
         Row: {
           consent_given: boolean
           created_at: string
+          experience: boolean | null
           id: string
           name: string
           phone: string
-          experience: boolean
         }
         Insert: {
           consent_given?: boolean
           created_at?: string
+          experience?: boolean | null
           id?: string
           name: string
           phone: string
-          experience: boolean
         }
         Update: {
           consent_given?: boolean
           created_at?: string
+          experience?: boolean | null
           id?: string
           name?: string
           phone?: string
-          experience: boolean
         }
         Relationships: []
       }
