@@ -2,10 +2,24 @@
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import EmailSignUp from "./EmailSignUp";
+import { useLocation, useNavigate } from "react-router-dom";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
-const Header = ({ activeTab, setActiveTab }) => {
+const Header = () => {
   const [showEmailSignUpModal, setEmailSignUpModal] = useState(false);
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const currentTab = (() => {
+    if (location.pathname === "/customer") return "customer";
+    if (location.pathname === "/driver") return "driver";
+    return "home";
+  })();
+
+  const handleTabClick = (tab: string) => {
+    navigate(tab === "home" ? "/" : `/${tab}`);
+    window.scrollTo(0, 0);;
+  };
 
   return (
     <header className="border-b bg-lady-light sticky top-0 z-50">
@@ -15,30 +29,23 @@ const Header = ({ activeTab, setActiveTab }) => {
               <div className="h-8 w-8 rounded-full bg-lady-primary flex items-center justify-center">
                 <span className="font-bold text-white">UC</span>
               </div>
-              {/* <div className="h-8 w-24 rounded-full flex items-center justify-center">
-                <img
-                  alt="여성 대리운전"
-                  className="aspect-video rounded-xl object-contain object-center"
-                  src="/logo_bgr.png"
-                />
-              </div> */}
             <span className="text-lady-primary font-bold">UnnieCar</span>
           </a>
         </div>
 
         <nav className="flex justify-center gap-4 col-span-2 row-start-2 row-span-1 md:mt-0 md:col-start-2 md:col-span-1 md:row-start-1 ">
           <div className="flex gap-4">
-            {["home", "customer", "driver"].map((tab) => (
+            {["home", "driver"].map((tab) => (
               <button
                 key={tab}
-                onClick={() => setActiveTab(tab)}
+                onClick={() => handleTabClick(tab)}
                 className={`px-4 py-2 font-semibold border-b-2 ${
-                  activeTab === tab
+                  currentTab === tab
                     ? "border-lady-primary text-lady-primary"
                     : "border-transparent"
                 }`}
               >
-                {tab === "home" ? "홈" : tab === "customer" ? "고객님" : "기사님"}
+                {tab === "home" ? "홈" : "기사님"}
               </button>
             ))}
           </div>

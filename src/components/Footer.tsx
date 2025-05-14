@@ -1,5 +1,10 @@
+import { useLocation, useNavigate } from "react-router-dom";
+import { forwardRef } from "react";
 
-const Footer = ({setActiveTab}) => {
+const Footer = ({scrollToSignup}) => {
+  const navigate = useNavigate();
+  const location = useLocation();
+
   return (
     <footer className="bg-lady-light py-8 md:py-12 border-t">
       <div className="container px-4 md:px-6">
@@ -33,8 +38,8 @@ const Footer = ({setActiveTab}) => {
                 <li>
                   <button 
                     onClick={() => {
-                      setActiveTab("home");
-                      window.scrollTo({ top: 0, behavior: "smooth" });
+                      navigate("/");
+                      window.scrollTo(0, 0);
                     }} 
                     className="hover:text-lady-primary"
                   >
@@ -44,17 +49,14 @@ const Footer = ({setActiveTab}) => {
               </ul>
             </div>
             <div>
-              <h4 className="text-sm font-medium mb-4 text-lady-primary">기사님</h4>
+              <h4 className="text-sm font-medium mb-4 text-lady-primary">고객님</h4>
               <ul className="space-y-2 text-sm text-zinc-600">
                 <li>
                   <button 
-                    onClick={() => {
-                      setActiveTab("customer");
-                      window.scrollTo({ top: 0, behavior: "smooth" });
-                    }} 
+                    onClick={() => navigate("/", { state: { scrollToCustomerSignup: true } })}
                     className="hover:text-lady-primary"
                   >
-                    고객객 등록
+                    고객 등록
                   </button>
                 </li>
               </ul>
@@ -64,10 +66,7 @@ const Footer = ({setActiveTab}) => {
               <ul className="space-y-2 text-sm text-zinc-600">
                 <li>
                   <button 
-                    onClick={() => {
-                      setActiveTab("driver");
-                      window.scrollTo({ top: 0, behavior: "smooth" });
-                    }} 
+                    onClick={() => navigate("/driver", { state: { scrollToDriverSignup: true } })}
                     className="hover:text-lady-primary"
                   >
                     기사 등록

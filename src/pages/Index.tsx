@@ -1,12 +1,8 @@
 
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { Card } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Label } from "@/components/ui/label";
-import { useToast } from "@/components/ui/use-toast";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import FeatureSection from "@/components/FeatureSection";
@@ -14,70 +10,48 @@ import DriverRegistration from "@/components/DriverRegistration";
 import { supabase } from "@/integrations/supabase/client";
 import CustomerRegistration from "@/components/CustomerRegistration";
 
-const Index = () => {
+const Index = ({activeTab}) => {
+  const navigate = useNavigate();
+  const location = useLocation();
+  const signupRef = useRef(null);
   const contentRef = useRef(null);
-  const { toast } = useToast();
-  const [activeTab, setActiveTab] = useState("home");
-  const [inlineEmail, setInlineEmail] = useState("");
-  const [inquiryText, setInquiryText] = useState("");
-  const [isSubmittingEmail, setIsSubmittingEmail] = useState(false);
-  const [isSubmittingInquiry, setIsSubmittingInquiry] = useState(false);
 
-  const handleEmailSignup = async () => {
-    if (!inlineEmail || !inlineEmail.includes('@')) {
-      toast({
-        title: "유효한 이메일 주소를 입력해주세요",
-        variant: "destructive",
-      });
-      return;
-    }
-
-    setIsSubmittingEmail(true);
+  useEffect(() => {
+    if (location.state?.scrollToCustomerSignup) {
+      setTimeout(() => {
+        const headerHeight = document.querySelector('header')?.offsetHeight || 0;
     
-    try {
-      const { error } = await supabase
-        .from('email_signups')
-        .insert([{ email: inlineEmail }]);
-      
-      if (error) {
-        if (error.code === '23505') {
-          toast({
-            title: "이미 등록된 이메일입니다",
-            description: "알림 신청이 이미 완료되었습니다.",
-          });
-        } else {
-          console.error("Error submitting email:", error);
-          toast({
-            title: "오류가 발생했습니다",
-            description: "잠시 후 다시 시도해주세요.",
-            variant: "destructive",
-          });
-        }
-      } else {
-        toast({
-          title: "알림 신청이 완료되었습니다",
-          description: "출시 소식을 이메일로 알려드리겠습니다.",
+        // Adjust the scroll position by subtracting the header height
+        window.scrollTo({
+          top: signupRef.current.offsetTop - headerHeight,
         });
-        setInlineEmail("");
-      }
-    } catch (error) {
-      console.error("Error:", error);
-      toast({
-        title: "오류가 발생했습니다",
-        description: "잠시 후 다시 시도해주세요.",
-        variant: "destructive",
-      });
-    } finally {
-      setIsSubmittingEmail(false);
+
+        navigate(location.pathname, { replace: true, state: {} }); // clean up state
+      }, 0);
     }
+  }, [location.state]);
+
+  const handleTabChange = (value) => {
+    navigate(value === "home" ? "/" : `/${value}`);
+    window.scrollTo(0, 0);;
   };
 
+  const scrollToSignup = () => {
+    // Get the height of the header or any other offset
+    const headerHeight = document.querySelector('header')?.offsetHeight || 0;
+    
+    // Adjust the scroll position by subtracting the header height
+    window.scrollTo({
+      top: signupRef.current.offsetTop - headerHeight,
+      behavior: 'smooth',
+    });
+  };
 
   return (
     <div className="flex flex-col min-h-screen">
-      <Header activeTab={activeTab} setActiveTab={setActiveTab} />
+      <Header />
       <main className="flex-1">
-        <Tabs value={activeTab} className="w-full" onValueChange={setActiveTab}>
+        <Tabs value={activeTab} className="w-full" onValueChange={handleTabChange}>
           <TabsContent value="home">
             <section className="mt-[-8px] bg-gradient-to-b from-lady-light to-white py-16 md:py-32">
               <div className="pl-4 pr-4 md:pl-12 md:pr-6 container">
@@ -97,13 +71,16 @@ const Index = () => {
                     <div className="flex flex-col sm:flex-row sm:items-center sm:space-x-4 space-y-4 sm:space-y-0">
                       <Button 
                         className="bg-lady-primary hover:bg-lady-primary/90 text-white" 
-                        onClick={() => setActiveTab("customer")}
+                        onClick={scrollToSignup}
                       >
-                        고객으로 이용하기
+                        고객으로 가입하기
                       </Button>
                       <Button 
                         className="bg-lady-primary hover:bg-lady-primary/90 text-white" 
-                        onClick={() => setActiveTab("driver")}
+                        onClick={() => {
+                          navigate("/driver")
+                          window.scrollTo(0, 0);;
+                        }}
                       >
                         기사로 이용하기
                       </Button>
@@ -144,10 +121,7 @@ const Index = () => {
                   </p>
                   <Button 
                     className="bg-lady-primary hover:bg-lady-primary/90 text-white" 
-                    onClick={() => {
-                      window.scrollTo({ top: 0, behavior: "smooth" });
-                      setActiveTab("driver")
-                    }}
+                    onClick={scrollToSignup}
                   >
                     지금 기사로 등록하기
                   </Button>
@@ -155,42 +129,17 @@ const Index = () => {
               </div>
             </section>
 
-            <section className="py-12 md:py-16 bg-white">
-              <div className="container px-4 md:px-6">
-                <div className="grid gap-6 lg:grid-cols-3">
-                  <Card className="p-6">
-                    <h3 className="text-xl font-bold text-lady-primary mb-2">고객으로 등록하기</h3>
-                    <p className="text-zinc-700 mb-4">
-                      밤늦은 귀가, 여성 기사님과 안전하게 귀가해보세요. 
-                      아래 이메일을 남겨주시면 누구보다 빠르게 서비스 출시 소식을 전해드릴게요
-                    </p>
-                    <div className="flex items-center mt-4">
-                      <Input 
-                        type="email" 
-                        placeholder="이메일 주소" 
-                        className="mr-2"
-                        value={inlineEmail}
-                        onChange={(e) => setInlineEmail(e.target.value)}
-                        disabled={isSubmittingEmail}
-                      />
-                      <Button onClick={handleEmailSignup} disabled={isSubmittingEmail}>
-                        {isSubmittingEmail ? "제출 중..." : "알림 받기"}
-                      </Button>
-                    </div>
-                  </Card>
-                </div>
-              </div>
+            <section ref={signupRef}>
+              <CustomerRegistration />
             </section>
-          </TabsContent>
-          <TabsContent value="customer">
-            <CustomerRegistration />
+
           </TabsContent>
           <TabsContent value="driver">
             <DriverRegistration />
           </TabsContent>
         </Tabs>
       </main>
-      <Footer setActiveTab={setActiveTab}/>
+      <Footer scrollToSignup={scrollToSignup}/>
     </div>
   );
 };
