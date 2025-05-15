@@ -64,7 +64,8 @@ const Index = ({activeTab}) => {
                       여성전용 대리운전 서비스
                     </h1>
                     <p className="mt-12 mb-8 break-normal text-zinc-700 md:text-xl">
-                      밤늦은 귀가, 여성 기사님과 편안하게 귀가하세요.  
+                      밤늦은 귀가, 이제 안심하고 자면서 집으로
+                      <br />여성 기사님과 편안하게 귀가하세요.  
                     </p>
                     <p className="mb-8 text-2xl font-bold text-lady-primary">
                       지금 사전등록하면 10,000원 쿠폰팩 제공!
