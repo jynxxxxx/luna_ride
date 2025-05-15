@@ -27,7 +27,7 @@ const Footer = ({scrollToSignup}) => {
                 이메일: unniecar.drive@gmail.com
               </li>
               <li>
-                카카오 채늘: <a href="http://pf.kakao.com/_Nhqin" target="_blank" rel="noopener noreferrer" className="text-zinc-600 font-semibold hover:underline">언니차</a>
+                카카오 채널: <a href="http://pf.kakao.com/_Nhqin" target="_blank" rel="noopener noreferrer" className="text-zinc-600 font-semibold hover:underline">언니차</a>
               </li>
             </ul>
           </div>
