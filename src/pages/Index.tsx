@@ -67,8 +67,8 @@ const Index = ({activeTab}) => {
                       밤늦은 귀가, 여성 기사님과 편안하게 귀가하세요.  
                       기사님 입장에서도 안전한 콜을 더 많이 받을 수 있도록 서포트 하겠습니다
                     </p>
-                    <p className="mb-8 text-2xl font-semibold">
-                      지금 선등록하면 10,000원 쿠폰팩 제공!
+                    <p className="mb-8 text-2xl font-bold text-lady-primary">
+                      지금 사전등록하면 10,000원 쿠폰팩 제공!
                     </p>
 
                     <div className="flex flex-col sm:flex-row sm:items-center sm:space-x-4 space-y-4 sm:space-y-0">
@@ -78,15 +78,7 @@ const Index = ({activeTab}) => {
                       >
                         고객으로 가입하기
                       </Button>
-                      <Button 
-                        className="bg-lady-primary hover:bg-lady-primary/90 text-white" 
-                        onClick={() => {
-                          navigate("/driver")
-                          window.scrollTo(0, 0);;
-                        }}
-                      >
-                        기사로 이용하기
-                      </Button>
+                  
                       <Button variant="outline" 
                         className="border-lady-primary text-lady-primary hover:text-lady-primary/90 hover:bg-lady-light"
                         onClick={() => {

@@ -69,7 +69,7 @@ const CustomerRegistration = () => {
           고객으로 등록하기
         </h1>
         <p className="mt-4 mb-2 font-semibold text-zinc-700 max-w-2xl mx-auto">
-          선등록 시 총 10,000원 쿠폰팩을 드려요! (₩5,000 + ₩3,000 + ₩2,000)
+          사전등록 시 총 10,000원 쿠폰팩을 드려요! (₩5,000 + ₩3,000 + ₩2,000)
         </p>
         <p className="text-zinc-700 max-w-2xl mx-auto">
           밤늦은 귀가, 여성 기사님과 안전하게 귀가해보세요. 
