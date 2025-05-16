@@ -1,4 +1,3 @@
-
 import { useLocation, useNavigate } from "react-router-dom";
 import { forwardRef } from "react";
 
@@ -7,7 +6,7 @@ const Footer = ({scrollToSignup}) => {
   const location = useLocation();
 
   return (
-    <footer className="bg-lady-secondary py-8 md:py-12 border-t">
+    <footer className="bg-lady-light py-8 md:py-12 border-t">
       <div className="container px-4 md:px-6">
         <div className="grid gap-8 md:grid-cols-2">
           <div>

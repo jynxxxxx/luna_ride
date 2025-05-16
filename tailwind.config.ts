@@ -63,13 +63,13 @@ export default {
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
 				},
-				// Updated color scheme for a more modern UI
+				// Custom color scheme for women's driving service
 				lady: {
-					primary: '#1A365D',   // Deeper blue - professional, trustworthy 
-					secondary: '#FFF8E6',  // Soft cream - warm, welcoming background
-					accent: '#E53E3E',     // Vibrant red - attention-grabbing
-					light: '#F0F9FF',      // Pale blue - airy, spacious feeling
-					dark: '#2D3748',       // Slate gray - professional contrast
+					primary: '#213448',   // Navy blue – strong, reliable, and professional
+					secondary: '#fff1d6',  // Creamy off-white – soft background, high harmony
+					accent: '#B10000',     // Bright red – attention-grabbing, energetic, and bold
+					light: '#94b4c1',     // Light blue – fresh, clean, and modern
+					dark: '#65001B',   // Warm deep maroon – strong, bold, and assertive
 				}
 			},
 			borderRadius: {
@@ -93,26 +93,11 @@ export default {
 					to: {
 						height: '0'
 					}
-				},
-				'fade-in': {
-					from: {
-						opacity: '0',
-						transform: 'translateY(10px)'
-					},
-					to: {
-						opacity: '1',
-						transform: 'translateY(0)'
-					}
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out',
-				'fade-in': 'fade-in 0.5s ease-out'
-			},
-			boxShadow: {
-				'soft': '0 4px 20px rgba(0, 0, 0, 0.05)',
-				'hover': '0 10px 25px rgba(0, 0, 0, 0.1)'
+				'accordion-up': 'accordion-up 0.2s ease-out'
 			}
 		}
 	},
