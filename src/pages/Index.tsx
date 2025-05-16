@@ -9,6 +9,7 @@ import FeatureSection from "@/components/FeatureSection";
 import DriverRegistration from "@/components/DriverRegistration";
 import { supabase } from "@/integrations/supabase/client";
 import CustomerRegistration from "@/components/CustomerRegistration";
+import { ArrowRight } from "lucide-react";
 
 const Index = ({activeTab}) => {
   const navigate = useNavigate();
@@ -33,7 +34,7 @@ const Index = ({activeTab}) => {
 
   const handleTabChange = (value) => {
     navigate(value === "home" ? "/" : `/${value}`);
-    window.scrollTo(0, 0);;
+    window.scrollTo(0, 0);
   };
 
   const scrollToSignup = () => {
@@ -53,34 +54,44 @@ const Index = ({activeTab}) => {
       <main className="flex-1">
         <Tabs value={activeTab} className="w-full" onValueChange={handleTabChange}>
           <TabsContent value="home">
-            <section className="mt-[-8px] bg-gradient-to-b from-lady-light to-white py-16 md:py-32">
-              <div className="pl-4 pr-4 md:pl-12 md:pr-6 container">
-                <div className="grid gap-6 sm:grid-cols-[1.5fr_1fr] sm:gap-12 items-center">
-                  <div>
-                    <p className="break-normal font-bold text-lady-primary md:text-2xl lg:text-3xl">
+            <section className="relative py-20 md:py-24 lg:py-32 overflow-hidden">
+              {/* Decorative background */}
+              <div className="absolute inset-0 bg-gradient-to-br from-lady-neutral via-white to-lady-secondary opacity-80 z-0"></div>
+              <div className="absolute right-0 top-0 w-full h-full overflow-hidden z-0">
+                <div className="absolute right-0 top-0 w-1/3 h-64 bg-lady-accent/10 rounded-bl-full blur-3xl"></div>
+                <div className="absolute left-0 bottom-0 w-1/3 h-64 bg-lady-light/20 rounded-tr-full blur-3xl"></div>
+              </div>
+              
+              <div className="container relative z-10 px-4 md:px-6">
+                <div className="grid gap-8 sm:grid-cols-[1.2fr_0.8fr] lg:grid-cols-[1.1fr_0.9fr] sm:gap-12 items-center">
+                  <div className="animate-fade-in">
+                    <p className="text-lady-primary font-display font-semibold md:text-xl lg:text-2xl">
                       여성 고객과 여성 기사님을 이어 믿음을 만드는
                     </p>
-                    <h1 className="mt-4 break-normal text-4xl md:text-5xl lg:text-6xl font-bold tracking-tighter text-lady-primary">
+                    <h1 className="mt-4 text-4xl md:text-5xl lg:text-6xl font-bold font-display tracking-tight text-lady-dark">
                       여성전용 대리운전 서비스
                     </h1>
-                    <p className="mt-12 mb-8 break-normal text-zinc-700 md:text-xl">
+                    <p className="mt-8 text-lg text-lady-muted md:text-xl">
                       밤늦은 귀가, 이제 안심하고 자면서 집으로
                       <br />여성 기사님과 편안하게 귀가하세요.  
                     </p>
-                    <p className="mb-8 text-2xl font-bold text-lady-primary">
-                      지금 사전등록하면 10,000원 쿠폰팩 제공!
-                    </p>
+                    <div className="mt-8 mb-8 inline-block bg-lady-primary/5 px-6 py-3 rounded-lg border border-lady-primary/10">
+                      <p className="text-xl md:text-2xl font-bold text-lady-primary">
+                        지금 사전등록하면 10,000원 쿠폰팩 제공!
+                      </p>
+                    </div>
 
-                    <div className="flex flex-col sm:flex-row sm:items-center sm:space-x-4 space-y-4 sm:space-y-0">
+                    <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 mt-6">
                       <Button 
-                        className="bg-lady-primary hover:bg-lady-primary/90 text-white" 
+                        className="btn-primary flex items-center gap-2" 
                         onClick={scrollToSignup}
                       >
-                        고객으로 가입하기
+                        고객으로 가입하기 <ArrowRight size={18} />
                       </Button>
                   
-                      <Button variant="outline" 
-                        className="border-lady-primary text-lady-primary hover:text-lady-primary/90 hover:bg-lady-light"
+                      <Button 
+                        variant="outline" 
+                        className="btn-outline"
                         onClick={() => {
                           if (contentRef.current) {
                             contentRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -91,12 +102,15 @@ const Index = ({activeTab}) => {
                       </Button>
                     </div>
                   </div>
-                  <div className="hidden sm:block overflow-visible">
-                    <img
-                      alt="여성 대리운전"
-                      className="mx-auto w-full max-w-[400px] aspect-video rounded-xl object-cover object-center overflow-visible"
-                      src="/logo_bgr.png"
-                    />
+                  <div className="hidden sm:block relative animate-slide-in">
+                    <div className="absolute -inset-0.5 bg-gradient-to-br from-lady-accent/30 to-lady-light/30 rounded-2xl blur-sm opacity-70"></div>
+                    <div className="relative overflow-hidden rounded-2xl shadow-elegant bg-white p-1">
+                      <img
+                        alt="여성 대리운전"
+                        className="w-full rounded-xl object-cover object-center aspect-[4/3]"
+                        src="/logo_bgr.png"
+                      />
+                    </div>
                   </div>
                 </div>
               </div>
@@ -104,18 +118,19 @@ const Index = ({activeTab}) => {
             
             <FeatureSection ref={contentRef}/>
             
-            <section className="py-16 md:py-20 lg:py-28 bg-[linear-gradient(to_bottom,_white_0%,_#fff1d6_25%,_#fff1d6_75%,_white_100%)]">
-              <div className="container px-4 md:px-6">
+            <section className="section-padding relative overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-b from-white via-lady-secondary to-white z-0"></div>
+              <div className="container relative z-10 px-4 md:px-6">
                 <div className="text-center max-w-3xl mx-auto">
-                  <h2 className="text-2xl md:text-3xl font-bold text-lady-primary mb-4">
+                  <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold font-display text-lady-dark mb-6">
                     여성을 위한, 여성에 의한 서비스
                   </h2>
-                  <p className="text-zinc-700 mb-8">
+                  <p className="text-lady-muted text-lg mb-8">
                     안전함과 편안함을 최우선으로 생각하는 여성 대리운전 서비스입니다.
                     지금 기사로 등록하고 함께 안전한 이동 문화를 만들어보세요.
                   </p>
                   <Button 
-                    className="bg-lady-primary hover:bg-lady-primary/90 text-white" 
+                    className="btn-primary"
                     onClick={() => navigate("/driver", { state: { scrollToDriverSignup: true } })}
                   >
                     지금 기사로 등록하기
@@ -124,7 +139,7 @@ const Index = ({activeTab}) => {
               </div>
             </section>
 
-            <section ref={signupRef}>
+            <section ref={signupRef} className="pt-16">
               <CustomerRegistration />
             </section>
 

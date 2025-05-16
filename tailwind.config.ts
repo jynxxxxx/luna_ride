@@ -63,41 +63,53 @@ export default {
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
 				},
-				// Custom color scheme for women's driving service
+				// Updated modern color scheme for women's driving service
 				lady: {
-					primary: '#213448',   // Navy blue – strong, reliable, and professional
-					secondary: '#fff1d6',  // Creamy off-white – soft background, high harmony
-					accent: '#B10000',     // Bright red – attention-grabbing, energetic, and bold
-					light: '#94b4c1',     // Light blue – fresh, clean, and modern
-					dark: '#65001B',   // Warm deep maroon – strong, bold, and assertive
+					primary: '#3B4A67',   // Refined navy blue - trustworthy, professional
+					secondary: '#F6EFE8',  // Warm off-white - soft, elegant backdrop
+					accent: '#D85A63',    // Sophisticated coral - feminine without being too pink
+					light: '#B3C5D7',     // Soft sky blue - calming, approachable
+					dark: '#172133',      // Deep navy - authority, security
+					neutral: '#F9F9F9',   // Clean neutral background
+					muted: '#8A98A9',     // Subtle text color for secondary information
 				}
+			},
+			fontFamily: {
+				sans: ['Noto Sans KR', 'sans-serif'],
+				display: ['Montserrat', 'Noto Sans KR', 'sans-serif'],
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
 				md: 'calc(var(--radius) - 2px)',
 				sm: 'calc(var(--radius) - 4px)'
 			},
+			boxShadow: {
+				'elegant': '0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.01)',
+				'card-hover': '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
+			},
 			keyframes: {
 				'accordion-down': {
-					from: {
-						height: '0'
-					},
-					to: {
-						height: 'var(--radix-accordion-content-height)'
-					}
+					from: { height: '0' },
+					to: { height: 'var(--radix-accordion-content-height)' }
 				},
 				'accordion-up': {
-					from: {
-						height: 'var(--radix-accordion-content-height)'
-					},
-					to: {
-						height: '0'
-					}
+					from: { height: 'var(--radix-accordion-content-height)' },
+					to: { height: '0' }
+				},
+				'fade-in': {
+					'0%': { opacity: '0', transform: 'translateY(10px)' },
+					'100%': { opacity: '1', transform: 'translateY(0)' }
+				},
+				'slide-in': {
+					'0%': { opacity: '0', transform: 'translateX(-10px)' },
+					'100%': { opacity: '1', transform: 'translateX(0)' }
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
+				'accordion-up': 'accordion-up 0.2s ease-out',
+				'fade-in': 'fade-in 0.5s ease-out',
+				'slide-in': 'slide-in 0.5s ease-out'
 			}
 		}
 	},
