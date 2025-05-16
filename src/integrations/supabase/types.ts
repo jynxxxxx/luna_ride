@@ -40,16 +40,19 @@ export type Database = {
         Row: {
           created_at: string
           email: string
+          consent_given: boolean
           id: string
         }
         Insert: {
           created_at?: string
           email: string
+          consent_given: boolean
           id?: string
         }
         Update: {
           created_at?: string
           email?: string
+          consent_given?: boolean
           id?: string
         }
         Relationships: []

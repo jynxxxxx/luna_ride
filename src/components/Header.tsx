@@ -33,7 +33,7 @@ const Header = () => {
           </a>
         </div>
 
-        <nav className="flex justify-center gap-4 col-span-2 row-start-2 row-span-1 md:mt-0 md:col-start-2 md:col-span-1 md:row-start-1 ">
+        <nav className="flex justify-center gap-4 md:mt-0 md:col-start-2 md:col-span-1 md:row-start-1 ">
           <div className="flex gap-4">
             {["home", "driver"].map((tab) => (
               <button
@@ -50,16 +50,16 @@ const Header = () => {
             ))}
           </div>
         </nav>
-
+{/* 
         <div className="flex justify-end md:col-span-1 md:col-start-3 items-center gap-4">
           <Button className="bg-lady-primary hover:bg-lady-primary/90 text-white" onClick={() => setEmailSignUpModal(true)}>
             앱 출시 알림 받기
           </Button>
-        </div>
+        </div> */}
       </div>
-      {showEmailSignUpModal && (
+      {/* {showEmailSignUpModal && (
         <EmailSignUp setEmailSignUpModal={setEmailSignUpModal}/>
-      )}
+      )} */}
     </header>
   );
 };
