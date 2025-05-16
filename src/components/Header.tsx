@@ -4,11 +4,9 @@ import { useState } from "react";
 import EmailSignUp from "./EmailSignUp";
 import { useLocation, useNavigate } from "react-router-dom";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { MapPin, User, Menu, X } from "lucide-react";
 
 const Header = () => {
   const [showEmailSignUpModal, setEmailSignUpModal] = useState(false);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -20,74 +18,48 @@ const Header = () => {
 
   const handleTabClick = (tab: string) => {
     navigate(tab === "home" ? "/" : `/${tab}`);
-    window.scrollTo(0, 0);
-    setMobileMenuOpen(false);
+    window.scrollTo(0, 0);;
   };
 
   return (
-    <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md shadow-sm border-b border-gray-50">
-      <div className="container grid grid-cols-2 md:grid-cols-3 items-center px-4 md:px-6 py-4">
+    <header className="border-b bg-lady-light sticky top-0 z-50">
+       <div className="container grid grid-cols-2 md:grid-cols-3 items-center px-4 md:px-6 py-2">
         <div className="flex justify-start md:col-span-1">
-          <a href="/" className="flex items-center gap-3">
-            <div className="h-10 w-10 rounded-md bg-gradient-to-br from-lady-primary to-lady-accent flex items-center justify-center shadow-sm">
-              <span className="font-display font-bold text-white text-lg">UC</span>
-            </div>
-            <span className="text-lady-dark font-display font-semibold text-xl tracking-tight">UnnieCar</span>
+          <a href="/" className="flex items-center gap-2">
+              <div className="h-8 w-8 rounded-full bg-lady-primary flex items-center justify-center">
+                <span className="font-bold text-white">UC</span>
+              </div>
+            <span className="text-lady-primary font-bold">UnnieCar</span>
           </a>
         </div>
 
-        <nav className="hidden md:flex justify-center gap-4 md:mt-0 md:col-start-2 md:col-span-1 md:row-start-1">
-          <div className="flex gap-8">
+        <nav className="flex justify-center gap-4 md:mt-0 md:col-start-2 md:col-span-1 md:row-start-1 ">
+          <div className="flex gap-4">
             {["home", "driver"].map((tab) => (
               <button
                 key={tab}
                 onClick={() => handleTabClick(tab)}
-                className={`px-2 py-2 font-medium transition-all duration-300 relative ${
+                className={`px-4 py-2 font-semibold border-b-2 ${
                   currentTab === tab
-                    ? "text-lady-primary"
-                    : "text-lady-muted hover:text-lady-primary"
+                    ? "border-lady-primary text-lady-primary"
+                    : "border-transparent"
                 }`}
               >
                 {tab === "home" ? "홈" : "기사님"}
-                {currentTab === tab && (
-                  <span className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-5 h-0.5 bg-lady-accent rounded-full" />
-                )}
               </button>
             ))}
           </div>
         </nav>
-
-        <div className="flex justify-end md:col-span-1 md:col-start-3 items-center gap-3">
-          {/* Mobile menu toggle */}
-          <button 
-            className="md:hidden p-2 text-lady-primary" 
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          >
-            {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
-        </div>
+{/* 
+        <div className="flex justify-end md:col-span-1 md:col-start-3 items-center gap-4">
+          <Button className="bg-lady-primary hover:bg-lady-primary/90 text-white" onClick={() => setEmailSignUpModal(true)}>
+            앱 출시 알림 받기
+          </Button>
+        </div> */}
       </div>
-      
-      {/* Mobile menu */}
-      {mobileMenuOpen && (
-        <div className="md:hidden px-4 py-4 bg-white border-t border-gray-50 animate-fade-in">
-          <nav className="flex flex-col space-y-3">
-            {["home", "driver"].map((tab) => (
-              <button
-                key={tab}
-                onClick={() => handleTabClick(tab)}
-                className={`px-4 py-3 rounded-md font-medium ${
-                  currentTab === tab
-                    ? "bg-lady-primary/10 text-lady-primary"
-                    : "text-lady-muted hover:bg-gray-50"
-                }`}
-              >
-                {tab === "home" ? "홈" : "기사님"}
-              </button>
-            ))}
-          </nav>
-        </div>
-      )}
+      {/* {showEmailSignUpModal && (
+        <EmailSignUp setEmailSignUpModal={setEmailSignUpModal}/>
+      )} */}
     </header>
   );
 };

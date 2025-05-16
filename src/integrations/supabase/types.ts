@@ -38,21 +38,21 @@ export type Database = {
       }
       email_signups: {
         Row: {
-          consent_given: boolean | null
           created_at: string
           email: string
+          consent_given: boolean
           id: string
         }
         Insert: {
-          consent_given?: boolean | null
           created_at?: string
           email: string
+          consent_given: boolean
           id?: string
         }
         Update: {
-          consent_given?: boolean | null
           created_at?: string
           email?: string
+          consent_given?: boolean
           id?: string
         }
         Relationships: []

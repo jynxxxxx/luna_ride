@@ -78,61 +78,59 @@ const CustomerRegistration = () => {
   return (
     <div className="container py-12 px-4 md:px-6 max-w-2xl">
       <div className="mb-8 text-center">
-        <h1 className="text-3xl font-bold text-lady-dark mb-3">
+        <h1 className="text-3xl font-bold text-lady-primary mb-4">
           고객으로 등록하기
         </h1>
-        <div className="h-1 w-16 bg-gradient-to-r from-lady-primary to-lady-accent mx-auto mb-6 rounded-full"></div>
-        <p className="mt-4 mb-2 font-medium text-lady-primary max-w-2xl mx-auto">
+        <p className="mt-4 mb-2 font-semibold text-zinc-700 max-w-2xl mx-auto">
           사전등록 시 총 10,000원 쿠폰팩을 드려요! (₩5,000 + ₩3,000 + ₩2,000)
         </p>
-        <p className="text-lady-muted max-w-2xl mx-auto">
+        <p className="text-zinc-700 max-w-2xl mx-auto">
           밤늦은 귀가, 여성 기사님과 안전하게 귀가해보세요. 
           <br />아래 이메일을 남겨주시면 누구보다 빠르게 서비스 출시 소식을 전해드릴게요
         </p>
       </div>
 
-      <Card className="p-6 md:p-8 shadow-premium border-gray-100/50">
+      <Card className="p-6 md:p-8">
         <form onSubmit={handleSubmit} className="space-y-6">
-          <div className="grid gap-6">
+          <div className="grid gap-6 ">
             <div className="space-y-2">
-              <Label htmlFor="email" className="text-lady-dark font-medium">이메일</Label>
-              <Input 
-                id="email"
-                type="email" 
-                placeholder="이메일 주소" 
-                className="input-elegant"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                disabled={isSubmitting}
-              />
+              <Label htmlFor="name">이메일</Label>
+                <Input 
+                  type="email" 
+                  placeholder="이메일 주소" 
+                  className="mr-2"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  disabled={isSubmitting}
+                />
             </div>
           </div>
-          <div className="bg-gradient-to-r from-lady-primary/5 to-lady-accent/5 p-5 rounded-md">
-            <h4 className="font-medium text-lady-primary mb-2">개인정보 수집 및 이용 동의</h4>
-            <p className="text-sm text-lady-muted pl-4 mt-2 mb-4">
-                1. 수집 목적: 할인 쿠폰 제공 및 앱 사전 등록
-                <br />2. 수집 항목: 이메일 주소
-                <br />3. 보유 및 이용 기간: 앱 출시 후 6개월
-            </p>
-            <div className="flex items-center gap-2">
-              <input
-                type="checkbox"
-                id="consent"
-                name="consent"
-                checked={checked}
-                onChange={() => setChecked(!checked)}
-                required
-                className="w-5 h-5 rounded border-gray-300 accent-lady-primary"
-                disabled={isSubmitting}
-              />
-              <Label htmlFor="consent" className="text-sm font-normal">
-                개인정보 수집 및 이용에 동의합니다
-              </Label>
+          <div className="bg-lady-light p-4 rounded-md">
+              <h4 className="font-medium text-lady-primary mb-2">개인정보 수집 및 이용 동의</h4>
+              <p className="text-sm text-zinc-700 pl-8 mt-2 mb-4">
+                  1. 수집 목적: 할인 쿠폰 제공 및 앱 사전 등록
+                  <br />2. 수집 항목: 이메일 주소
+                  <br />3. 보유 및 이용 기간: 앱 출시 후 6개월
+              </p>
+              <div className="flex items-center gap-2">
+                <input
+                  type="checkbox"
+                  id="consent"
+                  name="consent"
+                  checked={checked}
+                  onChange={() => setChecked(!checked)}
+                  required
+                  className="w-4 h-4 rounded border-gray-300"
+                  disabled={isSubmitting}
+                />
+                <Label htmlFor="consent" className="text-sm font-normal">
+                  개인정보 수집 및 이용에 동의합니다
+                </Label>
+              </div>
             </div>
-          </div>
           <Button 
             type="submit" 
-            className="w-full bg-gradient-to-r from-lady-primary to-lady-accent hover:from-lady-primary/90 hover:to-lady-accent/90 text-white py-3"
+            className="w-full bg-lady-primary hover:bg-lady-primary/90"
             disabled={isSubmitting}
           >
             {isSubmitting ? "제출 중..." : "소식 받아보기"}
@@ -140,7 +138,7 @@ const CustomerRegistration = () => {
         </form>
       </Card>
 
-      <p className="text-lady-muted text-center mt-8">
+      <p className="text-zinc-700 text-center mt-8">
         곧 서비스 정식 출시 예정입니다. 
         <br />조금만 기다려주세요. 감사합니다.
       </p>
