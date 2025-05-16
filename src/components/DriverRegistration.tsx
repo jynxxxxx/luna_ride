@@ -8,6 +8,7 @@ import { Card } from "@/components/ui/card";
 import { useToast } from "@/components/ui/use-toast";
 import { supabase } from "@/integrations/supabase/client";
 import DriverFeatureSection from "@/components/DriverFeatureSection";
+import { ArrowRight } from "lucide-react";
 
 const DriverRegistration = () => {
   const navigate = useNavigate();
@@ -114,29 +115,29 @@ const DriverRegistration = () => {
 
   return (
     <>
-      <section className="mt-[-8px] bg-gradient-to-b from-lady-secondary to-white py-16 md:py-32">
-        <div className="pl-4 pr-4 md:pl-12 md:pr-12 container">
-          <div className="grid gap-6 sm:grid-cols-[1.5fr_1fr] sm:gap-12 items-center">
-            <div>
-              <p className="break-normal font-bold text-lady-dark md:text-2xl lg:text-3xl">
-                여성 기사님을 위한 안전하고 수익 높은
-              </p>
-              <h1 className="mt-4 break-normal text-4xl md:text-5xl lg:text-6xl font-bold tracking-tighter text-lady-primary">
-                여성전용 대리운전 서비스
+      <section className="relative bg-gradient-to-b from-lady-light to-white py-20 md:py-28 overflow-hidden">
+        <div className="absolute top-0 right-0 w-full h-full bg-[url('/driver_header.png')] bg-right-top bg-no-repeat opacity-10 md:opacity-20"></div>
+        
+        <div className="pl-4 pr-4 md:pl-12 md:pr-12 container relative z-10">
+          <div className="grid gap-6 sm:grid-cols-[1.5fr_1fr] sm:gap-16 items-center">
+            <div className="animate-fade-in">
+              <div className="inline-block px-4 py-1 bg-lady-accent/10 rounded-full text-lady-accent font-medium text-sm mb-4">
+                여성 전용 대리운전
+              </div>
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gradient mb-6 leading-tight">
+                여성 기사님을 위한<br/> 
+                안전하고 수익 높은 서비스
               </h1>
-              <p className="mt-12 mb-8 break-normal text-zinc-700 md:text-xl">
+              <p className="text-gray-600 md:text-lg mb-10 max-w-xl">
                 빠른 매칭 시스템과 낮은 수수료 덕분에 더 많은 고객을 만나고, 
-                <br /> 이제는 더 높은 수익을 얻을 수 있는 기회를 잡아보세요.
+                이제는 더 높은 수익을 얻을 수 있는 기회를 잡아보세요.
               </p>
-              <div className="flex flex-col sm:flex-row sm:items-center sm:space-x-4 space-y-4 sm:space-y-0">
+              <div className="flex flex-col sm:flex-row gap-4">
                 <Button 
-                  className="bg-lady-dark hover:bg-lady-dark/90 text-white" 
+                  className="bg-lady-accent hover:bg-lady-accent/90 text-white shadow-md flex items-center gap-2 text-base px-6 py-6"
                   onClick={() => {
                     if (driverSignupRef.current) {
-                      // Get the height of the header or any other offset
                       const headerHeight = document.querySelector('header')?.offsetHeight || 0;
-                      
-                      // Adjust the scroll position by subtracting the header height
                       window.scrollTo({
                         top: driverSignupRef.current.offsetTop - headerHeight,
                         behavior: 'smooth',
@@ -145,13 +146,14 @@ const DriverRegistration = () => {
                   }}
                 >
                   기사로 가입하기
+                  <ArrowRight className="h-4 w-4" />
                 </Button>
-                <Button variant="outline" 
-                  className="border-lady-dark text-lady-dark hover:text-lady-dark/90 hover:bg-lady-secondary"
+                <Button 
+                  variant="outline" 
+                  className="border-lady-dark text-lady-dark hover:bg-lady-light"
                   onClick={() => {
                     if (driverFeaturesRef.current) {
                       const headerHeight = document.querySelector('header')?.offsetHeight || 0;
-
                       window.scrollTo({
                         top: driverFeaturesRef.current.offsetTop - headerHeight,
                         behavior: 'smooth',
@@ -166,7 +168,7 @@ const DriverRegistration = () => {
             <div className="hidden sm:block overflow-visible">
               <img
                 alt="여성 대리운전"
-                className="mx-auto w-full max-w-[400px] aspect-video rounded-xl object-cover object-center overflow-visible shadow-lg"
+                className="rounded-2xl object-cover object-center shadow-lg transform rotate-2 hover:rotate-0 transition-transform duration-500"
                 src="/driver_header.png"
               />
             </div>
@@ -176,22 +178,22 @@ const DriverRegistration = () => {
 
       <DriverFeatureSection ref={driverFeaturesRef}/>
 
-      <div ref={driverSignupRef} className="container py-12 px-4 md:px-6 max-w-3xl bg-gradient-to-b from-white to-lady-secondary/30 rounded-3xl mt-12">
-        <div className="mb-8 text-center">
-          <h1 className="text-3xl font-bold text-lady-dark mb-4">
+      <div ref={driverSignupRef} className="container py-16 px-4 md:px-6 max-w-4xl rounded-3xl my-20">
+        <div className="mb-12 text-center">
+          <h2 className="section-title mx-auto inline-block pb-3 mb-6 text-lady-dark">
             여성 대리운전 기사 등록
-          </h1>
-          <p className="text-zinc-700 max-w-2xl mx-auto">
+          </h2>
+          <p className="text-gray-600 max-w-2xl mx-auto">
             신뢰할 수 있는 여성 전용 대리운전 서비스를 함께 만들어갈 기사님을 모집합니다. 
             <br />아래 양식을 통해 지원해주세요. 기사님께 안전하고 좋은 콜을 많이 제공할 수 있도록 최선을 다해 지원하겠습니다. 
           </p>
         </div>
 
-        <Card className="p-6 md:p-8 shadow-lg border-lady-primary/10">
+        <Card className="p-8 rounded-2xl shadow-soft border border-gray-100 bg-white">
           <form onSubmit={handleSubmit} className="space-y-6">
             <div className="grid gap-6 md:grid-cols-2">
               <div className="space-y-2">
-                <Label htmlFor="name" className="text-lady-dark">이름</Label>
+                <Label htmlFor="name" className="text-lady-dark font-medium">이름</Label>
                 <Input
                   id="name"
                   name="name"
@@ -200,13 +202,13 @@ const DriverRegistration = () => {
                   value={formData.name}
                   onChange={handleInputChange}
                   disabled={isSubmitting}
-                  className="border-lady-dark/20 focus:border-lady-accent focus:ring-lady-accent"
+                  className="border-gray-200 focus:border-lady-primary focus:ring-lady-primary rounded-lg"
                 />
               </div>
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="phone" className="text-lady-dark">휴대폰 번호</Label>
+              <Label htmlFor="phone" className="text-lady-dark font-medium">휴대폰 번호</Label>
               <Input
                 id="phone"
                 name="phone"
@@ -215,14 +217,14 @@ const DriverRegistration = () => {
                 value={formData.phone}
                 onChange={handleInputChange}
                 disabled={isSubmitting}
-                className="border-lady-dark/20 focus:border-lady-accent focus:ring-lady-accent"
+                className="border-gray-200 focus:border-lady-primary focus:ring-lady-primary rounded-lg"
               />
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="name" className="text-lady-dark">대리기사 경험이 있으신가요? &#40;없어도 괜찮습니다&#41;</Label>
+              <Label htmlFor="name" className="text-lady-dark font-medium">대리기사 경험이 있으신가요? &#40;없어도 괜찮습니다&#41;</Label>
               <div className="flex items-center gap-4">
-                <label className="flex items-center gap-1 text-sm font-normal">
+                <label className="flex items-center gap-2 text-sm">
                   <input
                     type="radio"
                     name="experience"
@@ -231,11 +233,11 @@ const DriverRegistration = () => {
                     onChange={handleInputChange}
                     disabled={isSubmitting}
                     required
-                    className="w-4 h-4 text-lady-accent border-lady-dark/20 focus:ring-lady-accent"
+                    className="w-4 h-4 text-lady-primary border-gray-300 focus:ring-lady-primary"
                   />
                   예
                 </label>
-                <label className="flex items-center gap-1 text-sm font-normal">
+                <label className="flex items-center gap-2 text-sm">
                   <input
                     type="radio"
                     name="experience"
@@ -244,15 +246,16 @@ const DriverRegistration = () => {
                     onChange={handleInputChange}
                     disabled={isSubmitting}
                     required
-                    className="w-4 h-4 text-lady-accent border-lady-dark/20 focus:ring-lady-accent"
+                    className="w-4 h-4 text-lady-primary border-gray-300 focus:ring-lady-primary"
                   />
                   아니오
                 </label>
               </div>
             </div>
-            <div className="bg-gradient-to-r from-lady-secondary to-lady-secondary/30 p-4 rounded-md">
+            
+            <div className="bg-lady-light p-6 rounded-xl">
               <h4 className="font-medium text-lady-dark mb-2">개인정보 수집 및 이용 동의</h4>
-              <p className="text-sm text-zinc-700 mb-4">
+              <p className="text-sm text-gray-600 mb-4">
                 제출해주신 정보는 기사 등록 정보 제공 만을 위해 사용되며, 이외의 목적으로는 사용 되지 않습니다. 
               </p>
               <div className="flex items-center gap-2">
@@ -263,7 +266,7 @@ const DriverRegistration = () => {
                   checked={formData.consent}
                   onChange={handleInputChange}
                   required
-                  className="w-4 h-4 rounded border-gray-300 text-lady-accent focus:ring-lady-accent"
+                  className="w-4 h-4 rounded border-gray-300 text-lady-primary focus:ring-lady-primary"
                   disabled={isSubmitting}
                 />
                 <Label htmlFor="consent" className="text-sm font-normal">
@@ -274,7 +277,7 @@ const DriverRegistration = () => {
 
             <Button 
               type="submit" 
-              className="w-full bg-lady-accent hover:bg-lady-accent/90 text-white"
+              className="w-full bg-lady-accent hover:bg-lady-accent/90 text-white py-6 text-base shadow-md"
               disabled={isSubmitting}
             >
               {isSubmitting ? "제출 중..." : "기사 등록 신청"}
@@ -282,10 +285,12 @@ const DriverRegistration = () => {
           </form>
         </Card>
 
-        <p className="text-lady-dark text-center mt-8">
-          곧 서비스 정식 출시 예정입니다. 
-          <br />조금만 기다려주세요. 감사합니다
-        </p>
+        <div className="text-center mt-10 p-6 bg-gradient-to-r from-lady-light to-white rounded-xl">
+          <p className="text-lady-dark font-medium">
+            곧 서비스 정식 출시 예정입니다. 
+            <br />조금만 기다려주세요. 감사합니다
+          </p>
+        </div>
       </div>
     </>
   );
