@@ -30,20 +30,19 @@ const DriverFeatureSection = forwardRef<HTMLDivElement>((props, ref) => {
         {features.map((feature, index) => (
           <div 
             key={index}
-            className="bg-white rounded-xl shadow-elegant hover:shadow-card-hover transition-all duration-300 p-8 border border-gray-100 hover:-translate-y-1"
+            className="premium-card slide-up"
+            style={{ animationDelay: `${index * 0.1}s` }}
           >
-            <div className="flex flex-col items-center mb-6">
-              <div className="bg-lady-secondary p-4 rounded-lg mb-4 text-lady-primary">
-                {feature.icon}
-              </div>
-              <h3 className="text-xl font-bold text-lady-primary mb-2 text-center">{feature.title}</h3>
+            <div className="premium-icon">
+              {feature.icon}
             </div>
-            <div className="text-center">
-              <h4 className="text-lg font-medium text-lady-dark mb-3">{feature.subtitle}</h4>
-              <p className="text-lady-muted">
-                {feature.description}
-              </p>
+            <div className="mb-4">
+              <h3 className="text-xl font-semibold text-lady-dark mb-2">{feature.title}</h3>
+              <h4 className="text-base font-medium text-lady-primary mb-3">{feature.subtitle}</h4>
             </div>
+            <p className="text-lady-muted">
+              {feature.description}
+            </p>
           </div>
         ))}
       </div>

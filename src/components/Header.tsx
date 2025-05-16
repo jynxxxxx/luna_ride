@@ -25,24 +25,24 @@ const Header = () => {
   };
 
   return (
-    <header className="sticky top-0 z-50 bg-white/90 backdrop-blur-md shadow-sm border-b border-gray-100">
+    <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md shadow-sm border-b border-gray-50">
       <div className="container grid grid-cols-2 md:grid-cols-3 items-center px-4 md:px-6 py-4">
         <div className="flex justify-start md:col-span-1">
-          <a href="/" className="flex items-center gap-2.5">
-            <div className="h-10 w-10 rounded-lg bg-gradient-to-br from-lady-primary to-lady-dark flex items-center justify-center shadow-md">
+          <a href="/" className="flex items-center gap-3">
+            <div className="h-10 w-10 rounded-md bg-gradient-to-br from-lady-primary to-lady-accent flex items-center justify-center shadow-sm">
               <span className="font-display font-bold text-white text-lg">UC</span>
             </div>
-            <span className="text-lady-primary font-display font-bold text-xl tracking-tight">UnnieCar</span>
+            <span className="text-lady-dark font-display font-semibold text-xl tracking-tight">UnnieCar</span>
           </a>
         </div>
 
         <nav className="hidden md:flex justify-center gap-4 md:mt-0 md:col-start-2 md:col-span-1 md:row-start-1">
-          <div className="flex gap-6">
+          <div className="flex gap-8">
             {["home", "driver"].map((tab) => (
               <button
                 key={tab}
                 onClick={() => handleTabClick(tab)}
-                className={`px-4 py-2 font-medium transition-all duration-300 relative ${
+                className={`px-2 py-2 font-medium transition-all duration-300 relative ${
                   currentTab === tab
                     ? "text-lady-primary"
                     : "text-lady-muted hover:text-lady-primary"
@@ -50,7 +50,7 @@ const Header = () => {
               >
                 {tab === "home" ? "홈" : "기사님"}
                 {currentTab === tab && (
-                  <span className="absolute bottom-0 left-0 w-full h-0.5 bg-lady-accent rounded-full" />
+                  <span className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-5 h-0.5 bg-lady-accent rounded-full" />
                 )}
               </button>
             ))}
@@ -70,13 +70,13 @@ const Header = () => {
       
       {/* Mobile menu */}
       {mobileMenuOpen && (
-        <div className="md:hidden px-4 py-4 bg-white border-t border-gray-100 animate-fade-in">
+        <div className="md:hidden px-4 py-4 bg-white border-t border-gray-50 animate-fade-in">
           <nav className="flex flex-col space-y-3">
             {["home", "driver"].map((tab) => (
               <button
                 key={tab}
                 onClick={() => handleTabClick(tab)}
-                className={`px-4 py-3 rounded-lg font-medium ${
+                className={`px-4 py-3 rounded-md font-medium ${
                   currentTab === tab
                     ? "bg-lady-primary/10 text-lady-primary"
                     : "text-lady-muted hover:bg-gray-50"

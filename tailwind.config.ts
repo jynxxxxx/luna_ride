@@ -63,19 +63,19 @@ export default {
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
 				},
-				// Updated modern color scheme for women's driving service
+				// New sophisticated color palette for the women's driving service
 				lady: {
-					primary: '#3B4A67',   // Refined navy blue - trustworthy, professional
-					secondary: '#F6EFE8',  // Warm off-white - soft, elegant backdrop
-					accent: '#D85A63',    // Sophisticated coral - feminine without being too pink
-					light: '#B3C5D7',     // Soft sky blue - calming, approachable
-					dark: '#172133',      // Deep navy - authority, security
-					neutral: '#F9F9F9',   // Clean neutral background
-					muted: '#8A98A9',     // Subtle text color for secondary information
+					primary: '#763263',   // Deep mauve - elegant, confident
+					secondary: '#FCF7F8', // Off-white - clean, sophisticated
+					accent: '#C95D7F',    // Muted rose - feminine without being childish
+					light: '#E9D2D5',     // Pale rose - subtle, refined
+					dark: '#362A35',      // Deep aubergine - mature, trustworthy
+					neutral: '#FAFAFA',   // Clean neutral background
+					muted: '#9B8E9A',     // Soft neutral for secondary text
 				}
 			},
 			fontFamily: {
-				sans: ['Noto Sans KR', 'sans-serif'],
+				sans: ['Inter', 'Noto Sans KR', 'sans-serif'],
 				display: ['Montserrat', 'Noto Sans KR', 'sans-serif'],
 			},
 			borderRadius: {
@@ -84,8 +84,9 @@ export default {
 				sm: 'calc(var(--radius) - 4px)'
 			},
 			boxShadow: {
-				'elegant': '0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.01)',
-				'card-hover': '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
+				'elegant': '0 10px 30px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.03)',
+				'card-hover': '0 20px 35px -5px rgba(0, 0, 0, 0.15), 0 10px 15px -3px rgba(0, 0, 0, 0.08)',
+				'premium': '0 15px 35px rgba(118, 50, 99, 0.1), 0 5px 15px rgba(118, 50, 99, 0.05)',
 			},
 			keyframes: {
 				'accordion-down': {

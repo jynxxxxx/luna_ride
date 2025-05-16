@@ -3,6 +3,7 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
 
@@ -36,7 +37,7 @@
     --input: 214.3 31.8% 91.4%;
     --ring: 222.2 84% 4.9%;
 
-    --radius: 0.75rem;
+    --radius: 0.5rem;
 
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
@@ -85,7 +86,8 @@
   }
 
   body {
-    @apply bg-lady-neutral text-lady-dark font-sans;
+    @apply bg-white text-lady-dark font-sans;
+    letter-spacing: -0.01em;
   }
   
   h1, h2, h3, h4, h5, h6 {
@@ -95,15 +97,15 @@
 
 @layer components {
   .btn-primary {
-    @apply bg-lady-primary hover:bg-lady-dark text-white py-3 px-6 rounded-lg transition-all shadow-md hover:shadow-lg transform hover:-translate-y-0.5 duration-300 font-medium;
+    @apply bg-lady-primary hover:bg-lady-dark text-white py-3 px-6 rounded-md transition-all shadow-premium hover:shadow-card-hover transform hover:-translate-y-0.5 duration-300 font-medium;
   }
   
   .btn-outline {
-    @apply border border-lady-primary text-lady-primary hover:bg-lady-primary/10 py-3 px-6 rounded-lg transition-all font-medium;
+    @apply border border-lady-primary/30 text-lady-primary hover:bg-lady-primary/5 py-3 px-6 rounded-md transition-all font-medium;
   }
   
   .card-gradient {
-    @apply relative overflow-hidden rounded-xl border border-white/20 bg-white/10 before:absolute before:inset-0 before:bg-gradient-to-br before:from-lady-light/30 before:to-lady-accent/10 before:opacity-40 before:-z-10;
+    @apply relative overflow-hidden rounded-lg border border-white/20 bg-white shadow-elegant before:absolute before:inset-0 before:bg-gradient-to-br before:from-lady-light/10 before:to-white before:opacity-40 before:-z-10;
   }
   
   .section-padding {
@@ -111,21 +113,39 @@
   }
   
   .input-elegant {
-    @apply border border-gray-300 focus:border-lady-primary focus:ring focus:ring-lady-light/30 focus:ring-opacity-50 rounded-lg px-4 py-3 w-full transition duration-200 bg-white;
+    @apply border border-gray-200 focus:border-lady-primary focus:ring focus:ring-lady-primary/20 focus:ring-opacity-50 rounded-md px-4 py-3 w-full transition duration-200 bg-white;
+  }
+  
+  .premium-card {
+    @apply bg-white rounded-lg border border-gray-100/50 shadow-premium hover:shadow-card-hover transition-all duration-300 p-6 hover:-translate-y-1;
+  }
+  
+  .premium-icon {
+    @apply w-12 h-12 flex items-center justify-center rounded-md bg-gradient-to-br from-lady-primary to-lady-accent text-white mb-4;
   }
 }
 
 .fade-in {
-  animation: fadeIn 0.6s ease-in;
+  animation: fadeIn 0.8s ease-out;
+}
+
+.fade-in-delayed {
+  animation: fadeIn 0.8s ease-out 0.2s forwards;
+  opacity: 0;
+}
+
+.slide-up {
+  animation: slideUp 0.8s ease-out;
 }
 
 @keyframes fadeIn {
-  0% { opacity: 0; transform: translateY(20px); }
+  0% { opacity: 0; transform: translateY(10px); }
   100% { opacity: 1; transform: translateY(0); }
 }
 
-.slide-in {
-  animation: slideIn 0.6s ease-in;
+@keyframes slideUp {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes slideIn {

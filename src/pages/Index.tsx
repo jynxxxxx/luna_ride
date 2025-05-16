@@ -54,28 +54,28 @@ const Index = ({activeTab}) => {
       <main className="flex-1">
         <Tabs value={activeTab} className="w-full" onValueChange={handleTabChange}>
           <TabsContent value="home">
-            <section className="relative py-20 md:py-24 lg:py-32 overflow-hidden">
+            <section className="relative py-20 md:py-28 lg:py-32 overflow-hidden">
               {/* Decorative background */}
-              <div className="absolute inset-0 bg-gradient-to-br from-lady-neutral via-white to-lady-secondary opacity-80 z-0"></div>
+              <div className="absolute inset-0 bg-gradient-to-br from-white via-lady-secondary/20 to-white z-0"></div>
               <div className="absolute right-0 top-0 w-full h-full overflow-hidden z-0">
-                <div className="absolute right-0 top-0 w-1/3 h-64 bg-lady-accent/10 rounded-bl-full blur-3xl"></div>
-                <div className="absolute left-0 bottom-0 w-1/3 h-64 bg-lady-light/20 rounded-tr-full blur-3xl"></div>
+                <div className="absolute -right-20 top-20 w-80 h-80 bg-lady-accent/5 rounded-full blur-3xl"></div>
+                <div className="absolute left-0 bottom-0 w-64 h-64 bg-lady-primary/5 rounded-full blur-3xl"></div>
               </div>
               
               <div className="container relative z-10 px-4 md:px-6">
                 <div className="grid gap-8 sm:grid-cols-[1.2fr_0.8fr] lg:grid-cols-[1.1fr_0.9fr] sm:gap-12 items-center">
-                  <div className="animate-fade-in">
-                    <p className="text-lady-primary font-display font-semibold md:text-xl lg:text-2xl">
+                  <div className="fade-in">
+                    <p className="text-lady-primary font-display font-medium md:text-lg lg:text-xl mb-2">
                       여성 고객과 여성 기사님을 이어 믿음을 만드는
                     </p>
-                    <h1 className="mt-4 text-4xl md:text-5xl lg:text-6xl font-bold font-display tracking-tight text-lady-dark">
+                    <h1 className="mt-2 text-4xl md:text-5xl lg:text-6xl font-bold font-display tracking-tight text-lady-dark">
                       여성전용 대리운전 서비스
                     </h1>
-                    <p className="mt-8 text-lg text-lady-muted md:text-xl">
+                    <p className="mt-6 text-lg text-lady-muted md:text-xl leading-relaxed">
                       밤늦은 귀가, 이제 안심하고 자면서 집으로
                       <br />여성 기사님과 편안하게 귀가하세요.  
                     </p>
-                    <div className="mt-8 mb-8 inline-block bg-lady-primary/5 px-6 py-3 rounded-lg border border-lady-primary/10">
+                    <div className="mt-8 mb-8 inline-block bg-gradient-to-r from-lady-primary/10 to-lady-accent/10 px-6 py-3 rounded-md border border-lady-primary/10">
                       <p className="text-xl md:text-2xl font-bold text-lady-primary">
                         지금 사전등록하면 10,000원 쿠폰팩 제공!
                       </p>
@@ -102,12 +102,12 @@ const Index = ({activeTab}) => {
                       </Button>
                     </div>
                   </div>
-                  <div className="hidden sm:block relative animate-slide-in">
-                    <div className="absolute -inset-0.5 bg-gradient-to-br from-lady-accent/30 to-lady-light/30 rounded-2xl blur-sm opacity-70"></div>
-                    <div className="relative overflow-hidden rounded-2xl shadow-elegant bg-white p-1">
+                  <div className="hidden sm:block relative fade-in-delayed">
+                    <div className="absolute -inset-1 bg-gradient-to-br from-lady-primary/20 to-lady-accent/20 rounded-lg blur-sm opacity-70"></div>
+                    <div className="relative overflow-hidden rounded-lg shadow-premium bg-white p-1">
                       <img
                         alt="여성 대리운전"
-                        className="w-full rounded-xl object-cover object-center aspect-[4/3]"
+                        className="w-full rounded-md object-cover object-center aspect-[4/3]"
                         src="/logo_bgr.png"
                       />
                     </div>
@@ -119,7 +119,7 @@ const Index = ({activeTab}) => {
             <FeatureSection ref={contentRef}/>
             
             <section className="section-padding relative overflow-hidden">
-              <div className="absolute inset-0 bg-gradient-to-b from-white via-lady-secondary to-white z-0"></div>
+              <div className="absolute inset-0 bg-gradient-to-b from-white via-lady-secondary/20 to-white z-0"></div>
               <div className="container relative z-10 px-4 md:px-6">
                 <div className="text-center max-w-3xl mx-auto">
                   <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold font-display text-lady-dark mb-6">
