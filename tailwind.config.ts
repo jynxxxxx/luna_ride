@@ -65,11 +65,11 @@ export default {
 				},
 				// Custom color scheme for women's driving service
 				lady: {
-					primary: '#3E302C',   // Charcoal Brown (Warm Neutral)
-					secondary: '#FFE59A', // Soft golden yellow – cheerful and warm 
-					accent: '#698996',     // Muted blue-teal – grounding, mature balance
-					light: '#fff1d6',      // Creamy off-white – soft background, high harmony
-					dark: '#5A4E3C',       // Earthy brown-gray – warm, deep text contrast
+					primary: '#213448',   // Navy blue – strong, reliable, and professional
+					secondary: '#fff1d6',  // Creamy off-white – soft background, high harmony
+					accent: '#B10000',     // Bright red – attention-grabbing, energetic, and bold
+					light: '#94b4c1',     // Light blue – fresh, clean, and modern
+					dark: '#65001B',   // Warm deep maroon – strong, bold, and assertive
 				}
 			},
 			borderRadius: {
