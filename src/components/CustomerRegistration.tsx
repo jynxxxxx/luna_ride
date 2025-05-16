@@ -107,12 +107,10 @@ const CustomerRegistration = () => {
           </div>
           <div className="bg-lady-light p-4 rounded-md">
               <h4 className="font-medium text-lady-primary mb-2">개인정보 수집 및 이용 동의</h4>
-              <p className="text-sm text-zinc-700 mb-4">
-                개인정보 수집 및 이용에 동의해 주세요.
-                <p>1. 수집 목적: 할인 쿠폰 제공 및 앱 사전 등록
-                  <br />2. 수집 항목: 이름, 이메일 주소
+              <p className="text-sm text-zinc-700 pl-8 mt-2 mb-4">
+                  1. 수집 목적: 할인 쿠폰 제공 및 앱 사전 등록
+                  <br />2. 수집 항목: 이메일 주소
                   <br />3. 보유 및 이용 기간: 앱 출시 후 6개월
-                </p>
               </p>
               <div className="flex items-center gap-2">
                 <input
