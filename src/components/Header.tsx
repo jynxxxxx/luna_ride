@@ -22,7 +22,7 @@ const Header = () => {
   };
 
   return (
-    <header className="border-b bg-lady-light sticky top-0 z-50">
+    <header className="border-b bg-lady-secondary sticky top-0 z-50">
        <div className="container grid grid-cols-2 md:grid-cols-3 items-center px-4 md:px-6 py-2">
         <div className="flex justify-start md:col-span-1">
           <a href="/" className="flex items-center gap-2">

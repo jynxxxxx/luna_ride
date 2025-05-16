@@ -53,7 +53,7 @@ const Index = ({activeTab}) => {
       <main className="flex-1">
         <Tabs value={activeTab} className="w-full" onValueChange={handleTabChange}>
           <TabsContent value="home">
-            <section className="mt-[-8px] bg-gradient-to-b from-lady-light to-white py-16 md:py-32">
+            <section className="mt-[-8px] bg-gradient-to-b from-lady-secondary to-white py-16 md:py-32">
               <div className="pl-4 pr-4 md:pl-12 md:pr-6 container">
                 <div className="grid gap-6 sm:grid-cols-[1.5fr_1fr] sm:gap-12 items-center">
                   <div>
@@ -80,7 +80,7 @@ const Index = ({activeTab}) => {
                       </Button>
                   
                       <Button variant="outline" 
-                        className="border-lady-primary text-lady-primary hover:text-lady-primary/90 hover:bg-lady-light"
+                        className="border-lady-primary text-lady-primary hover:text-lady-primary/90 hover:bg-lady-secondary"
                         onClick={() => {
                           if (contentRef.current) {
                             contentRef.current.scrollIntoView({ behavior: "smooth", block: "start" });

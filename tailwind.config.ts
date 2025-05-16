@@ -68,7 +68,7 @@ export default {
 					primary: '#213448',   // Navy blue – strong, reliable, and professional
 					secondary: '#fff1d6',  // Creamy off-white – soft background, high harmony
 					accent: '#B10000',     // Bright red – attention-grabbing, energetic, and bold
-					light: '#94b4c1',     // Light blue – fresh, clean, and modern
+					light: '#fff1d6',     // Changed from light blue to the secondary color
 					dark: '#65001B',   // Warm deep maroon – strong, bold, and assertive
 				}
 			},

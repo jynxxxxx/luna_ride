@@ -9,7 +9,7 @@ const DriverFeatureSection = forwardRef<HTMLDivElement>((props, ref) => {
         {/* Feature 1 */}
         <div className="bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow p-6 border border-gray-100">
           <div className="flex flex-col items-center mb-4">
-            <div className="bg-lady-light p-4 rounded-full mb-4">
+            <div className="bg-lady-secondary p-4 rounded-full mb-4">
               <CreditCard className="h-8 w-8 text-lady-primary" />
             </div>
             <h3 className="text-xl font-bold text-lady-primary mb-2">더 많은 수익</h3>
@@ -26,7 +26,7 @@ const DriverFeatureSection = forwardRef<HTMLDivElement>((props, ref) => {
         {/* Feature 2 */}
         <div className="bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow p-6 border border-gray-100">
           <div className="flex flex-col items-center mb-4">
-            <div className="bg-lady-light p-4 rounded-full mb-4">
+            <div className="bg-lady-secondary p-4 rounded-full mb-4">
               <Shield className="h-8 w-8 text-lady-primary" />
             </div>
             <h3 className="text-xl font-bold text-lady-primary mb-2">안전한 운전 환경 제공</h3>
@@ -43,7 +43,7 @@ const DriverFeatureSection = forwardRef<HTMLDivElement>((props, ref) => {
         {/* Feature 3 */}
         <div className="bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow p-6 border border-gray-100">
           <div className="flex flex-col items-center mb-4">
-            <div className="bg-lady-light p-4 rounded-full mb-4">
+            <div className="bg-lady-secondary p-4 rounded-full mb-4">
               <Clock className="h-8 w-8 text-lady-primary" />
             </div>
             <h3 className="text-xl font-bold text-lady-primary mb-2">프리미엄 서비스 혜택</h3>
