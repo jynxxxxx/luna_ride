@@ -22,11 +22,11 @@ const Header = () => {
   };
 
   return (
-    <header className="border-b bg-lady-secondary sticky top-0 z-50">
+    <header className="border-b border-lady-dark/10 bg-lady-secondary sticky top-0 z-50 shadow-sm">
        <div className="container grid grid-cols-2 md:grid-cols-3 items-center px-4 md:px-6 py-2">
         <div className="flex justify-start md:col-span-1">
           <a href="/" className="flex items-center gap-2">
-              <div className="h-8 w-8 rounded-full bg-lady-primary flex items-center justify-center">
+              <div className="h-8 w-8 rounded-full bg-lady-primary flex items-center justify-center shadow-md">
                 <span className="font-bold text-white">UC</span>
               </div>
             <span className="text-lady-primary font-bold">UnnieCar</span>
@@ -39,10 +39,10 @@ const Header = () => {
               <button
                 key={tab}
                 onClick={() => handleTabClick(tab)}
-                className={`px-4 py-2 font-semibold border-b-2 ${
+                className={`px-4 py-2 font-semibold border-b-2 transition-colors ${
                   currentTab === tab
-                    ? "border-lady-primary text-lady-primary"
-                    : "border-transparent"
+                    ? "border-lady-dark text-lady-dark"
+                    : "border-transparent hover:border-lady-dark/30 hover:text-lady-dark/70"
                 }`}
               >
                 {tab === "home" ? "홈" : "기사님"}

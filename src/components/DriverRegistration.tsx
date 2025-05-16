@@ -114,11 +114,11 @@ const DriverRegistration = () => {
 
   return (
     <>
-      <section className="mt-[-8px] bg-gradient-to-b from-lady-light to-white py-16 md:py-32">
+      <section className="mt-[-8px] bg-gradient-to-b from-lady-secondary to-white py-16 md:py-32">
         <div className="pl-4 pr-4 md:pl-12 md:pr-12 container">
           <div className="grid gap-6 sm:grid-cols-[1.5fr_1fr] sm:gap-12 items-center">
             <div>
-              <p className="break-normal font-bold text-lady-primary md:text-2xl lg:text-3xl">
+              <p className="break-normal font-bold text-lady-dark md:text-2xl lg:text-3xl">
                 여성 기사님을 위한 안전하고 수익 높은
               </p>
               <h1 className="mt-4 break-normal text-4xl md:text-5xl lg:text-6xl font-bold tracking-tighter text-lady-primary">
@@ -130,7 +130,7 @@ const DriverRegistration = () => {
               </p>
               <div className="flex flex-col sm:flex-row sm:items-center sm:space-x-4 space-y-4 sm:space-y-0">
                 <Button 
-                  className="bg-lady-primary hover:bg-lady-primary/90 text-white" 
+                  className="bg-lady-dark hover:bg-lady-dark/90 text-white" 
                   onClick={() => {
                     if (driverSignupRef.current) {
                       // Get the height of the header or any other offset
@@ -147,7 +147,7 @@ const DriverRegistration = () => {
                   기사로 가입하기
                 </Button>
                 <Button variant="outline" 
-                  className="border-lady-primary text-lady-primary hover:text-lady-primary/90 hover:bg-lady-light"
+                  className="border-lady-dark text-lady-dark hover:text-lady-dark/90 hover:bg-lady-secondary"
                   onClick={() => {
                     if (driverFeaturesRef.current) {
                       const headerHeight = document.querySelector('header')?.offsetHeight || 0;
@@ -166,7 +166,7 @@ const DriverRegistration = () => {
             <div className="hidden sm:block overflow-visible">
               <img
                 alt="여성 대리운전"
-                className="mx-auto w-full max-w-[400px] aspect-video rounded-xl object-cover object-center overflow-visible"
+                className="mx-auto w-full max-w-[400px] aspect-video rounded-xl object-cover object-center overflow-visible shadow-lg"
                 src="/driver_header.png"
               />
             </div>
@@ -176,9 +176,9 @@ const DriverRegistration = () => {
 
       <DriverFeatureSection ref={driverFeaturesRef}/>
 
-      <div ref={driverSignupRef} className="container py-12 px-4 md:px-6 max-w-3xl">
+      <div ref={driverSignupRef} className="container py-12 px-4 md:px-6 max-w-3xl bg-gradient-to-b from-white to-lady-secondary/30 rounded-3xl mt-12">
         <div className="mb-8 text-center">
-          <h1 className="text-3xl font-bold text-lady-primary mb-4">
+          <h1 className="text-3xl font-bold text-lady-dark mb-4">
             여성 대리운전 기사 등록
           </h1>
           <p className="text-zinc-700 max-w-2xl mx-auto">
@@ -187,11 +187,11 @@ const DriverRegistration = () => {
           </p>
         </div>
 
-        <Card className="p-6 md:p-8">
+        <Card className="p-6 md:p-8 shadow-lg border-lady-primary/10">
           <form onSubmit={handleSubmit} className="space-y-6">
             <div className="grid gap-6 md:grid-cols-2">
               <div className="space-y-2">
-                <Label htmlFor="name">이름</Label>
+                <Label htmlFor="name" className="text-lady-dark">이름</Label>
                 <Input
                   id="name"
                   name="name"
@@ -200,12 +200,13 @@ const DriverRegistration = () => {
                   value={formData.name}
                   onChange={handleInputChange}
                   disabled={isSubmitting}
+                  className="border-lady-dark/20 focus:border-lady-accent focus:ring-lady-accent"
                 />
               </div>
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="phone">휴대폰 번호</Label>
+              <Label htmlFor="phone" className="text-lady-dark">휴대폰 번호</Label>
               <Input
                 id="phone"
                 name="phone"
@@ -214,11 +215,12 @@ const DriverRegistration = () => {
                 value={formData.phone}
                 onChange={handleInputChange}
                 disabled={isSubmitting}
+                className="border-lady-dark/20 focus:border-lady-accent focus:ring-lady-accent"
               />
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="name">대리기사 경험이 있으신가요? &#40;없어도 괜찮습니다&#41;</Label>
+              <Label htmlFor="name" className="text-lady-dark">대리기사 경험이 있으신가요? &#40;없어도 괜찮습니다&#41;</Label>
               <div className="flex items-center gap-4">
                 <label className="flex items-center gap-1 text-sm font-normal">
                   <input
@@ -229,7 +231,7 @@ const DriverRegistration = () => {
                     onChange={handleInputChange}
                     disabled={isSubmitting}
                     required
-                    className="w-4 h-4"
+                    className="w-4 h-4 text-lady-accent border-lady-dark/20 focus:ring-lady-accent"
                   />
                   예
                 </label>
@@ -242,14 +244,14 @@ const DriverRegistration = () => {
                     onChange={handleInputChange}
                     disabled={isSubmitting}
                     required
-                    className="w-4 h-4"
+                    className="w-4 h-4 text-lady-accent border-lady-dark/20 focus:ring-lady-accent"
                   />
                   아니오
                 </label>
               </div>
             </div>
-            <div className="bg-lady-light p-4 rounded-md">
-              <h4 className="font-medium text-lady-primary mb-2">개인정보 수집 및 이용 동의</h4>
+            <div className="bg-gradient-to-r from-lady-secondary to-lady-secondary/30 p-4 rounded-md">
+              <h4 className="font-medium text-lady-dark mb-2">개인정보 수집 및 이용 동의</h4>
               <p className="text-sm text-zinc-700 mb-4">
                 제출해주신 정보는 기사 등록 정보 제공 만을 위해 사용되며, 이외의 목적으로는 사용 되지 않습니다. 
               </p>
@@ -261,7 +263,7 @@ const DriverRegistration = () => {
                   checked={formData.consent}
                   onChange={handleInputChange}
                   required
-                  className="w-4 h-4 rounded border-gray-300"
+                  className="w-4 h-4 rounded border-gray-300 text-lady-accent focus:ring-lady-accent"
                   disabled={isSubmitting}
                 />
                 <Label htmlFor="consent" className="text-sm font-normal">
@@ -272,7 +274,7 @@ const DriverRegistration = () => {
 
             <Button 
               type="submit" 
-              className="w-full bg-lady-primary hover:bg-lady-primary/90"
+              className="w-full bg-lady-accent hover:bg-lady-accent/90 text-white"
               disabled={isSubmitting}
             >
               {isSubmitting ? "제출 중..." : "기사 등록 신청"}
@@ -280,7 +282,7 @@ const DriverRegistration = () => {
           </form>
         </Card>
 
-        <p className="text-zinc-700 text-center mt-8">
+        <p className="text-lady-dark text-center mt-8">
           곧 서비스 정식 출시 예정입니다. 
           <br />조금만 기다려주세요. 감사합니다
         </p>
