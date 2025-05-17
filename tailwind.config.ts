@@ -65,7 +65,7 @@ export default {
 				},
 				// Custom color scheme for women's driving service
 				lady: {
-					primary: '#421c63',   // Bright purple – energetic, modern, and youthful
+					primary: '#731385',   // Bright purple – energetic, modern, and youthful
 					accent: '#70607d',     // Muted grey purple  – soft, gentle, and approachable
 					light: '#FAF4FE',     // Light pink – soft, gentle, and approachable
 					dark: '#65001B',   // Warm deep maroon – strong, bold, and assertive

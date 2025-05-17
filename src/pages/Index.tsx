@@ -57,24 +57,24 @@ const Index = ({activeTab}) => {
             <section className="relative mt-[-8px] min-h-[50vh] sm:min-h-[90vh] flex items-center py-16 md:py-32 overflow-hidden">
               {/* Background Image Layer */}
               <div
-                className="absolute inset-0 bg-center bg-cover opacity-85"
-                style={{ backgroundImage: "url('/hero_fade.png')" }}
+                className="absolute inset-0 bg-top bg-cover opacity-85"
+                style={{ backgroundImage: "url('/passenger.png')" }}
                 aria-hidden="true"
               ></div>
               <div className="relative pl-4 pr-4 md:pl-12 md:pr-6 container">
                 <div className="grid gap-6 sm:grid-cols-[1.5fr_1fr] sm:gap-12 items-center">
                   <div className="md:pl-12" >
-                    <p className="break-normal font-bold text-lady-contrast md:text-l lg:text-xl">
+                    <p className="break-normal font-bold text-lady-light md:text-l lg:text-xl" style={{ textShadow: '0px 2px 8px rgba(0, 0, 0, 1)' }}>
                       여성 고객과 여성 기사님을 이어 믿음을 만드는
                     </p>
-                    <h1 className="mt-4 break-normal text-4xl md:text-5xl lg:text-6xl font-bold tracking-tighter text-lady-primary" style={{ textShadow: '0px 2px 8px rgba(136, 136, 136, 0.6)' }}>
+                    <h1 className="mt-4 break-normal text-4xl md:text-5xl lg:text-6xl font-bold tracking-tighter text-lady-light" style={{ textShadow: '0px 2px 8px rgba(0, 0, 0, 1)' }} >
                       여성전용 대리운전 서비스
                     </h1>
-                    <p className="mt-12 mb-8 break-normal text-lady-contrast-700 md:text-xl">
+                    <p className="mt-12 mb-8 break-normal text-lady-light md:text-xl">
                       밤늦은 귀가, 이제 안심하고 자면서 집으로
                       <br />여성 기사님과 편안하게 귀가하세요.  
                     </p>
-                    <p className="mb-8 text-2xl font-bold text-lady-contrast">
+                    <p className="mb-8 text-2xl font-bold text-lady-light">
                       지금 사전등록하면 10,000원 쿠폰팩 제공!
                     </p>
 
