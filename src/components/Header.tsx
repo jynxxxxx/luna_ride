@@ -22,9 +22,9 @@ const Header = () => {
   };
 
   return (
-    <header className="border-b bg-lady-light sticky top-0 z-50">
-       <div className="container grid grid-cols-2 md:grid-cols-3 items-center px-4 md:px-6 py-2">
-        <div className="flex justify-start md:col-span-1">
+    <header className="border-b bg-white sticky top-0 z-50">
+       <div className="container grid grid-cols-2 sm:grid-cols-3 items-center px-4 md:px-6 py-2">
+        <div className="flex justify-start">
           <a href="/" className="flex items-center gap-2">
               <div className="h-8 w-8 rounded-full bg-lady-primary flex items-center justify-center">
                 <span className="font-bold text-white">UC</span>
@@ -33,7 +33,7 @@ const Header = () => {
           </a>
         </div>
 
-        <nav className="flex justify-center gap-4 md:mt-0 md:col-start-2 md:col-span-1 md:row-start-1 ">
+        <nav className="flex justify-center gap-4 sm:mt-0">
           <div className="flex gap-4">
             {["home", "driver"].map((tab) => (
               <button

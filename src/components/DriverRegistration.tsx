@@ -114,23 +114,29 @@ const DriverRegistration = () => {
 
   return (
     <>
-      <section className="mt-[-8px] bg-gradient-to-b from-lady-light to-white py-16 md:py-32">
-        <div className="pl-4 pr-4 md:pl-12 md:pr-12 container">
+      <section className="relative mt-[-8px] min-h-[50vh] sm:min-h-[90vh] flex items-center py-16 md:py-32">
+        {/* Background Image Layer */}
+        <div
+          className="absolute inset-0 bg-top bg-cover opacity-90"
+          style={{ backgroundImage: "url('/driver_hero.png')" }}
+          aria-hidden="true"
+        ></div>
+        <div className="relative pl-4 pr-4 md:pl-12 md:pr-12 container">
           <div className="grid gap-6 sm:grid-cols-[1.5fr_1fr] sm:gap-12 items-center">
             <div>
-              <p className="break-normal font-bold text-lady-primary md:text-2xl lg:text-3xl">
+              <p className="break-normal font-bold text-lady-light md:text-2xl lg:text-3xl">
                 여성 기사님을 위한 안전하고 수익 높은
               </p>
-              <h1 className="mt-4 break-normal text-4xl md:text-5xl lg:text-6xl font-bold tracking-tighter text-lady-primary">
+              <h1 className="mt-4 break-normal text-4xl md:text-5xl lg:text-6xl font-bold tracking-tighter text-lady-light">
                 여성전용 대리운전 서비스
               </h1>
-              <p className="mt-12 mb-8 break-normal text-zinc-700 md:text-xl">
+              <p className="mt-12 mb-8 break-normal text-white md:text-xl">
                 빠른 매칭 시스템과 낮은 수수료 덕분에 더 많은 고객을 만나고, 
                 <br /> 이제는 더 높은 수익을 얻을 수 있는 기회를 잡아보세요.
               </p>
               <div className="flex flex-col sm:flex-row sm:items-center sm:space-x-4 space-y-4 sm:space-y-0">
                 <Button 
-                  className="bg-lady-primary hover:bg-lady-primary/90 text-white" 
+                  className="bg-lady-primary hover:bg-lady-primary/90 text-lady-light" 
                   onClick={() => {
                     if (driverSignupRef.current) {
                       // Get the height of the header or any other offset
@@ -147,7 +153,7 @@ const DriverRegistration = () => {
                   기사로 가입하기
                 </Button>
                 <Button variant="outline" 
-                  className="border-lady-primary text-lady-primary hover:text-lady-primary/90 hover:bg-lady-light"
+                  className="border-2 border-lady-primary font-bold text-lady-primary hover:text-lady-primary/90 hover:bg-lady-light"
                   onClick={() => {
                     if (driverFeaturesRef.current) {
                       const headerHeight = document.querySelector('header')?.offsetHeight || 0;
@@ -163,20 +169,20 @@ const DriverRegistration = () => {
                 </Button>
               </div>
             </div>
-            <div className="hidden sm:block overflow-visible">
+            {/* <div className="hidden sm:block overflow-visible">
               <img
                 alt="여성 대리운전"
                 className="mx-auto w-full max-w-[400px] aspect-video rounded-xl object-cover object-center overflow-visible"
                 src="/driver_header.png"
               />
-            </div>
+            </div> */}
           </div>
         </div>
       </section>
 
       <DriverFeatureSection ref={driverFeaturesRef}/>
 
-      <div ref={driverSignupRef} className="container py-12 px-4 md:px-6 max-w-3xl">
+      <div ref={driverSignupRef} className="container py-20 md:py-32 px-4 md:px-6 max-w-3xl">
         <div className="mb-8 text-center">
           <h1 className="text-3xl font-bold text-lady-primary mb-4">
             여성 대리운전 기사 등록

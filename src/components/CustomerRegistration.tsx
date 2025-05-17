@@ -76,72 +76,79 @@ const CustomerRegistration = () => {
   };
 
   return (
-    <div className="container py-12 px-4 md:px-6 max-w-2xl">
-      <div className="mb-8 text-center">
-        <h1 className="text-3xl font-bold text-lady-primary mb-4">
-          고객으로 등록하기
-        </h1>
-        <p className="mt-4 mb-2 font-semibold text-zinc-700 max-w-2xl mx-auto">
-          사전등록 시 총 10,000원 쿠폰팩을 드려요! (₩5,000 + ₩3,000 + ₩2,000)
-        </p>
-        <p className="text-zinc-700 max-w-2xl mx-auto">
-          밤늦은 귀가, 여성 기사님과 안전하게 귀가해보세요. 
-          <br />아래 이메일을 남겨주시면 누구보다 빠르게 서비스 출시 소식을 전해드릴게요
-        </p>
-      </div>
-
-      <Card className="p-6 md:p-8">
-        <form onSubmit={handleSubmit} className="space-y-6">
-          <div className="grid gap-6 ">
-            <div className="space-y-2">
-              <Label htmlFor="name">이메일</Label>
-                <Input 
-                  type="email" 
-                  placeholder="이메일 주소" 
-                  className="mr-2"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  disabled={isSubmitting}
-                />
-            </div>
-          </div>
-          <div className="bg-lady-light p-4 rounded-md">
-              <h4 className="font-medium text-lady-primary mb-2">개인정보 수집 및 이용 동의</h4>
-              <p className="text-sm text-zinc-700 pl-8 mt-2 mb-4">
-                  1. 수집 목적: 할인 쿠폰 제공 및 앱 사전 등록
-                  <br />2. 수집 항목: 이메일 주소
-                  <br />3. 보유 및 이용 기간: 앱 출시 후 6개월
-              </p>
-              <div className="flex items-center gap-2">
-                <input
-                  type="checkbox"
-                  id="consent"
-                  name="consent"
-                  checked={checked}
-                  onChange={() => setChecked(!checked)}
-                  required
-                  className="w-4 h-4 rounded border-gray-300"
-                  disabled={isSubmitting}
-                />
-                <Label htmlFor="consent" className="text-sm font-normal">
-                  개인정보 수집 및 이용에 동의합니다
-                </Label>
+    <div className="container w-[80%] px-0 rounded-2xl grid grid-cols-1 sm:grid-cols-2 bg-white shadow-md my-8">
+      <div className="py-8 px-4">
+        <div className="mb-4 text-center">
+          <h1 className="text-3xl font-bold text-lady-primary mb-4">
+            고객으로 등록하기
+          </h1>
+          <p className="mt-4 mb-2 font-semibold text-zinc-700 max-w-2xl mx-auto">
+            사전등록 시 총 10,000원 쿠폰팩을 드려요!
+          </p>
+          <p className="text-zinc-700 max-w-2xl mx-auto">
+            아래 이메일을 남겨주시면 서비스 출시 소식을 전해드릴게요
+          </p>
+        </div>
+      
+        <div className="w-full p-6 border-t border-gray-200">
+          <form onSubmit={handleSubmit} className="space-y-2">
+            <div className="grid gap-2 ">
+              <div className="space-y-1">
+                <Label htmlFor="name">이메일</Label>
+                  <Input 
+                    type="email" 
+                    placeholder="이메일 주소" 
+                    className="mr-2"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    disabled={isSubmitting}
+                  />
               </div>
             </div>
-          <Button 
-            type="submit" 
-            className="w-full bg-lady-primary hover:bg-lady-primary/90"
-            disabled={isSubmitting}
-          >
-            {isSubmitting ? "제출 중..." : "소식 받아보기"}
-          </Button>
-        </form>
-      </Card>
+            <div className="p-4 rounded-md">
+                <h4 className="font-medium text-lady-primary mb-2">개인정보 수집 및 이용 동의</h4>
+                <p className="text-sm text-zinc-700 pl-8 mt-1 mb-2">
+                    1. 수집 목적: 할인 쿠폰 제공 및 앱 사전 등록
+                    <br />2. 수집 항목: 이메일 주소
+                    <br />3. 보유 및 이용 기간: 앱 출시 후 6개월
+                </p>
+                <div className="flex items-center gap-2">
+                  <input
+                    type="checkbox"
+                    id="consent"
+                    name="consent"
+                    checked={checked}
+                    onChange={() => setChecked(!checked)}
+                    required
+                    className="w-4 h-4 rounded border-gray-300"
+                    disabled={isSubmitting}
+                  />
+                  <Label htmlFor="consent" className="text-sm font-normal">
+                    개인정보 수집 및 이용에 동의합니다
+                  </Label>
+                </div>
+              </div>
+            <Button 
+              type="submit" 
+              className="w-full bg-lady-primary hover:bg-lady-primary/90"
+              disabled={isSubmitting}
+            >
+              {isSubmitting ? "제출 중..." : "소식 받아보기"}
+            </Button>
+          </form>
+        </div>
+        {/* <p className="text-zinc-700 max-w-2xl mx-auto">
+          밤늦은 귀가, 여성 기사님과 안전하게 귀가해보세요. 
+        </p> */}
+      </div>
 
-      <p className="text-zinc-700 text-center mt-8">
-        곧 서비스 정식 출시 예정입니다. 
-        <br />조금만 기다려주세요. 감사합니다.
-      </p>
+      <div className="relative hidden sm:block w-full h-full overflow-hidden rounded-r-2xl">
+        <img
+          alt="여성 대리운전"
+          className="absolute inset-0 w-full h-full object-cover object-center opacity-90 rounded-r-2xl"
+          src="/friends.png"
+        />
+      </div>
     </div>
   );
 };
