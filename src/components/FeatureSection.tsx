@@ -8,7 +8,7 @@ const FeatureSection = forwardRef<HTMLDivElement>((props, ref) => {
         <img
           alt="여성 대리운전"
           className="my-auto mx-auto w-full object-cover object-center overflow-visible"
-          src="/smiling_driver.png"
+          src="/driver.png"
         />
       </div>
       <div className="flex items-center">

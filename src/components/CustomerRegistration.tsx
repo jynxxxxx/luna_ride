@@ -76,7 +76,7 @@ const CustomerRegistration = () => {
   };
 
   return (
-    <div className="container w-[80%] px-0 rounded-2xl grid grid-cols-1 sm:grid-cols-2 bg-white shadow-md my-8">
+    <div className="container w-[90%] sm:w-[40%] px-0 rounded-2xl grid grid-cols-1 bg-white shadow-md my-8">
       <div className="py-8 px-4">
         <div className="mb-4 text-center">
           <h1 className="text-3xl font-bold text-lady-primary mb-4">
@@ -107,7 +107,7 @@ const CustomerRegistration = () => {
             </div>
             <div className="p-4 rounded-md">
                 <h4 className="font-medium text-lady-primary mb-2">개인정보 수집 및 이용 동의</h4>
-                <p className="text-sm text-zinc-700 pl-8 mt-1 mb-2">
+                <p className="text-sm text-zinc-700 sm:pl-8 mt-1 mb-2">
                     1. 수집 목적: 할인 쿠폰 제공 및 앱 사전 등록
                     <br />2. 수집 항목: 이메일 주소
                     <br />3. 보유 및 이용 기간: 앱 출시 후 6개월
@@ -142,13 +142,13 @@ const CustomerRegistration = () => {
         </p> */}
       </div>
 
-      <div className="relative hidden sm:block w-full h-full overflow-hidden rounded-r-2xl">
+      {/* <div className="relative hidden sm:block w-full h-full overflow-hidden rounded-r-2xl">
         <img
           alt="여성 대리운전"
           className="absolute inset-0 w-full h-full object-cover object-center opacity-90 rounded-r-2xl"
           src="/friends.png"
         />
-      </div>
+      </div> */}
     </div>
   );
 };
