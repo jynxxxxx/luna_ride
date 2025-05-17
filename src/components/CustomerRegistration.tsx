@@ -76,7 +76,7 @@ const CustomerRegistration = () => {
   };
 
   return (
-    <div className="container w-[90%] sm:w-[40%] px-0 rounded-2xl grid grid-cols-1 bg-white shadow-md my-8">
+    <div className="container w-[90%] sm:w-[50%] px-0 rounded-2xl grid grid-cols-1 bg-white shadow-md my-8">
       <div className="py-8 px-4">
         <div className="mb-4 text-center">
           <h1 className="text-3xl font-bold text-lady-primary mb-4">
