@@ -57,7 +57,7 @@ const Index = ({activeTab}) => {
             <section className="relative mt-[-8px] min-h-[50vh] sm:min-h-[90vh] flex items-center py-16 md:py-32 overflow-hidden">
               {/* Background Image Layer */}
               <div
-                className="absolute inset-0 bg-top bg-cover opacity-85"
+                className="absolute inset-0 bg-[top_left] sm:bg-[top_center] bg-cover opacity-85"
                 style={{ backgroundImage: "url('/passenger.png')" }}
                 aria-hidden="true"
               ></div>
@@ -68,7 +68,8 @@ const Index = ({activeTab}) => {
                       여성 고객과 여성 기사님을 이어 믿음을 만드는
                     </p>
                     <h1 className="mt-4 break-normal text-4xl md:text-5xl lg:text-6xl font-bold tracking-tighter text-lady-light" style={{ textShadow: '0px 2px 8px rgba(0, 0, 0, 1)' }} >
-                      여성전용 대리운전 서비스
+                      여성전용 대리운전
+                      <br className="block sm:hidden" /> 서비스
                     </h1>
                     <p className="mt-12 mb-8 break-normal text-lady-light md:text-xl">
                       밤늦은 귀가, 이제 안심하고 자면서 집으로
@@ -86,7 +87,7 @@ const Index = ({activeTab}) => {
                         고객으로 가입하기
                       </Button>
                       <Button variant="outline" 
-                        className="border-2 border-lady-primary font-bold text-lady-primary hover:text-lady-primary/90 bg-lady-light"
+                        className="font-bold text-lady-primary hover:text-lady-primary/90 bg-lady-light"
                         onClick={() => {
                           if (contentRef.current) {
                             contentRef.current.scrollIntoView({ behavior: "smooth", block: "start" });

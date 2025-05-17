@@ -117,7 +117,7 @@ const DriverRegistration = () => {
       <section className="relative mt-[-8px] min-h-[50vh] sm:min-h-[90vh] flex items-center py-16 md:py-32">
         {/* Background Image Layer */}
         <div
-          className="absolute inset-0 bg-top bg-cover opacity-90"
+          className="absolute inset-0 bg-[top_left] sm:bg-[top_center] bg-cover opacity-90"
           style={{ backgroundImage: "url('/driver_hero.png')" }}
           aria-hidden="true"
         ></div>
@@ -127,12 +127,12 @@ const DriverRegistration = () => {
               <p className="break-normal font-bold text-lady-light md:text-2xl lg:text-3xl">
                 여성 기사님을 위한 안전하고 수익 높은
               </p>
-              <h1 className="mt-4 break-normal text-4xl md:text-5xl lg:text-6xl font-bold tracking-tighter text-lady-light">
-                여성전용 대리운전 서비스
+              <h1 className="mt-4 break-normal text-4xl md:text-5xl lg:text-6xl font-bold tracking-tighter text-lady-light" style={{ textShadow: '0px 2px 8px rgba(0, 0, 0, 1)' }}>
+                여성전용 대리운전
+                <br className="block sm:hidden" /> 서비스
               </h1>
               <p className="mt-12 mb-8 break-normal text-white md:text-xl">
-                빠른 매칭 시스템과 낮은 수수료 덕분에 더 많은 고객을 만나고, 
-                <br /> 이제는 더 높은 수익을 얻을 수 있는 기회를 잡아보세요.
+                이제는 더 높은 수익을 얻을 수 있는 기회를 잡아보세요.
               </p>
               <div className="flex flex-col sm:flex-row sm:items-center sm:space-x-4 space-y-4 sm:space-y-0">
                 <Button 
@@ -153,7 +153,7 @@ const DriverRegistration = () => {
                   기사로 가입하기
                 </Button>
                 <Button variant="outline" 
-                  className="border-2 border-lady-primary font-bold text-lady-primary hover:text-lady-primary/90 hover:bg-lady-light"
+                  className="font-bold text-lady-primary hover:text-lady-primary/90 hover:bg-lady-light"
                   onClick={() => {
                     if (driverFeaturesRef.current) {
                       const headerHeight = document.querySelector('header')?.offsetHeight || 0;
