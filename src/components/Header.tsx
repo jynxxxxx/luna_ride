@@ -1,12 +1,13 @@
 
 import { Button } from "@/components/ui/button";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import EmailSignUp from "./EmailSignUp";
 import { useLocation, useNavigate } from "react-router-dom";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Menu } from "lucide-react";
 
 const Header = () => {
   const [showEmailSignUpModal, setEmailSignUpModal] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -18,48 +19,57 @@ const Header = () => {
 
   const handleTabClick = (tab: string) => {
     navigate(tab === "home" ? "/" : `/${tab}`);
-    window.scrollTo(0, 0);;
+    window.scrollTo(0, 0);
   };
+  
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50);
+    };
+    
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   return (
-    <header className="border-b bg-lady-light sticky top-0 z-50">
-       <div className="container grid grid-cols-2 md:grid-cols-3 items-center px-4 md:px-6 py-2">
+    <header className={`fixed top-0 z-50 w-full transition-all duration-300 ${
+      scrolled ? 'bg-white/95 backdrop-blur-md shadow-sm' : 'bg-transparent'
+    }`}>
+      <div className="container grid grid-cols-2 md:grid-cols-3 items-center px-4 md:px-6 py-4">
         <div className="flex justify-start md:col-span-1">
-          <a href="/" className="flex items-center gap-2">
-              <div className="h-8 w-8 rounded-full bg-lady-primary flex items-center justify-center">
-                <span className="font-bold text-white">UC</span>
-              </div>
-            <span className="text-lady-primary font-bold">UnnieCar</span>
+          <a href="/" className="flex items-center gap-3">
+            <div className="h-10 w-10 rounded bg-gradient-to-tr from-lady-primary to-lady-accent flex items-center justify-center">
+              <span className="font-display font-bold text-white">UC</span>
+            </div>
+            <span className="text-lady-primary font-display font-bold text-xl">UnnieCar</span>
           </a>
         </div>
 
-        <nav className="flex justify-center gap-4 md:mt-0 md:col-start-2 md:col-span-1 md:row-start-1 ">
-          <div className="flex gap-4">
-            {["home", "driver"].map((tab) => (
-              <button
-                key={tab}
-                onClick={() => handleTabClick(tab)}
-                className={`px-4 py-2 font-semibold border-b-2 ${
-                  currentTab === tab
-                    ? "border-lady-primary text-lady-primary"
-                    : "border-transparent"
-                }`}
-              >
-                {tab === "home" ? "홈" : "기사님"}
-              </button>
-            ))}
-          </div>
+        <nav className="hidden md:flex justify-center gap-6 md:col-start-2 md:col-span-1 md:row-start-1">
+          {["home", "driver"].map((tab) => (
+            <button
+              key={tab}
+              onClick={() => handleTabClick(tab)}
+              className={`px-4 py-2 font-medium relative ${
+                currentTab === tab
+                  ? "text-lady-primary"
+                  : "text-gray-500 hover:text-lady-primary transition-colors"
+              }`}
+            >
+              {tab === "home" ? "홈" : "기사님"}
+              {currentTab === tab && (
+                <span className="absolute bottom-0 left-0 w-full h-0.5 bg-lady-accent rounded-full" />
+              )}
+            </button>
+          ))}
         </nav>
-{/* 
-        <div className="flex justify-end md:col-span-1 md:col-start-3 items-center gap-4">
-          <Button className="bg-lady-primary hover:bg-lady-primary/90 text-white" onClick={() => setEmailSignUpModal(true)}>
-            앱 출시 알림 받기
+        
+        <div className="md:hidden flex justify-end">
+          <Button variant="ghost" size="icon" className="text-lady-primary">
+            <Menu className="h-6 w-6" />
           </Button>
-        </div> */}
+        </div>
       </div>
-      {/* {showEmailSignUpModal && (
-        <EmailSignUp setEmailSignUpModal={setEmailSignUpModal}/>
-      )} */}
     </header>
   );
 };

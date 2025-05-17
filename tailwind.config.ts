@@ -63,13 +63,13 @@ export default {
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
 				},
-				// Custom color scheme for women's driving service
+				// Updated modern color scheme for UnnieCar
 				lady: {
-					primary: '#213448',   // Navy blue – strong, reliable, and professional
-					secondary: '#fff1d6',  // Creamy off-white – soft background, high harmony
-					accent: '#B10000',     // Bright red – attention-grabbing, energetic, and bold
-					light: '#94b4c1',     // Light blue – fresh, clean, and modern
-					dark: '#65001B',   // Warm deep maroon – strong, bold, and assertive
+					primary: '#4A3054',   // Deep purple - sophisticated and premium
+					secondary: '#FAF5FF',  // Light lavender - subtle feminine touch
+					accent: '#E86A92',     // Rose - energetic and feminine
+					light: '#F5F5F7',     // Light gray - clean and modern
+					dark: '#252234',       // Dark purple-blue - depth and trust
 				}
 			},
 			borderRadius: {
@@ -93,11 +93,25 @@ export default {
 					to: {
 						height: '0'
 					}
+				},
+				'fade-in': {
+					from: { opacity: '0', transform: 'translateY(10px)' },
+					to: { opacity: '1', transform: 'translateY(0)' }
+				},
+				'slide-in': {
+					from: { opacity: '0', transform: 'translateX(-20px)' },
+					to: { opacity: '1', transform: 'translateX(0)' }
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
+				'accordion-up': 'accordion-up 0.2s ease-out',
+				'fade-in': 'fade-in 0.5s ease-out forwards',
+				'slide-in': 'slide-in 0.5s ease-out forwards'
+			},
+			fontFamily: {
+				sans: ['Inter', 'sans-serif'],
+				display: ['Playfair Display', 'serif']
 			}
 		}
 	},
