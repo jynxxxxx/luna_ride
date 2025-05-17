@@ -6,12 +6,10 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 const Header = () => {
-  const [showEmailSignUpModal, setEmailSignUpModal] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
 
   const currentTab = (() => {
-    if (location.pathname === "/customer") return "customer";
     if (location.pathname === "/driver") return "driver";
     return "home";
   })();
@@ -50,16 +48,7 @@ const Header = () => {
             ))}
           </div>
         </nav>
-
-        <div className="flex justify-end md:col-span-1 md:col-start-3 items-center gap-4">
-          <Button className="bg-lady-primary hover:bg-lady-primary/90 text-white" onClick={() => setEmailSignUpModal(true)}>
-            앱 출시 알림 받기
-          </Button>
-        </div>
       </div>
-      {showEmailSignUpModal && (
-        <EmailSignUp setEmailSignUpModal={setEmailSignUpModal}/>
-      )}
     </header>
   );
 };

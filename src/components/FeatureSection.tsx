@@ -11,7 +11,7 @@ const FeatureSection = forwardRef<HTMLDivElement>((props, ref) => {
           src="/smiling_driver.png"
         />
       </div>
-      <div>
+      <div className="flex items-center">
         <div className="container px-4 md:px-6">
           <div className="text-center mb-4">
             <h2 className="text-2xl md:text-3xl font-bold text-lady-primary mb-4">

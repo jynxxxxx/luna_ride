@@ -122,7 +122,7 @@ const DriverRegistration = () => {
           aria-hidden="true"
         ></div>
         <div className="relative pl-4 pr-4 md:pl-12 md:pr-12 container">
-          <div className="grid gap-6 sm:grid-cols-[1.5fr_1fr] sm:gap-12 items-center">
+          <div className="grid gap-6 sm:grid-cols-[1.5fr_1fr] sm:gap-12 items-center md:pl-12">
             <div>
               <p className="break-normal font-bold text-lady-light md:text-2xl lg:text-3xl">
                 여성 기사님을 위한 안전하고 수익 높은

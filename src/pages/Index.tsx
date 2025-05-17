@@ -63,7 +63,7 @@ const Index = ({activeTab}) => {
               ></div>
               <div className="relative pl-4 pr-4 md:pl-12 md:pr-6 container">
                 <div className="grid gap-6 sm:grid-cols-[1.5fr_1fr] sm:gap-12 items-center">
-                  <div className="pl-12" >
+                  <div className="md:pl-12" >
                     <p className="break-normal font-bold text-lady-contrast md:text-l lg:text-xl">
                       여성 고객과 여성 기사님을 이어 믿음을 만드는
                     </p>
@@ -84,15 +84,6 @@ const Index = ({activeTab}) => {
                         onClick={scrollToSignup}
                       >
                         고객으로 가입하기
-                      </Button>
-                      <Button 
-                        className="bg-lady-primary hover:bg-lady-primary/90 text-white" 
-                        onClick={() => {
-                          navigate("/driver")
-                          window.scrollTo(0, 0);;
-                        }}
-                      >
-                        기사로 이용하기
                       </Button>
                       <Button variant="outline" 
                         className="border-2 border-lady-primary font-bold text-lady-primary hover:text-lady-primary/90 bg-lady-light"
