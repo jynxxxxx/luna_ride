@@ -24,10 +24,11 @@ const Header = () => {
        <div className="container grid grid-cols-2 sm:grid-cols-3 items-center px-4 md:px-6 py-2">
         <div className="flex justify-start">
           <a href="/" className="flex items-center gap-2">
-              <div className="h-8 w-8 rounded-full bg-lady-primary flex items-center justify-center">
-                <span className="font-bold text-white">UC</span>
-              </div>
-            <span className="text-lady-primary font-bold">UnnieCar</span>
+            <img
+              alt="여성 대리운전"
+              className="h-10 sm:h-12 w-auto"
+              src="/logo.png"
+            />
           </a>
         </div>
 
