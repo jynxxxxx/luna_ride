@@ -121,6 +121,10 @@ const Index = ({activeTab}) => {
           </TabsContent>
           <TabsContent value="driver">
             <DriverRegistration />
+            <p className="text-zinc-700 text-center my-8">
+              곧 서비스 정식 출시 예정입니다. 
+              <br />조금만 기다려주세요. 감사합니다
+            </p>
           </TabsContent>
         </Tabs>
       </main>

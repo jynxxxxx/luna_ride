@@ -1,10 +1,9 @@
 import { forwardRef } from "react";
 import { Shield, Clock, CreditCard } from "lucide-react";
-          // 안전함과 편안함을 최우선으로 생각하는 여성 대리운전 서비스입니다.
-          // 지금 기사로 등록하고 함께 안전한 이동 문화를 만들어보세요.
+
 const DriverFeatureSection = forwardRef<HTMLDivElement>((props, ref) => {
   return (
-    <div ref={ref} className="bg-lady-light py-24 md:py-40 px-4 md:px-8 mx-auto">
+    <div ref={ref} className="w-[80vw] bg-lady-light rounded-2xl py-12 my-24 md:my-40 px-4 md:px-8 mx-auto">
       <div className="text-center mb-8">
         <h2 className="text-2xl md:text-3xl font-bold text-lady-primary mb-4">
           기사님을 위한 특별한 혜택

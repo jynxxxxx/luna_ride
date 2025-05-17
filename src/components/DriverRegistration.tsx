@@ -182,115 +182,112 @@ const DriverRegistration = () => {
 
       <DriverFeatureSection ref={driverFeaturesRef}/>
 
-      <div ref={driverSignupRef} className="container py-20 md:py-32 px-4 md:px-6 max-w-3xl">
-        <div className="mb-8 text-center">
-          <h1 className="text-3xl font-bold text-lady-primary mb-4">
-            여성 대리운전 기사 등록
-          </h1>
-          <p className="text-zinc-700 max-w-2xl mx-auto">
-            신뢰할 수 있는 여성 전용 대리운전 서비스를 함께 만들어갈 기사님을 모집합니다. 
-            <br />아래 양식을 통해 지원해주세요. 기사님께 안전하고 좋은 콜을 많이 제공할 수 있도록 최선을 다해 지원하겠습니다. 
-          </p>
-        </div>
+      <div className="bg-[linear-gradient(to_bottom,_white_0%,_#FAF4FE_10%,_#FAF4FE_90%,_white_100%)]">
+        <div ref={driverSignupRef} className="container py-20 md:py-32 px-4 md:px-6 max-w-3xl">
+          <div className="mb-8 text-center">
+            <h1 className="text-3xl font-bold text-lady-primary mb-4">
+              여성 대리운전 기사 등록
+            </h1>
+            <p className="text-zinc-700 max-w-2xl mx-auto">
+              신뢰할 수 있는 여성 전용 대리운전 서비스를 함께 만들어갈 기사님을 모집합니다. 
+              <br />아래 양식을 통해 지원해주세요. 기사님께 안전하고 좋은 콜을 많이 제공할 수 있도록 최선을 다해 지원하겠습니다. 
+            </p>
+          </div>
 
-        <Card className="p-6 md:p-8">
-          <form onSubmit={handleSubmit} className="space-y-6">
-            <div className="grid gap-6 md:grid-cols-2">
+          <Card className="p-6 md:p-8">
+            <form onSubmit={handleSubmit} className="space-y-6">
+              <div className="grid gap-6 md:grid-cols-2">
+                <div className="space-y-2">
+                  <Label htmlFor="name">이름</Label>
+                  <Input
+                    id="name"
+                    name="name"
+                    placeholder="홍길동"
+                    required
+                    value={formData.name}
+                    onChange={handleInputChange}
+                    disabled={isSubmitting}
+                  />
+                </div>
+              </div>
+
               <div className="space-y-2">
-                <Label htmlFor="name">이름</Label>
+                <Label htmlFor="phone">휴대폰 번호</Label>
                 <Input
-                  id="name"
-                  name="name"
-                  placeholder="홍길동"
+                  id="phone"
+                  name="phone"
+                  placeholder="010-1234-5678"
                   required
-                  value={formData.name}
+                  value={formData.phone}
                   onChange={handleInputChange}
                   disabled={isSubmitting}
                 />
               </div>
-            </div>
 
-            <div className="space-y-2">
-              <Label htmlFor="phone">휴대폰 번호</Label>
-              <Input
-                id="phone"
-                name="phone"
-                placeholder="010-1234-5678"
-                required
-                value={formData.phone}
-                onChange={handleInputChange}
+              <div className="space-y-2">
+                <Label htmlFor="name">대리기사 경험이 있으신가요? &#40;없어도 괜찮습니다&#41;</Label>
+                <div className="flex items-center gap-4">
+                  <label className="flex items-center gap-1 text-sm font-normal">
+                    <input
+                      type="radio"
+                      name="experience"
+                      value="true"
+                      checked={formData.experience===true}
+                      onChange={handleInputChange}
+                      disabled={isSubmitting}
+                      required
+                      className="w-4 h-4"
+                    />
+                    예
+                  </label>
+                  <label className="flex items-center gap-1 text-sm font-normal">
+                    <input
+                      type="radio"
+                      name="experience"
+                      value="false"
+                      checked={formData.experience===false}
+                      onChange={handleInputChange}
+                      disabled={isSubmitting}
+                      required
+                      className="w-4 h-4"
+                    />
+                    아니오
+                  </label>
+                </div>
+              </div>
+              <div className="bg-lady-light p-4 rounded-md">
+                <h4 className="font-medium text-lady-primary mb-2">개인정보 수집 및 이용 동의</h4>
+                <p className="text-sm text-zinc-700 mb-4">
+                  제출해주신 정보는 기사 등록 정보 제공 만을 위해 사용되며, 이외의 목적으로는 사용 되지 않습니다. 
+                  정보는 기사 정보 제공 이후 자동적으로 자체 폐기될 예정입니다. 
+                </p>
+                <div className="flex items-center gap-2">
+                  <input
+                    type="checkbox"
+                    id="consent"
+                    name="consent"
+                    checked={formData.consent}
+                    onChange={handleInputChange}
+                    required
+                    className="w-4 h-4 rounded border-gray-300"
+                    disabled={isSubmitting}
+                  />
+                  <Label htmlFor="consent" className="text-sm font-normal">
+                    개인정보 수집 및 이용에 동의합니다
+                  </Label>
+                </div>
+              </div>
+
+              <Button 
+                type="submit" 
+                className="w-full bg-lady-primary hover:bg-lady-primary/90"
                 disabled={isSubmitting}
-              />
-            </div>
-
-            <div className="space-y-2">
-              <Label htmlFor="name">대리기사 경험이 있으신가요? &#40;없어도 괜찮습니다&#41;</Label>
-              <div className="flex items-center gap-4">
-                <label className="flex items-center gap-1 text-sm font-normal">
-                  <input
-                    type="radio"
-                    name="experience"
-                    value="true"
-                    checked={formData.experience===true}
-                    onChange={handleInputChange}
-                    disabled={isSubmitting}
-                    required
-                    className="w-4 h-4"
-                  />
-                  예
-                </label>
-                <label className="flex items-center gap-1 text-sm font-normal">
-                  <input
-                    type="radio"
-                    name="experience"
-                    value="false"
-                    checked={formData.experience===false}
-                    onChange={handleInputChange}
-                    disabled={isSubmitting}
-                    required
-                    className="w-4 h-4"
-                  />
-                  아니오
-                </label>
-              </div>
-            </div>
-            <div className="bg-lady-light p-4 rounded-md">
-              <h4 className="font-medium text-lady-primary mb-2">개인정보 수집 및 이용 동의</h4>
-              <p className="text-sm text-zinc-700 mb-4">
-                제출해주신 정보는 기사 등록 정보 제공 만을 위해 사용되며, 이외의 목적으로는 사용 되지 않습니다. 
-                정보는 기사 정보 제공 이후 자동적으로 자체 폐기될 예정입니다. 
-              </p>
-              <div className="flex items-center gap-2">
-                <input
-                  type="checkbox"
-                  id="consent"
-                  name="consent"
-                  checked={formData.consent}
-                  onChange={handleInputChange}
-                  required
-                  className="w-4 h-4 rounded border-gray-300"
-                  disabled={isSubmitting}
-                />
-                <Label htmlFor="consent" className="text-sm font-normal">
-                  개인정보 수집 및 이용에 동의합니다
-                </Label>
-              </div>
-            </div>
-
-            <Button 
-              type="submit" 
-              className="w-full bg-lady-primary hover:bg-lady-primary/90"
-              disabled={isSubmitting}
-            >
-              {isSubmitting ? "제출 중..." : "기사 등록 신청"}
-            </Button>
-          </form>
-        </Card>
-
-        <p className="text-zinc-700 text-center mt-8">
-          곧 서비스 정식 출시 예정입니다. 
-          <br />조금만 기다려주세요. 감사합니다
-        </p>
+              >
+                {isSubmitting ? "제출 중..." : "기사 등록 신청"}
+              </Button>
+            </form>
+          </Card>
+        </div>
       </div>
     </>
   );
