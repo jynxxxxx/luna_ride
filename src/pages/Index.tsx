@@ -58,7 +58,7 @@ const Index = ({activeTab}) => {
               {/* Background Image Layer */}
               <div
                 className="absolute inset-0 bg-[top_left] sm:bg-[top_center] bg-cover opacity-85"
-                style={{ backgroundImage: "url('/passenger.png')" }}
+                style={{ backgroundImage: "url('/passenger.jpg')" }}
                 aria-hidden="true"
               ></div>
               <div className="relative pl-4 pr-4 md:pl-12 md:pr-6 container">
