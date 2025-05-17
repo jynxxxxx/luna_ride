@@ -85,7 +85,15 @@ const Index = ({activeTab}) => {
                       >
                         고객으로 가입하기
                       </Button>
-                  
+                      <Button 
+                        className="bg-lady-primary hover:bg-lady-primary/90 text-white" 
+                        onClick={() => {
+                          navigate("/driver")
+                          window.scrollTo(0, 0);;
+                        }}
+                      >
+                        기사로 이용하기
+                      </Button>
                       <Button variant="outline" 
                         className="border-2 border-lady-primary font-bold text-lady-primary hover:text-lady-primary/90 bg-lady-light"
                         onClick={() => {

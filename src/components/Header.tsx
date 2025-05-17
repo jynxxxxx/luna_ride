@@ -50,16 +50,16 @@ const Header = () => {
             ))}
           </div>
         </nav>
-{/* 
+
         <div className="flex justify-end md:col-span-1 md:col-start-3 items-center gap-4">
           <Button className="bg-lady-primary hover:bg-lady-primary/90 text-white" onClick={() => setEmailSignUpModal(true)}>
             앱 출시 알림 받기
           </Button>
-        </div> */}
+        </div>
       </div>
-      {/* {showEmailSignUpModal && (
+      {showEmailSignUpModal && (
         <EmailSignUp setEmailSignUpModal={setEmailSignUpModal}/>
-      )} */}
+      )}
     </header>
   );
 };

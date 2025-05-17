@@ -258,6 +258,7 @@ const DriverRegistration = () => {
               <h4 className="font-medium text-lady-primary mb-2">개인정보 수집 및 이용 동의</h4>
               <p className="text-sm text-zinc-700 mb-4">
                 제출해주신 정보는 기사 등록 정보 제공 만을 위해 사용되며, 이외의 목적으로는 사용 되지 않습니다. 
+                정보는 기사 정보 제공 이후 자동적으로 자체 폐기될 예정입니다. 
               </p>
               <div className="flex items-center gap-2">
                 <input
