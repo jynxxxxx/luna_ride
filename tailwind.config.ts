@@ -63,20 +63,14 @@ export default {
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
 				},
-				// Updated color scheme for women's driving service targeting 30-50 Korean females
+				// Custom color scheme for women's driving service
 				lady: {
-					primary: '#1A1F2C',   // Deep navy blue – sophisticated, trustworthy
-					secondary: '#8E9196', // Neutral gray – elegant, professional
-					accent: '#7E69AB',    // Muted purple - feminine without being too girlish
-					deep: '#6E59A5',      // Deeper purple for contrast and emphasis
-					light: '#F8F5FA',     // Light lavender - soft background, high harmony
-					gold: '#D4AF37',      // Rose gold accent for premium feel
-					burgundy: '#8E2C48',  // Muted burgundy for sophisticated accents
+					primary: '#731385',   // Bright purple – energetic, modern, and youthful
+					accent: '#70607d',     // Muted grey purple  – soft, gentle, and approachable
+					light: '#FAF4FE',     // Light pink – soft, gentle, and approachable
+					dark: '#65001B',   // Warm deep maroon – strong, bold, and assertive
+					background: '#F1F7FF',  // Creamy off-white blue – soft background, high harmony
 				}
-			},
-			fontFamily: {
-				sans: ['Pretendard', 'Noto Sans KR', 'sans-serif'],
-				serif: ['Nanum Myeongjo', 'serif']
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
@@ -99,22 +93,11 @@ export default {
 					to: {
 						height: '0'
 					}
-				},
-				'fade-in': {
-					'0%': {
-						opacity: '0',
-						transform: 'translateY(10px)'
-					},
-					'100%': {
-						opacity: '1',
-						transform: 'translateY(0)'
-					}
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out',
-				'fade-in': 'fade-in 0.5s ease-out forwards'
+				'accordion-up': 'accordion-up 0.2s ease-out'
 			}
 		}
 	},
