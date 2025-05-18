@@ -1,4 +1,3 @@
-
 import { useRef, useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
@@ -8,7 +7,7 @@ import { Card } from "@/components/ui/card";
 import { useToast } from "@/components/ui/use-toast";
 import { supabase } from "@/integrations/supabase/client";
 import DriverFeatureSection from "@/components/DriverFeatureSection";
-import { Shield, Lock } from "lucide-react";
+import { Shield, Lock, CreditCard } from "lucide-react";
 
 const DriverRegistration = () => {
   const navigate = useNavigate();
@@ -345,7 +344,7 @@ const DriverRegistration = () => {
                     className="w-full h-12 text-base bg-lady-primary hover:bg-lady-deep"
                     disabled={isSubmitting}
                   >
-                    {isSubmitting ? "제출 중..." : "기사 등록 신청"}
+                    {isSubmitting ? "제출 중..." : "기사 등록 신���"}
                   </Button>
                 </form>
               </div>
