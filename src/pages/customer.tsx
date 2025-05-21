@@ -4,6 +4,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import CustomerFeatureSection from "@/components/CustomerFeatureSection";
 import CustomerReservation from "@/components/CustomerReservation";
 import customerStyles from "@/styles/customer.module.scss";
+import CustomerTestimonial from "@/components/CustomerTestimonials";
 
 const Customer = () => {
   const signupRef = useRef(null);
@@ -34,6 +35,13 @@ const Customer = () => {
         >
           예약 하기
         </button>
+      </section>
+      <section className={customerStyles.tstsection}>
+        <div className={customerStyles.tsttitle}>
+          많은 고객들이
+          <br />만족하며 이용하고 있어요.
+        </div>
+        <CustomerTestimonial />
       </section>
       <CustomerFeatureSection />
       <section id="signup" ref={signupRef} className={customerStyles.signupSection}>

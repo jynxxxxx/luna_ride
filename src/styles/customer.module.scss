@@ -56,6 +56,17 @@
   }
 }
 
+.tstsection{
+  padding: 5rem 2rem;
+}
+
+.tsttitle{
+  font-size: 3rem;
+  font-weight: bolder;
+  color: $dark;
+  padding: 1rem 2rem 4rem;
+}
+
 .featuresctn{
   display: grid;
   grid-template-columns: 1fr 1.4fr;
@@ -165,6 +176,13 @@
   .btn {
     padding: 0.5rem 3rem;
     font-size: 0.875rem;
+  }
+
+  .tsttitle{
+    font-size: 1.5rem;
+    font-weight: bolder;
+    color: $dark;
+    padding: 0rem 1rem 2rem;
   }
 
   .featuresctn {

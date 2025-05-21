@@ -1,0 +1,89 @@
+@use './variables.scss' as *;
+@use "sass:color";
+
+
+.testimonialContainer {
+  display: flex;
+  gap: 20px;
+  overflow: hidden;
+  padding: 20px;
+}
+
+.column {
+  flex: 1;
+  overflow: hidden;
+  position: relative;
+  height: 50vh;
+}
+
+.carousel {
+  display: flex;
+  flex-direction: column;
+}
+
+.card {
+  background: #fff;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  margin: 10px;
+  padding: 16px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.name {
+  font-weight: bold;
+  margin-bottom: 8px;
+  color: $dark;
+}
+
+.job {
+  font-weight: normal;
+  font-size: 0.7rem;
+  margin-bottom: 8px;
+  color: color.adjust($dark, $lightness: 40%);
+}
+
+.review {
+  color: $dark;
+}
+
+// Animations
+@keyframes scrollUp {
+  0% {
+    transform: translateY(0%);
+  }
+  100% {
+    transform: translateY(-50%);
+  }
+}
+
+@keyframes scrollDown {
+  0% {
+    transform: translateY(-50%);
+  }
+  100% {
+    transform: translateY(0%);
+  }
+}
+
+.scrollUp {
+  animation: scrollUp 40s linear infinite;
+}
+
+.scrollDown {
+  animation: scrollDown 40s linear infinite;
+}
+
+ @media (max-width: 750px) {
+ .testimonialContainer {
+    flex-direction: column;
+    height: 40vh; 
+  }
+
+  .column {
+    height: 50vh; 
+    width: 100%;
+  }
+}
