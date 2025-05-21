@@ -8,9 +8,19 @@ import customerStyles from "@/styles/customer.module.scss";
 const Customer = () => {
   const signupRef = useRef(null);
 
+   const location = useLocation();
+
+  //scroll to #signup if URL hash is present on location change
+  useEffect(() => {
+    if (location.hash === "#signup" && signupRef.current) {
+       signupRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  }, [location]);
+
+  //scroll to signup section on button click
   const handleScrollToSignup = () => {
     if (signupRef.current) {
-      signupRef.current.scrollIntoView({ behavior: "smooth" });
+      signupRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
     }
   };
 
@@ -26,8 +36,7 @@ const Customer = () => {
         </button>
       </section>
       <CustomerFeatureSection />
-
-      <section ref={signupRef} className={customerStyles.signupSection}>
+      <section id="signup" ref={signupRef} className={customerStyles.signupSection}>
         <CustomerReservation />
       </section>
     </div>

@@ -3,7 +3,7 @@ import customerStyles from "@/styles/customer.module.scss";
 const CustomerFeatureSection = () => {
   return (
     <section className={customerStyles.featuresctn}>
-      <div className="hidden ml-8 mr-4 sm:flex items-center justify-center overflow-hidden rounded-2xl">
+      <div className={customerStyles.featureImgctn}>
         <img
           alt="여성 대리운전"
           className={customerStyles.featureImg}

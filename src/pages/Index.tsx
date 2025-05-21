@@ -1,8 +1,14 @@
-import { useEffect, useRef } from 'react'
+import { useNavigate } from 'react-router-dom';
 import { supabase } from "@/integrations/supabase/client";
 import homeStyles from "@/styles/home.module.scss";
 
 const Index = () => {
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate('/customer#signup');
+  };
+
   const cards = [
     {
       img: '/icons/hands.svg',
@@ -63,7 +69,7 @@ const Index = () => {
           </div>
           <button
             className={homeStyles.introButton}
-            onClick={() => {}}
+            onClick={handleClick}
           >
             대리 운전 이용하기
           </button>

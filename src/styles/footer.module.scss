@@ -30,3 +30,49 @@
   color: color.adjust($dark, $lightness: 30%);
   font-family: $english-font;
 }
+
+
+//mobile styles
+@media (max-width: 640px) {
+  .ctn {
+    padding: 1rem;
+  }
+
+  .title {
+    font-size: 2rem;
+    margin-top: 2rem;
+  }
+
+  .text {
+    font-size: 0.9rem;
+    line-height: 1.4rem;
+    margin-top: 0.75rem;
+  }
+
+  .disclaimer {
+    font-size: 0.7rem;
+    margin-top: 0.75rem;
+  }
+}
+
+@media (min-width: 640px) and (max-width: 1024px) {
+  .ctn {
+    padding: 1.5rem 2rem;
+  }
+
+  .title {
+    font-size: 2.5rem;
+    margin-top: 2.5rem;
+  }
+
+  .text {
+    font-size: 1rem;
+    line-height: 1.5rem;
+    margin-top: 1rem;
+  }
+
+  .disclaimer {
+    font-size: 0.75rem;
+    margin-top: 1rem;
+  }
+}

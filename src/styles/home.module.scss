@@ -168,3 +168,126 @@
   font-weight: bolder;
   text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
 }
+
+//mobile styles
+@media (max-width: 640px) {
+ .heroSection {
+    font-size: 2.5rem;
+    min-height: 50vh;
+    background-position: center;
+  }
+
+  .intro {
+    padding: 3rem 1rem;
+    gap: 0.5rem;
+  }
+
+  .introTitle {
+    font-size: 1.8rem;
+  }
+
+  .introSubTitle,
+  .introSubTitle2 {
+    font-size: 1rem;
+    margin-top: 0.6rem;
+  }
+
+  .carouselTrack {
+    gap: 3rem;
+    width: calc(8 * (40vw + 3rem));
+  }
+
+  .contentCard {
+    width: 40vw;
+  }
+
+  .icons {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+
+  .cardTitle {
+    font-size: 1rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.3rem;
+  }
+
+  .introButton {
+    margin: 2rem 0;
+    padding: 0.5rem 3rem;
+    font-size: 0.9rem;
+  }
+
+  .reasonSection {
+    gap: 1rem;
+  }
+
+  .reason {
+    min-height: 25vh;
+    background-position: center;
+  }
+
+  .reasonContent {
+    font-size: 1.2rem;
+  }
+}
+
+@media (min-width: 640px) and (max-width: 1024px) {
+   .heroSection {
+    font-size: 3.5rem;
+    min-height: 65vh;
+  }
+
+  .intro {
+    padding: 4rem 2rem;
+    gap: 1rem;
+  }
+
+  .introTitle {
+    font-size: 2.5rem;
+  }
+
+  .introSubTitle,
+  .introSubTitle2 {
+    font-size: 1.1rem;
+    margin-top: 0.9rem;
+  }
+
+  .carouselTrack {
+    gap: 4rem;
+    width: calc(8 * (30vw + 4rem));
+  }
+
+  .contentCard {
+    width: 30vw;
+  }
+
+  .icons {
+    width: 3.5rem;
+    height: 3.5rem;
+  }
+
+  .cardTitle {
+    font-size: 1.1rem;
+    padding-top: 0.75rem;
+    padding-bottom: 0.4rem;
+  }
+
+  .introButton {
+    margin: 2.5rem 0;
+    padding: 0.5rem 4rem;
+    font-size: 1rem;
+  }
+
+  .reasonSection {
+    gap: 0.75rem;
+  }
+
+  .reason {
+    min-height: 35vh;
+  }
+
+  .reasonContent {
+    font-size: 1.6rem;
+  }
+}
