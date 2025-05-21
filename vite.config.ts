@@ -23,7 +23,8 @@ export default defineConfig(({ mode }) => ({
   css: {
     preprocessorOptions: {
       scss: {
-        additionalData: `@import "./src/styles/main.scss";`
+        // Don't add the import here, it causes circular reference
+        additionalData: ``
       }
     }
   }
