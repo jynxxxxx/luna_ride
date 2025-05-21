@@ -69,7 +69,7 @@ const EmailSignUp = ({setEmailSignUpModal}) => {
 
     return (
         <div
-        className="bg-white/70 absolute top-0 h-screen w-screen flex items-center justify-center z-50"
+        className="modal-overlay"
         onClick={handleOverlayClick}
         >
         <Card ref={cardRef} className="p-6" onClick={(e) => e.stopPropagation()}>
