@@ -33,7 +33,7 @@ const Index = ({activeTab}) => {
 
   const handleTabChange = (value) => {
     navigate(value === "home" ? "/" : `/${value}`);
-    window.scrollTo(0, 0);
+    window.scrollTo(0, 0);;
   };
 
   const scrollToSignup = () => {
@@ -47,22 +47,23 @@ const Index = ({activeTab}) => {
     });
   };
 
+  // bg-gradient-to-b from-lady-light to-white
   return (
     <div className="flex flex-col min-h-screen">
       <Header />
       <main className="flex-1">
         <Tabs value={activeTab} className="w-full" onValueChange={handleTabChange}>
           <TabsContent value="home">
-            <section className="hero-section">
+            <section className="relative mt-[-8px] min-h-[50vh] sm:min-h-[90vh] flex items-center py-16 md:py-32 overflow-hidden">
               {/* Background Image Layer */}
               <div
-                className="hero-section-bg"
+                className="absolute inset-0 bg-[top_left] sm:bg-[top_center] bg-cover opacity-85"
                 style={{ backgroundImage: "url('/passenger.jpg')" }}
                 aria-hidden="true"
               ></div>
-              <div className="hero-section-content container">
-                <div className="grid gap-6 grid-md-cols-2 items-center">
-                  <div className="md:pl-12">
+              <div className="relative pl-4 pr-4 md:pl-12 md:pr-6 container">
+                <div className="grid gap-6 sm:grid-cols-[1.5fr_1fr] sm:gap-12 items-center">
+                  <div className="md:pl-12" >
                     <p className="break-normal font-bold text-lady-light md:text-l lg:text-xl" style={{ textShadow: '0px 2px 8px rgba(0, 0, 0, 1)' }}>
                       여성 고객과 여성 기사님을 이어 믿음을 만드는
                     </p>
@@ -80,14 +81,13 @@ const Index = ({activeTab}) => {
 
                     <div className="flex flex-col sm:flex-row sm:items-center sm:space-x-4 space-y-4 sm:space-y-0">
                       <Button 
-                        className="button button-primary" 
+                        className="bg-lady-primary hover:bg-lady-primary/90 text-white" 
                         onClick={scrollToSignup}
                       >
                         고객으로 가입하기
                       </Button>
-                      <Button 
-                        variant="outline" 
-                        className="button-outline font-bold text-lady-primary"
+                      <Button variant="outline" 
+                        className="font-bold text-lady-primary hover:text-lady-primary/90 bg-lady-light"
                         onClick={() => {
                           if (contentRef.current) {
                             contentRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -98,13 +98,20 @@ const Index = ({activeTab}) => {
                       </Button>
                     </div>
                   </div>
+                  {/* <div className="hidden sm:block overflow-visible">
+                    <img
+                      alt="여성 대리운전"
+                      className="mx-auto w-full max-w-[400px] aspect-video rounded-xl object-cover object-center overflow-visible"
+                      src="/driver.png"
+                    />
+                  </div> */}
                 </div>
               </div>
             </section>
             
             <FeatureSection ref={contentRef}/>
 
-            <section ref={signupRef} className="registration-section">
+            <section ref={signupRef} className="bg-lady-light py-20 md:py-32">
               <CustomerRegistration />
             </section>
             <p className="text-zinc-700 text-center my-8">
