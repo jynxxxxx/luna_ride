@@ -1,135 +1,91 @@
-
-import { useRef, useState, useEffect } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
-import { Button } from "@/components/ui/button";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
-import FeatureSection from "@/components/FeatureSection";
-import DriverRegistration from "@/components/DriverRegistration";
+import { useEffect, useRef } from 'react'
 import { supabase } from "@/integrations/supabase/client";
-import CustomerRegistration from "@/components/CustomerRegistration";
+import homeStyles from "@/styles/home.module.scss";
 
-const Index = ({activeTab}) => {
-  const navigate = useNavigate();
-  const location = useLocation();
-  const signupRef = useRef(null);
-  const contentRef = useRef(null);
+const Index = () => {
+  const cards = [
+    {
+      img: '/icons/hands.svg',
+      title: '안전한 귀가를 책입집니다',
+      content:
+        '회식, 모임 후에 안심하고 돌아갈 수 있도록 설계된 대리운전 서비스입니다. 미리 연락 주시면 원하시는 시간에 모시러 가겠습니다.',
+    },
+    {
+      img: '/icons/driver.svg',
+      title: '검증된 여성 기사님만',
+      content:
+        '불쾌한 시선과 대화없이 쾌적하게 귀가하세요. 범죄이력 등 신원이 검증된 여성 기사님이 직접 운전합니다.',
+    },
+    {
+      img: '/icons/suit.svg',
+      title: '단정하고 청결한 기사',
+      content:
+        '단정한 복장은 물론 냄새까지 관리합니다. 고객님의 소중한 차, 청결과 안전 교육을 받은 기사님께 맡겨보세요.',
+    },
+    {
+      img: '/icons/saved.svg',
+      title: '이 기사님이 마음에 든다면?',
+      content:
+        '매번 부를 때마다 누가 올지 몰라 불편했다면 선호 기사님을 지정해주세요. 다음 일정부터 지정 기사님이 모시러 갑니다.',
+    },
+  ]
 
-  useEffect(() => {
-    if (location.state?.scrollToCustomerSignup) {
-      setTimeout(() => {
-        const headerHeight = document.querySelector('header')?.offsetHeight || 0;
-    
-        // Adjust the scroll position by subtracting the header height
-        window.scrollTo({
-          top: signupRef.current.offsetTop - headerHeight,
-        });
+  const doubledCards = [...cards, ...cards]
 
-        navigate(location.pathname, { replace: true, state: {} }); // clean up state
-      }, 0);
-    }
-  }, [location.state]);
-
-  const handleTabChange = (value) => {
-    navigate(value === "home" ? "/" : `/${value}`);
-    window.scrollTo(0, 0);;
-  };
-
-  const scrollToSignup = () => {
-    // Get the height of the header or any other offset
-    const headerHeight = document.querySelector('header')?.offsetHeight || 0;
-    
-    // Adjust the scroll position by subtracting the header height
-    window.scrollTo({
-      top: signupRef.current.offsetTop - headerHeight,
-      behavior: 'smooth',
-    });
-  };
-
-  // bg-gradient-to-b from-lady-light to-white
   return (
-    <div className="flex flex-col min-h-screen">
-      <Header />
-      <main className="flex-1">
-        <Tabs value={activeTab} className="w-full" onValueChange={handleTabChange}>
-          <TabsContent value="home">
-            <section className="relative mt-[-8px] min-h-[50vh] sm:min-h-[90vh] flex items-center py-16 md:py-32 overflow-hidden">
-              {/* Background Image Layer */}
-              <div
-                className="absolute inset-0 bg-[top_left] sm:bg-[top_center] bg-cover opacity-85"
-                style={{ backgroundImage: "url('/passenger.jpg')" }}
-                aria-hidden="true"
-              ></div>
-              <div className="relative pl-4 pr-4 md:pl-12 md:pr-6 container">
-                <div className="grid gap-6 sm:grid-cols-[1.5fr_1fr] sm:gap-12 items-center">
-                  <div className="md:pl-12" >
-                    <p className="break-normal font-bold text-lady-light md:text-l lg:text-xl" style={{ textShadow: '0px 2px 8px rgba(0, 0, 0, 1)' }}>
-                      여성 고객과 여성 기사님을 이어 믿음을 만드는
-                    </p>
-                    <h1 className="mt-4 break-normal text-4xl md:text-5xl lg:text-6xl font-bold tracking-tighter text-lady-light" style={{ textShadow: '0px 2px 8px rgba(0, 0, 0, 1)' }} >
-                      여성전용 대리운전
-                      <br className="block sm:hidden" /> 서비스
-                    </h1>
-                    <p className="mt-12 mb-8 break-normal text-lady-light md:text-xl">
-                      밤늦은 귀가, 이제 안심하고 자면서 집으로
-                      <br />여성 기사님과 편안하게 귀가하세요.  
-                    </p>
-                    <p className="mb-8 text-2xl font-bold text-lady-light">
-                      지금 사전등록하면 10,000원 쿠폰팩 제공!
-                    </p>
-
-                    <div className="flex flex-col sm:flex-row sm:items-center sm:space-x-4 space-y-4 sm:space-y-0">
-                      <Button 
-                        className="bg-lady-primary hover:bg-lady-primary/90 text-white" 
-                        onClick={scrollToSignup}
-                      >
-                        고객으로 가입하기
-                      </Button>
-                      <Button variant="outline" 
-                        className="font-bold text-lady-primary hover:text-lady-primary/90 bg-lady-light"
-                        onClick={() => {
-                          if (contentRef.current) {
-                            contentRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
-                          }
-                        }}
-                      >
-                        더 알아보기
-                      </Button>
-                    </div>
-                  </div>
-                  {/* <div className="hidden sm:block overflow-visible">
-                    <img
-                      alt="여성 대리운전"
-                      className="mx-auto w-full max-w-[400px] aspect-video rounded-xl object-cover object-center overflow-visible"
-                      src="/driver.png"
-                    />
-                  </div> */}
+    <div className={homeStyles.ctn}>
+      <section className={homeStyles.heroSection}>
+        Quiet, safe, and yours.
+      </section>
+      <section style={{width:'100%'}}>
+        <div className={homeStyles.intro}>
+          <div className={homeStyles.introTitle}>
+            About ribon
+          </div>
+          <div className={homeStyles.introSubTitle}>
+            단 한 끗의 불편함도 없이, 조용히 집까지.
+            <br /> 검증된 여성 기사와 함께라면 도착까지 잠시 눈 붙혀도 좋습니다.
+            <br /> 심야 귀가는 이제, 나를 위한 룸서비스처럼 편안하게.
+            <p className={homeStyles.introSubTitle2}>
+              여성만을 위한 새로운 대리운전 문화를 만듭니다.
+            </p>
+          </div>
+          <div className={homeStyles.carouselOuter}>
+            <div className={homeStyles.carouselTrack}>
+              {doubledCards.map((card, i) => (
+                <div key={i} className={homeStyles.contentCard}>
+                  <img src={card.img} alt="" className={homeStyles.icons} />
+                  <div className={homeStyles.cardTitle}>{card.title}</div>
+                  <div className={homeStyles.cardContent}>{card.content}</div>
                 </div>
-              </div>
-            </section>
-            
-            <FeatureSection ref={contentRef}/>
-
-            <section ref={signupRef} className="bg-lady-light py-20 md:py-32">
-              <CustomerRegistration />
-            </section>
-            <p className="text-zinc-700 text-center my-8">
-              곧 서비스 정식 출시 예정입니다. 
-              <br />조금만 기다려주세요. 감사합니다.
-            </p>
-
-          </TabsContent>
-          <TabsContent value="driver">
-            <DriverRegistration />
-            <p className="text-zinc-700 text-center my-8">
-              곧 서비스 정식 출시 예정입니다. 
-              <br />조금만 기다려주세요. 감사합니다
-            </p>
-          </TabsContent>
-        </Tabs>
-      </main>
-      <Footer scrollToSignup={scrollToSignup}/>
+              ))}
+            </div>
+          </div>
+          <button
+            className={homeStyles.introButton}
+            onClick={() => {}}
+          >
+            대리 운전 이용하기
+          </button>
+        </div>
+      </section>
+      <section className={homeStyles.reasonSection}>
+        <div className={homeStyles.reason1}>
+          <div className={homeStyles.reasonContent}>
+            음주 후 귀가할 때
+          </div>
+        </div>
+        <div className={homeStyles.reason2}>
+          <div className={homeStyles.reasonContent}>
+            이동 중 업무가 필요할 때 
+          </div>
+        </div>
+        <div className={homeStyles.reason3}>
+          <div className={homeStyles.reasonContent}>
+            특별히 지친 날 이동이 필요할 때
+          </div>
+        </div>
+      </section>
     </div>
   );
 };

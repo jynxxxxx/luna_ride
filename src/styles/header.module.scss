@@ -1,0 +1,49 @@
+@use './variables.scss' as *;
+
+.header {
+  background-color: white;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
+.ctn{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  align-items: center;
+  padding: 0.5rem 1rem;
+}
+
+.logo {
+  display: flex;
+  justify-content: flex-start;
+  font-family: $english-font;
+  font-size: 3rem;
+}
+
+.nav {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+}
+
+.tabs {
+  display: flex;
+  gap: 1rem;
+}
+
+.tabButton {
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  border-bottom: 2px solid transparent;
+
+  &:hover {
+    transform: scale(1.03);
+    font-weight: bolder;
+  }
+
+  &.active {
+    border-color: black; 
+    font-weight: bolder;
+  }
+}

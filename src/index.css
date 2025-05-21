@@ -2,7 +2,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
+/* 
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap');
 
 @layer base {
@@ -102,4 +102,4 @@
     @apply bg-background text-foreground;
     font-family: 'Noto Sans KR', sans-serif;
   }
-}
+} */

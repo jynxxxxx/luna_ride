@@ -1,0 +1,94 @@
+@use './variables.scss' as *;
+
+.ctn{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+  text-align: center;
+  color: $dark;
+}
+
+.title{
+  font-family: $english-font;
+  font-size: 3rem;
+}
+
+.titlekr{
+  font-family: $kr-font;
+  text-align: center;
+  font-size: 2.5rem;
+}
+
+.formctn{
+  margin-top: 2rem;
+  width: 50vw;
+  padding: 2rem 6rem;
+  background-color: white;
+  border-radius: 1rem;
+  border: solid $light 2px;
+  height: fit-content;
+  text-align: start;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.label{
+  margin-bottom: 0.5rem !important;
+}
+
+.radioctn{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1rem;
+}
+
+.radiobtn{
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;   
+  font-size: 0.875rem;  // text-sm = 14px (usually 0.875rem)
+  font-weight: 400;   // font-normal = 400
+}
+
+.consentctn{
+  padding: 1rem 2rem; 
+  border-radius: 0.5rem; // rounded-md = 6px
+  background-color: $light;
+}
+
+.consentctn h4 {
+  font-weight: 500; // font-medium
+  color: $dark;
+  margin-bottom: 0.5rem; 
+}
+
+.consentctn p {
+  font-size: 0.875rem; // text-sm = 14px
+  color: #525252; // approximate for text-zinc-700
+  margin-bottom: 1rem; // mb-4 = 16px
+}
+
+.consentbox{
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.formbtn{
+  padding: 0.5rem 5rem;
+  font-size: 1rem;
+  background-color: $dark;
+  color: white;
+  border-radius: 3rem !important;
+  border: none;
+  cursor: pointer;
+
+  &:hover {
+    background-color: $dark;;
+    transform: scale(1.03);
+  }
+}

@@ -1,0 +1,32 @@
+@use './variables.scss' as *;
+@use "sass:color";
+
+.ctn{
+  background-color: $dark;
+  color: white;
+  padding: 2rem;
+}
+
+.title{
+  font-size: 3rem;
+  font-weight: 600;
+  font-family: $english-font;
+  margin-top: 3rem;
+}
+
+.companyName{
+  font-weight: 400;
+}
+
+.text{
+  margin-top: 1rem;
+  line-height: 1.7rem;
+  font-family: $english-font;
+}
+
+.disclaimer{
+  margin-top: 1rem;
+  font-size: 0.8rem;
+  color: color.adjust($dark, $lightness: 30%);
+  font-family: $english-font;
+}

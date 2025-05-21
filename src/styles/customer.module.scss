@@ -1,0 +1,146 @@
+@use './variables.scss' as *;
+
+.ctn {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: $background;
+}
+
+.heroSection {
+  min-height: 80vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+
+  font-family: $english-font;
+  font-size: 5rem;
+  font-weight: bolder;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
+
+  background-image: url('/yellow_car.webp');
+  background-position: center;
+  background-size: cover;
+  overflow: hidden;
+
+  &::after {
+    content: '';
+    inset: 0;
+    background: radial-gradient(ellipse at center, transparent 40%, rgba(0, 0, 0, 0.4) 100%);
+    z-index: 1;
+  }
+}
+
+.btn{
+  margin: 3rem 0;
+  padding: 0.5rem 5rem;
+  font-size: 1rem;
+  background-color: $dark;
+  color: white;
+  border-radius: 3rem;
+  border: none;
+  cursor: pointer;
+
+  &:hover {
+    background-color: $dark;;
+    // transition: all 0.3s ease-in-out;
+    transform: scale(1.03);
+  }
+}
+
+.featuresctn{
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  padding-top: 6rem; 
+  padding-bottom: 6rem;
+}
+
+.featureImg{
+  margin: auto;
+  width: 100%;
+  object-fit: cover;
+  object-position: center;
+  overflow: visible;
+}
+
+.items{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.itemsTitle{
+  text-align: center;
+  margin-bottom: 1rem;
+  color: $dark;
+}
+
+.itemsTitle h2{
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.itemsctn{
+  display: grid;
+  grid-template-columns: 1fr 1fr
+}
+
+.card {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end; 
+  font-family: $english-font;
+}
+
+.header {
+  display: flex;
+  width: 100%;
+  margin-bottom: 0.5rem;
+  align-items: center;
+}
+
+.icon {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 9999px;
+  background-color: $dark; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.iconSvg {
+  color: white;
+}
+
+.title {
+  padding-left: 0.75rem;
+  font-size: 1.25rem; 
+  font-weight: 500;
+  color: $dark
+}
+
+.description {
+  width: 100%;
+  color: #3f3f46; 
+}
+
+.signupSection {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 6rem 4rem;
+}

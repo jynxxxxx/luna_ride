@@ -1,0 +1,170 @@
+@use './variables.scss' as *;
+
+
+.ctn {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: $background;
+}
+
+
+.heroSection {
+  min-height: 80vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+
+  font-family: $english-font;
+  font-size: 5rem;
+  font-weight: bolder;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
+
+  background-image: url('/red_car.webp');
+  background-position: center;
+  background-size: cover;
+  overflow: hidden;
+  // opacity: 0.85;
+
+  &::after {
+    content: '';
+    inset: 0;
+    background: radial-gradient(ellipse at center, transparent 40%, rgba(0, 0, 0, 0.4) 100%);
+    z-index: 1;
+  }
+}
+
+.intro{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  color: black;
+  text-align: center;
+  padding: 5rem 2rem;
+}
+
+.introTitle{
+  font-family: $english-font;
+  font-size: 3rem;
+  text-align: center;
+}
+
+.introSubTitle{
+  font-size: 1.2rem;
+}
+
+.introSubTitle2{
+  margin-top: 1.2rem; 
+}
+
+.carouselOuter{
+  padding-top: 3rem;
+  overflow: hidden;
+  width: 100%;
+  position: relative;
+}
+
+.carouselTrack {
+  display: flex;
+  animation: scroll-left 40s linear infinite;
+  gap: 8rem;
+  width: calc(8 * (20vw + 8rem));
+}
+
+@keyframes scroll-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.contentCard{
+  width:20vw;
+  display: block;
+  text-align: start;
+}
+
+.icons {
+  width: 4rem;
+  height: 4rem;
+}
+
+.cardTitle{
+  padding-top: 1rem;
+  padding-bottom: 0.5rem;
+  font-weight: bolder;
+}
+
+.introButton{
+  margin: 3rem 0;
+  padding: 0.5rem 5rem;
+  font-size: 1rem;
+  background-color: $dark;
+  color: white;
+  border-radius: 3rem;
+  border: none;
+  cursor: pointer;
+
+  &:hover {
+    background-color: $dark;;
+    // transition: all 0.3s ease-in-out;
+    transform: scale(1.03);
+  }
+}
+
+.reasonSection {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 0.5rem;
+}
+
+.reason {
+  width: 100%;
+  min-height: 40vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  &::after {
+    content: '';
+    inset: 0;
+    background: radial-gradient(ellipse at center, transparent 40%, rgba(0, 0, 0, 0.4) 100%);
+    z-index: 1;
+  }
+}
+
+.reason1 {
+  @extend .reason;
+  background-image: url('/party.webp');
+}
+
+.reason2 {
+  @extend .reason;
+  background-image: url('/business_woman.webp');
+}
+
+.reason3 {
+  @extend .reason;
+  background-image: url('/road.webp');
+}
+
+.reasonContent {
+  font-size: 2rem;
+  font-weight: bolder;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
+}
