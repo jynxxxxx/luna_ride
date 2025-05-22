@@ -133,13 +133,17 @@ const CustomerReservation = () => {
     setIsSubmitting(true);
     
     try {
-      // Store in Supabase - first let's add the reservations table
+      // Store in Supabase
       const { error } = await supabase
-        .from('driver_registrations')
+        .from('reservations')
         .insert([{ 
           name: data.name,
+          email: data.email,
           phone: data.phone,
-          experience: false,
+          pickup_location: data.pickupLocation,
+          dropoff_location: data.dropoffLocation,
+          reservation_date: data.date.toISOString().split('T')[0],
+          time_window: data.timeWindow,
           consent_given: data.consent
         }]);
       
@@ -154,6 +158,7 @@ const CustomerReservation = () => {
       }
       
       // Send data to Make webhook
+      // This would be your Make webhook URL
       const makeWebhookUrl = "https://hook.make.com/your-webhook-id";
       
       await fetch(makeWebhookUrl, {
