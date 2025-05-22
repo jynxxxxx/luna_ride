@@ -5,6 +5,7 @@ import CustomerFeatureSection from "@/components/CustomerFeatureSection";
 import CustomerReservation from "@/components/CustomerReservation";
 import customerStyles from "@/styles/customer.module.scss";
 import CustomerTestimonial from "@/components/CustomerTestimonials";
+import CustomerFAQs from "@/components/CustomerFAQs";
 
 const Customer = () => {
   const signupRef = useRef(null);
@@ -43,9 +44,24 @@ const Customer = () => {
         </div>
         <CustomerTestimonial />
       </section>
-      <CustomerFeatureSection />
+      
+      <section className={customerStyles.featuresection}>
+        <div className={customerStyles.tsttitle}>
+          오늘 하루의 끝, 
+          <br />더 안전하고 편안하게.
+        </div>
+        <CustomerFeatureSection />
+      </section>
+
       <section id="signup" ref={signupRef} className={customerStyles.signupSection}>
         <CustomerReservation />
+      </section>
+
+      <section className={customerStyles.faqsection}>
+        <div className={customerStyles.tsttitle}>
+          자주하는 질문
+        </div>
+        <CustomerFAQs />
       </section>
     </div>
   );

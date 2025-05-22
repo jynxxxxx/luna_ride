@@ -64,98 +64,46 @@
   font-size: 3rem;
   font-weight: bolder;
   color: $dark;
-  padding: 1rem 2rem 4rem;
+  padding: 1rem 2rem 2rem;
 }
 
-.featuresctn{
-  display: grid;
-  grid-template-columns: 1fr 1.4fr;
-  padding-top: 6rem; 
-  padding-bottom: 6rem;
-}
-
-.featureImgctn{
-  margin-left: 2rem;
-  margin-right: 1rem; 
-  overflow: hidden;
-  border-radius: 1rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.featureImg{
-  margin: auto;
+.featuresection{
+  background-color: #FAFAFA;
+  padding: 5rem 2rem 7rem;
   width: 100%;
-  object-fit: cover;
-  object-position: center;
-  overflow: visible;
 }
 
 .items{
   display: flex;
-  flex-direction: column;
   justify-content: center;
-  align-items: center;
-}
-
-.itemsTitle{
-  text-align: center;
-  margin-bottom: 1rem;
-  color: $dark;
-}
-
-.itemsTitle h2{
-  font-size: 1.5rem;
-  font-weight: bold;
-  margin-bottom: 1rem;
-}
-
-.itemsctn{
-  display: grid;
-  grid-template-columns: 1fr 1fr
+  gap: 5rem;
+  padding: 0rem 2rem;
 }
 
 .card {
-  padding: 1.5rem;
+  padding: 1rem 0rem;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: flex-start; 
   font-family: $english-font;
-}
-
-.header {
-  display: flex;
-  width: 100%;
-  margin-bottom: 0.5rem;
-  align-items: center;
+  height: 100%
 }
 
 .icon {
-  width: 2rem;
-  height: 2rem;
-  border-radius: 9999px;
-  background-color: $dark; 
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.iconSvg {
-  color: white;
+  width: 6rem;
+  height: 6rem;
 }
 
 .title {
-  padding-left: 0.75rem;
   font-size: 1.25rem; 
-  font-weight: 500;
-  color: $dark
+  font-weight: bolder;
+  color: $dark;
+  padding-bottom: 0.4rem;
 }
 
 .description {
   width: 100%;
-  color: #3f3f46; 
+  color: $dark; 
 }
 
 .signupSection {
@@ -164,6 +112,62 @@
   justify-content: center;
   align-items: center;
   padding: 6rem 4rem;
+}
+
+.faqsection{
+  background-color: #FAFAFA;
+  padding: 5rem 2rem 7rem;
+  width: 100%;
+}
+
+.faqctn {
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+}
+
+.faqItem {
+  cursor: pointer;
+  padding: 1rem;
+  transition: all 0.3s ease;
+  border-bottom: 1px $dark solid;
+  color: $dark;
+
+  .question {
+    font-weight: bold;
+    font-size: 1.1rem;
+    font-family: $english-font;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .caret {
+    height: 0.8rem;
+    width: auto;
+    transition: all 0.3s ease;
+    transform: rotate(0deg);
+    margin-left: 1rem;
+  }
+
+  .rotated {
+    transform: rotate(180deg);
+  }
+
+  .answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease, padding-top 0.4s ease;
+    font-size: 0.95rem;
+    padding-left: 2rem;
+    padding-top: 0;
+  }
+
+  &.open .answer {
+    padding-top: 0.5rem;
+    max-height: 200px; 
+  }
 }
 
 //mobile styles
@@ -182,29 +186,19 @@
     font-size: 1.5rem;
     font-weight: bolder;
     color: $dark;
-    padding: 0rem 1rem 2rem;
+    padding: 0rem 2rem 1rem;
   }
 
-  .featuresctn {
-    grid-template-columns: 1fr;  // stack grid to single column on phone
-    padding:3rem 1rem;
+  .featuresection{
+    padding: 3rem 1rem 5rem;
   }
 
-  .featureImgctn {
-    display: none;
-    overflow: hidden;
-    border-radius: 1rem;
-    align-items: center;
+  .items{
+    display: flex;
+    flex-direction: column;
     justify-content: center;
-  }
-
-  .itemsTitle h2 {
-    font-size: 1.25rem;
-  }
-
-  .itemsctn {
-    grid-template-columns: 1fr; // stack cards in single column
     gap: 1rem;
+    padding: 1rem 1rem;
   }
 
   .card {
@@ -213,6 +207,14 @@
 
   .signupSection {
     padding: 3rem 1.5rem;
+  }
+
+  .faqsection{
+    padding: 3rem 0rem 3rem;
+  }
+  
+  .faqctn {
+    padding: 1rem 2rem 1rem;
   }
 }
 
@@ -227,29 +229,28 @@
     font-size: 1rem;
   }
 
-  .featuresctn {
-    grid-template-columns: 1fr;  // stack grid to single column on phone
-    padding:5rem 2rem;
+  .featuresection{
+    background-color: #FAFAFA;
+    padding: 5rem 2rem 7rem;
+    width: 100%;
   }
 
-  .featureImgctn {
-    display: none;
-    overflow: hidden;
-    border-radius: 1rem;
-    align-items: center;
+  .items{
+    display: flex;
     justify-content: center;
-  }
-
-  .itemsTitle h2 {
-    font-size: 1.4rem;
-  }
-
-  .itemsctn {
-    grid-template-columns: 1fr 1fr; // two columns on tablet
-    gap: 1.5rem;
+    gap: 5rem;
+    padding: 0rem 2rem;
   }
 
   .signupSection {
     padding: 4rem 3rem;
+  }
+
+  .faqsection{
+    padding: 3rem 2rem 5rem;
+  }
+
+  .faqctn {
+    padding: 0rem 2rem 1rem;
   }
 }

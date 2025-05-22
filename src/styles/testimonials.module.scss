@@ -3,17 +3,39 @@
 
 
 .testimonialContainer {
+  position: relative;
   display: flex;
-  gap: 20px;
+  gap: 2rem;
   overflow: hidden;
-  padding: 20px;
+  padding: 1.5rem 2.5rem;
+
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 7rem;
+    z-index: 5; 
+    pointer-events: none; // So it doesn't block hover
+  }
+
+  &::before {
+    top: 0;
+    background: linear-gradient(to bottom, $background 0%, $background 30%, transparent 100%);
+  }
+
+  &::after {
+    bottom: 0;
+    background: linear-gradient(to top, $background 0%, $background 30%, transparent);
+  }
 }
 
 .column {
   flex: 1;
   overflow: hidden;
   position: relative;
-  height: 50vh;
+  height: 60vh;
 }
 
 .carousel {
@@ -24,24 +46,22 @@
 .card {
   background: #fff;
   border: 1px solid #eee;
-  border-radius: 8px;
-  margin: 10px;
-  padding: 16px;
+  border-radius: 1rem;
+  margin: 1rem;
+  padding: 2rem;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-  font-size: 14px;
-  line-height: 1.4;
+  font-size: 0.9rem;
 }
 
 .name {
   font-weight: bold;
-  margin-bottom: 8px;
+  margin-bottom: 0.5rem;
   color: $dark;
 }
 
 .job {
   font-weight: normal;
   font-size: 0.7rem;
-  margin-bottom: 8px;
   color: color.adjust($dark, $lightness: 40%);
 }
 
@@ -79,11 +99,11 @@
  @media (max-width: 750px) {
  .testimonialContainer {
     flex-direction: column;
-    height: 40vh; 
+    height: 60vh; 
   }
 
   .column {
-    height: 50vh; 
+    height: 60vh; 
     width: 100%;
   }
 }
