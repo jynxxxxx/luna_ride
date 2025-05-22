@@ -28,12 +28,6 @@ const Customer = () => {
 
   return (
     <div className={customerStyles.ctn}>
-      <section className={customerStyles.tstsection}>
-        <div className={customerStyles.tsttitle}>
-          많은 고객들이
-          <br />만족하며 이용하고 있어요.
-        </div>
-        <CustomerTestimonial />
         <div className={customerStyles.btnctn}>
           <button
             className={customerStyles.btn}
@@ -42,6 +36,13 @@ const Customer = () => {
             mobl 이용해보기
           </button>
         </div>
+
+      <section className={customerStyles.tstsection}>
+        <div className={customerStyles.tsttitle}>
+          많은 고객들이
+          <br />만족하며 이용하고 있어요.
+        </div>
+        <CustomerTestimonial />
       </section>
       
       <section className={customerStyles.featuresection}>

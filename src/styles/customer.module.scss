@@ -31,11 +31,11 @@
 }
 
 .btnctn {
-  position: absolute;
-  bottom: 5.5rem;
+  position: fixed;
+  bottom: 5rem;
   left: 50%;
   transform: translateX(-50%);
-  z-index: 10; // Ensure it's above the gradient overlay
+  z-index: 10; 
 }
 
 .btn{
