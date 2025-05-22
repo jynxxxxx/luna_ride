@@ -1,8 +1,24 @@
 {
   "redirects": [
-    { "source": "http://www.ridemobl.com", "destination": "https://ridemobl.com", "permanent": true },
-    { "source": "http://ridemobl.com", "destination": "https://ridemobl.com", "permanent": true },
-    { "source": "https://www.ridemobl.com", "destination": "https://ridemobl.com", "permanent": true }
+    {
+      "source": "/(.*)",
+      "has": [
+        { "type": "host", "value": "www.ridemobl.com" }
+      ],
+      "destination": "https://ridemobl.com/$1",
+      "statusCode": 301
+    },
+    {
+      "source": "/(.*)",
+      "has": [
+        { "type": "host", "value": "ridemobl.com" }
+      ],
+      "missing": [
+        { "type": "header", "key": "x-forwarded-proto", "value": "https" }
+      ],
+      "destination": "https://ridemobl.com/$1",
+      "statusCode": 301
+    }
   ],
   "rewrites": [
     { "source": "/(.*)", "destination": "/" }
