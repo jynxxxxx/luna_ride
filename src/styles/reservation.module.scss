@@ -1,4 +1,3 @@
-
 @use './variables.scss' as *;
 
 .ctn{
@@ -38,7 +37,6 @@
 
 .label{
   margin-bottom: 0.5rem !important;
-  font-weight: 600;
 }
 
 .radioctn{
@@ -52,26 +50,26 @@
   display: flex;
   align-items: center;
   gap: 0.25rem;   
-  font-size: 0.875rem;
-  font-weight: 400;
+  font-size: 0.875rem;  // text-sm = 14px (usually 0.875rem)
+  font-weight: 400;   // font-normal = 400
 }
 
 .consentctn{
   padding: 1rem 2rem; 
-  border-radius: 0.5rem;
+  border-radius: 0.5rem; // rounded-md = 6px
   background-color: $light;
 }
 
 .consentctn h4 {
-  font-weight: 600;
+  font-weight: 500; // font-medium
   color: $dark;
   margin-bottom: 0.5rem; 
 }
 
 .consentctn p {
-  font-size: 0.875rem;
-  color: #525252;
-  margin-bottom: 1rem;
+  font-size: 0.875rem; // text-sm = 14px
+  color: #525252; // approximate for text-zinc-700
+  margin-bottom: 1rem; // mb-4 = 16px
 }
 
 .consentbox{
@@ -93,12 +91,6 @@
     background-color: $dark;;
     transform: scale(1.03);
   }
-}
-
-.errorText {
-  color: #e11d48;
-  font-size: 0.875rem;
-  margin-top: 0.25rem;
 }
 
 //mobile styles
@@ -128,7 +120,7 @@
 
 @media (min-width: 640px) and (max-width: 1024px) {
   .formctn {
-    width: 70vw;
+    width: 70vw;      // wider but not full width on tablets
     padding: 2rem 4rem;
   }
 

@@ -9,7 +9,8 @@ import CustomerFAQs from "@/components/CustomerFAQs";
 
 const Customer = () => {
   const signupRef = useRef(null);
-  const location = useLocation();
+
+   const location = useLocation();
 
   //scroll to #signup if URL hash is present on location change
   useEffect(() => {
