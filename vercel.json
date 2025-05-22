@@ -19,7 +19,7 @@
       "destination": "https://ridemobl.com/$1",
       "statusCode": 301
     }
-  ],
+  ]
   "rewrites": [
     { "source": "/(.*)", "destination": "/" }
   ]
