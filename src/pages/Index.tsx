@@ -75,7 +75,7 @@ const Index = () => {
             className={homeStyles.introButton}
             onClick={handleClick}
           >
-            대리 운전 이용하기
+            mobl 이용하기
           </button>
         </div>
       </section>
