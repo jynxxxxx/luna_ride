@@ -3,20 +3,17 @@
     {
       "source": "/(.*)",
       "has": [
-        { "type": "host", "value": "www.ridemobl.com" }
+        { "type": "host", "value": "ridemobl.com" }
       ],
-      "destination": "https://ridemobl.com/$1",
+      "destination": "https://www.ridemobl.com/$1",
       "statusCode": 301
     },
     {
       "source": "/(.*)",
-      "has": [
-        { "type": "host", "value": "ridemobl.com" }
-      ],
       "missing": [
         { "type": "header", "key": "x-forwarded-proto", "value": "https" }
       ],
-      "destination": "https://ridemobl.com/$1",
+      "destination": "https://www.ridemobl.com/$1",
       "statusCode": 301
     }
   ],
