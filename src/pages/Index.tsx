@@ -46,7 +46,7 @@ const Index = () => {
       <section style={{width:'100%'}}>
         <div className={homeStyles.intro}>
           <div className={homeStyles.introTitle}>
-            About ribon
+            About mobl
           </div>
           <div className={homeStyles.introSubTitle}>
             단 한 끗의 불편함도 없이, 조용히 집까지.

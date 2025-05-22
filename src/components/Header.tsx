@@ -27,7 +27,7 @@ const Header = () => {
        <div className={headerStyles.ctn}>
         <div className={headerStyles.logo}>
           <a href="/" >
-            ribon
+            mobl
             {/* <img
               alt="여성 대리운전"
               className="h-10 sm:h-12 w-auto"

@@ -154,7 +154,7 @@ const CustomerReservation = () => {
   return (
     <div className={reservationStyles.ctn}>
       <div className={reservationStyles.title}>
-        ribon <span className={reservationStyles.titlekr}>대리 서비스 예약</span> 
+        mobl <span className={reservationStyles.titlekr}>대리 서비스 예약</span> 
       </div>
     
       <form onSubmit={handleSubmit} className={reservationStyles.formctn}>

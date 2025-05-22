@@ -98,7 +98,7 @@ const DriverRegistration = () => {
   return (
     <div className={driverStyle.signupctn}>
       <div className={driverStyle.title}>
-        ribon <span className={driverStyle.titlekr}>드라이버가 되어주세요</span> 
+        mobl <span className={driverStyle.titlekr}>드라이버가 되어주세요</span> 
       </div>
       <div className={driverStyle.subtext1}>
           운전 경력만 있다면 지원해보세요! 
