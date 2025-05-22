@@ -48,7 +48,7 @@ const Header = () => {
               >
                 {tab === "customer" ? "일반 고객" 
                   : tab === "corporate" ? "기업 고객" 
-                  : "직원 채용"
+                  : "기사 채용"
                 }
               </button>
             ))}
