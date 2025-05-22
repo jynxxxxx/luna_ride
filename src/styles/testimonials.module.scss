@@ -5,9 +5,8 @@
 .testimonialContainer {
   position: relative;
   display: flex;
-  gap: 2rem;
   overflow: hidden;
-  padding: 1.5rem 2.5rem;
+  padding: 1.5rem 0rem;
 
   &::before,
   &::after {
@@ -22,12 +21,12 @@
 
   &::before {
     top: 0;
-    background: linear-gradient(to bottom, $background 0%, $background 30%, transparent 100%);
+    background: linear-gradient(to bottom, $primary 0%, $primary 30%, transparent 100%);
   }
 
   &::after {
     bottom: 0;
-    background: linear-gradient(to top, $background 0%, $background 30%, transparent);
+    background: linear-gradient(to top, $primary 0%, $primary 30%, transparent);
   }
 }
 
@@ -47,8 +46,8 @@
   background: #fff;
   border: 1px solid #eee;
   border-radius: 1rem;
-  margin: 1rem;
-  padding: 2rem;
+  margin: 0.5rem;
+  padding: 1rem;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
   font-size: 0.9rem;
 }

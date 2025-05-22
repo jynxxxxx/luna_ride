@@ -13,7 +13,6 @@ const Header = () => {
   const currentTab = (() => {
     if (location.pathname === "/driver") return "driver";
     if (location.pathname === "/customer") return "customer";
-    if (location.pathname === "/corporate") return "corporate";
     return "home";
   })();
 
@@ -38,7 +37,7 @@ const Header = () => {
 
         <nav className={headerStyles.nav}>
           <div className={headerStyles.tabs}>
-            {["customer", "corporate", "driver"].map((tab) => (
+            {["customer", "driver"].map((tab) => (
               <button
                 key={tab}
                 onClick={() => handleTabClick(tab)}
@@ -46,10 +45,7 @@ const Header = () => {
                   currentTab === tab ? headerStyles.active : ''
                 }`}
               >
-                {tab === "customer" ? "일반 고객" 
-                  : tab === "corporate" ? "기업 고객" 
-                  : "기사 채용"
-                }
+                {tab === "customer" ? "모블 서비스" : "드라이버 채용"}
               </button>
             ))}
           </div>

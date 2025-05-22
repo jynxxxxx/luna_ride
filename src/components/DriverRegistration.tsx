@@ -72,7 +72,7 @@ const DriverRegistration = () => {
       } else {
         toast({
           title: "등록 신청이 완료되었습니다",
-          description: "검토 후 이메일로 안내드리겠습니다.",
+          description: "검토 후 문자/카카오톡으로 안내드리겠습니다.",
         });
         
         // Reset form
@@ -197,7 +197,7 @@ const DriverRegistration = () => {
             className={driverStyle.formbtn}
             disabled={isSubmitting}
           >
-            {isSubmitting ? "제출 중..." : "기사 등록 신청"}
+            {isSubmitting ? "제출 중..." : "지원하기"}
           </Button>
         </form>
     </div>

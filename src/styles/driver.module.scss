@@ -7,7 +7,7 @@
   align-items: center;
   width: 100%;
   padding: 6rem 4rem;
-  background-color: $background;
+  background-color: $light;
 }
 
 .signupctn{
@@ -99,14 +99,14 @@
 .formbtn{
   padding: 0.5rem 5rem;
   font-size: 1rem;
-  background-color: $dark;
+  background-color: $primary;
   color: white;
   border-radius: 3rem !important;
   border: none;
   cursor: pointer;
 
   &:hover {
-    background-color: $dark;;
+    background-color: $primary;
     transform: scale(1.03);
   }
 }

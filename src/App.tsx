@@ -7,7 +7,6 @@ import Layout from "@/components/Layout";
 import Index from "./pages/Index";
 import Driver from "./pages/driver";
 import Customer from "./pages/customer";
-import Corporate from "./pages/corporate";
 import NotFound from "./pages/NotFound";
 import React, { useEffect } from "react";
 import { useMetaPixel } from "./hooks/useMetaPixel";
@@ -28,7 +27,6 @@ const App = () => {
             <Route index element={<Index />} />
             <Route path="driver" element={<Driver />} />
             <Route path="customer" element={<Customer />} />
-            <Route path="corporate" element={<Corporate />} />
             <Route path="*" element={<NotFound />} />
           </Route>
         </Routes>

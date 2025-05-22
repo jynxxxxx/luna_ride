@@ -5,66 +5,55 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  color: white;
+  color: $dark;
   width: 100%;
   margin-left: auto;
   margin-right: auto;
-  background-color: $background;
-}
-
-.heroSection {
-  min-height: 80vh;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
-
-  font-family: $english-font;
-  font-size: 5rem;
-  font-weight: bolder;
-  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
-
-  background-image: url('/yellow_car.webp');
-  background-position: center;
-  background-size: cover;
-  overflow: hidden;
-
-  &::after {
-    content: '';
-    inset: 0;
-    background: radial-gradient(ellipse at center, transparent 40%, rgba(0, 0, 0, 0.4) 100%);
-    z-index: 1;
-  }
-}
-
-.btn{
-  margin: 3rem 0;
-  padding: 0.5rem 5rem;
-  font-size: 1rem;
-  background-color: $dark;
-  color: white;
-  border-radius: 3rem;
-  border: none;
-  cursor: pointer;
-
-  &:hover {
-    background-color: $dark;;
-    // transition: all 0.3s ease-in-out;
-    transform: scale(1.03);
-  }
+  background-color: $primary;
 }
 
 .tstsection{
   padding: 5rem 2rem;
+  position: relative;
 }
 
 .tsttitle{
   font-size: 3rem;
   font-weight: bolder;
-  color: $dark;
   padding: 1rem 2rem 2rem;
+  color: white;
+}
+
+.fttitle{
+  font-size: 3rem;
+  font-weight: bolder;
+  padding: 1rem 2rem 2rem;
+}
+
+.btnctn {
+  position: absolute;
+  bottom: 5.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10; // Ensure it's above the gradient overlay
+}
+
+.btn{
+  padding: 0.7rem 5rem;
+  font-size: 1.2rem;
+  background-color: white;
+  color: $primary;
+  font-weight: bolder;
+  font-family: $english-font;
+  border-radius: 3rem;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 1.5rem rgba(0, 0, 0, 0.6);
+
+  &:hover {
+    // transition: all 0.3s ease-in-out;
+    transform: scale(1.03);
+  }
 }
 
 .featuresection{
@@ -108,10 +97,8 @@
 
 .signupSection {
   width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   padding: 6rem 4rem;
+  background-color: $light;
 }
 
 .faqsection{
@@ -184,8 +171,11 @@
 
   .tsttitle{
     font-size: 1.5rem;
-    font-weight: bolder;
-    color: $dark;
+    padding: 0rem 2rem 1rem;
+  }
+
+  .fttitle{
+    font-size: 1.5rem;
     padding: 0rem 2rem 1rem;
   }
 

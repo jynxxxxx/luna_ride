@@ -28,25 +28,24 @@ const Customer = () => {
 
   return (
     <div className={customerStyles.ctn}>
-      <section className={customerStyles.heroSection}>
-        <div>Quiet, safe, and yours.</div>
-        <button
-          className={customerStyles.btn}
-          onClick={handleScrollToSignup}
-        >
-          예약 하기
-        </button>
-      </section>
       <section className={customerStyles.tstsection}>
         <div className={customerStyles.tsttitle}>
           많은 고객들이
           <br />만족하며 이용하고 있어요.
         </div>
         <CustomerTestimonial />
+        <div className={customerStyles.btnctn}>
+          <button
+            className={customerStyles.btn}
+            onClick={handleScrollToSignup}
+          >
+            mobl 이용해보기
+          </button>
+        </div>
       </section>
       
       <section className={customerStyles.featuresection}>
-        <div className={customerStyles.tsttitle}>
+        <div className={customerStyles.fttitle}>
           오늘 하루의 끝, 
           <br />더 안전하고 편안하게.
         </div>
@@ -54,11 +53,14 @@ const Customer = () => {
       </section>
 
       <section id="signup" ref={signupRef} className={customerStyles.signupSection}>
+        <div className={customerStyles.fttitle}>
+          지금 바로 예약해보세요.
+        </div>
         <CustomerReservation />
       </section>
 
       <section className={customerStyles.faqsection}>
-        <div className={customerStyles.tsttitle}>
+        <div className={customerStyles.fttitle}>
           자주하는 질문
         </div>
         <CustomerFAQs />

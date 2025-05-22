@@ -10,7 +10,7 @@
   width: 100%;
   margin-left: auto;
   margin-right: auto;
-  background-color: $background;
+  background-color: $primary;
 }
 
 
@@ -18,14 +18,15 @@
   min-height: 80vh;
   width: 100%;
   display: flex;
+  flex-direction: column;
   justify-content: center;
-  align-items: center;
   overflow: hidden;
 
   font-family: $english-font;
-  font-size: 5rem;
+  font-size: 4rem;
   font-weight: bolder;
   text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
+  padding: 2rem 4rem 0;
 
   background-image: url('/red_car.webp');
   background-position: center;
@@ -41,13 +42,19 @@
   }
 }
 
+.subtext {
+  font-size: 1.5rem;
+  font-weight: normal;
+  text-shadow: none;
+}
+
 .intro{
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 1rem;
-  color: black;
+  color: white;
   text-align: center;
   padding: 5rem 2rem;
 }
@@ -108,17 +115,16 @@
 
 .introButton{
   margin: 3rem 0;
-  padding: 0.5rem 5rem;
+  padding: 0.5rem 4rem;
   font-size: 1rem;
-  background-color: $dark;
-  color: white;
+  background-color: white;
+  color: $primary;
   border-radius: 3rem;
   border: none;
   cursor: pointer;
+  font-weight: bolder;
 
   &:hover {
-    background-color: $dark;;
-    // transition: all 0.3s ease-in-out;
     transform: scale(1.03);
   }
 }
@@ -127,7 +133,7 @@
   display: flex;
   flex-direction: column;
   width: 100%;
-  gap: 0.5rem;
+  gap: 0.3rem;
 }
 
 .reason {
@@ -172,9 +178,16 @@
 //mobile styles
 @media (max-width: 640px) {
  .heroSection {
-    font-size: 2.5rem;
+    font-size: 2rem;
     min-height: 50vh;
     background-position: center;
+    padding: 2rem 1rem 0;
+  }
+
+  .subtext {
+    font-size: 1rem;
+    font-weight: normal;
+    text-shadow: none;
   }
 
   .intro {
@@ -216,10 +229,6 @@
     margin: 2rem 0;
     padding: 0.5rem 3rem;
     font-size: 0.9rem;
-  }
-
-  .reasonSection {
-    gap: 1rem;
   }
 
   .reason {
@@ -277,10 +286,6 @@
     margin: 2.5rem 0;
     padding: 0.5rem 4rem;
     font-size: 1rem;
-  }
-
-  .reasonSection {
-    gap: 0.75rem;
   }
 
   .reason {
