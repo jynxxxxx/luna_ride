@@ -1,0 +1,10 @@
+{
+  "redirects": [
+    { "source": "http://www.ridemobl.com", "destination": "https://ridemobl.com", "permanent": true },
+    { "source": "http://ridemobl.com", "destination": "https://ridemobl.com", "permanent": true },
+    { "source": "https://www.ridemobl.com", "destination": "https://ridemobl.com", "permanent": true }
+  ],
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/" }
+  ]
+}
