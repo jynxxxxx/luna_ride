@@ -21,6 +21,7 @@ const EmailSignUp = ({setEmailSignUpModal}) => {
     const handleSubmit = async () => {
       if (!email || !email.includes('@')) {
         toast({
+          className: "bg-white text-black",
           title: "유효한 이메일 주소를 입력해주세요",
           variant: "destructive",
         });
@@ -37,12 +38,14 @@ const EmailSignUp = ({setEmailSignUpModal}) => {
         if (error) {
           if (error.code === '23505') { // Unique constraint error
             toast({
+          className: "bg-white text-black",
               title: "이미 등록된 이메일입니다",
               description: "알림 신청이 이미 완료되었습니다.",
             });
           } else {
             console.error("Error submitting email:", error);
             toast({
+          className: "bg-white text-black",
               title: "오류가 발생했습니다",
               description: "잠시 후 다시 시도해주세요.",
               variant: "destructive",
@@ -50,6 +53,7 @@ const EmailSignUp = ({setEmailSignUpModal}) => {
           }
         } else {
           toast({
+          className: "bg-white text-black",
             title: "알림 신청이 완료되었습니다",
             description: "출시 소식을 이메일로 알려드리겠습니다.",
           });
@@ -58,6 +62,7 @@ const EmailSignUp = ({setEmailSignUpModal}) => {
       } catch (error) {
         console.error("Error:", error);
         toast({
+          className: "bg-white text-black",
           title: "오류가 발생했습니다",
           description: "잠시 후 다시 시도해주세요.",
           variant: "destructive",

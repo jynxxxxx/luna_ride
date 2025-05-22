@@ -65,12 +65,14 @@ const DriverRegistration = () => {
       if (error) {
         console.error("Error submitting form:", error);
         toast({
+          className: "bg-white text-black",
           title: "오류가 발생했습니다",
           description: "잠시 후 다시 시도해주세요.",
           variant: "destructive",
         });
       } else {
         toast({
+          className: "bg-white text-black",
           title: "등록 신청이 완료되었습니다",
           description: "검토 후 문자/카카오톡으로 안내드리겠습니다.",
         });

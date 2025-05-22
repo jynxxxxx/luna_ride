@@ -20,7 +20,7 @@ const TIME_WINDOWS = [
   "오후 8시-9시", "오후 9시-10시", "오후 10시-11시", "오후 11시-12시"
 ];
 
-const CustomerReservation = () => {
+const CustomerReservation = ({setShowForm}) => {
   const { toast } = useToast();
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
@@ -49,26 +49,6 @@ const CustomerReservation = () => {
   const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const formatted = formatPhoneNumber(e.target.value);
     setPhone(formatted);
-  };
-
-  const sendToMake = async (reservationData) => {
-    try {
-      // Replace with your Make.com webhook URL
-      const webhookUrl = "YOUR_MAKE_WEBHOOK_URL";
-      
-      await fetch(webhookUrl, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(reservationData),
-        mode: "no-cors",
-      });
-      
-      console.log("Notification sent to Make.com");
-      return true;
-    } catch (error) {
-      console.error("Error sending to Make.com:", error);
-      return false;
-    }
   };
 
   const handleSubmit = async (event: React.FormEvent) => {
@@ -117,15 +97,15 @@ const CustomerReservation = () => {
       if (error) {
         console.error("Error submitting reservation:", error);
         toast({
+          className: "bg-white text-black",
           title: "예약 오류",
           description: "예약 중 오류가 발생했습니다. 잠시 후 다시 시도해주세요.",
           variant: "destructive",
         });
       } else {
-        // Send to Make.com for Slack notification
-        await sendToMake(reservationData);
         
         toast({
+          className: "bg-white text-black",
           title: "예약이 완료되었습니다",
           description: "빠른 시간 내에 연락드리겠습니다.",
         });
@@ -138,6 +118,8 @@ const CustomerReservation = () => {
         setDate(undefined);
         setTimeWindow("");
         setChecked(false);
+
+        setShowForm(false)
       }
     } catch (error) {
       console.error("Error:", error);
@@ -224,11 +206,11 @@ const CustomerReservation = () => {
                 variant={"outline"}
                 className={`w-full justify-start text-left font-normal ${!date && "text-muted-foreground"}`}
               >
-                <CalendarIcon className="mr-2 h-4 w-4" />
+                <CalendarIcon className="mr-2 h-4 w-4 z" />
                 {date ? format(date, "PPP", { locale: ko }) : "날짜 선택"}
               </Button>
             </PopoverTrigger>
-            <PopoverContent className="bg-white w-auto p-0">
+            <PopoverContent className="bg-white w-auto p-0 z-[9999]">
               <Calendar
                 mode="single"
                 selected={date}
