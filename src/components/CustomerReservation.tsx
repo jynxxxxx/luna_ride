@@ -26,51 +26,11 @@ const CustomerReservation = () => {
   const [phone, setPhone] = useState("");
   const [pickupLocation, setPickupLocation] = useState("");
   const [dropoffLocation, setDropoffLocation] = useState("");
+  const [popoverOpen, setPopoverOpen] = useState(false);
   const [date, setDate] = useState<Date | undefined>(undefined);
   const [timeWindow, setTimeWindow] = useState<string>("");
   const [checked, setChecked] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  
-  // Refs for Naver Maps search inputs
-  const pickupInputRef = useRef<HTMLInputElement>(null);
-  const dropoffInputRef = useRef<HTMLInputElement>(null);
-
-  // Initialize Naver Maps autocomplete
-  useEffect(() => {
-    // Load Naver Maps script
-    const script = document.createElement("script");
-    script.src = "https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=YOUR_CLIENT_ID_HERE&submodules=geocoder";
-    script.async = true;
-    script.onload = initializeAutocomplete;
-    document.head.appendChild(script);
-
-    return () => {
-      document.head.removeChild(script);
-    };
-  }, []);
-
-  // Initialize autocomplete functionality
-  const initializeAutocomplete = () => {
-    if (window.naver && window.naver.maps && pickupInputRef.current && dropoffInputRef.current) {
-      // Setup for pickup location
-      const pickupSearchBox = new window.naver.maps.places.AutoComplete({
-        input: pickupInputRef.current,
-      });
-      
-      pickupSearchBox.on("select", (e) => {
-        setPickupLocation(e.place.name + " " + e.place.address);
-      });
-
-      // Setup for dropoff location
-      const dropoffSearchBox = new window.naver.maps.places.AutoComplete({
-        input: dropoffInputRef.current,
-      });
-      
-      dropoffSearchBox.on("select", (e) => {
-        setDropoffLocation(e.place.name + " " + e.place.address);
-      });
-    }
-  };
 
   const formatPhoneNumber = (value: string) => {
     // Remove all non-numeric characters
@@ -198,8 +158,8 @@ const CustomerReservation = () => {
       </div>
     
       <form onSubmit={handleSubmit} className={reservationStyles.formctn}>
-        <div className="space-y-1">
-          <Label className={reservationStyles.label} htmlFor="name">이름</Label>
+        <div className={reservationStyles.card}>
+          <Label className={reservationStyles.label} htmlFor="name">이름: </Label>
           <Input 
             id="name"
             type="text" 
@@ -207,11 +167,12 @@ const CustomerReservation = () => {
             value={name}
             onChange={(e) => setName(e.target.value)}
             disabled={isSubmitting}
+            required
           />
         </div>
 
-        <div className="space-y-1">
-          <Label className={reservationStyles.label} htmlFor="phone">전화번호</Label>
+        <div className={reservationStyles.card}>
+          <Label className={reservationStyles.label} htmlFor="phone">전화번호: </Label>
           <Input 
             id="phone"
             type="tel" 
@@ -219,38 +180,49 @@ const CustomerReservation = () => {
             value={phone}
             onChange={handlePhoneChange}
             disabled={isSubmitting}
+            required
           />
         </div>
 
-        <div className="space-y-1">
-          <Label className={reservationStyles.label} htmlFor="pickupLocation">출발 위치</Label>
-          <Input 
+        <div className={reservationStyles.card}>
+          <Label className={reservationStyles.label} htmlFor="pickupLocation">출발 위치: </Label>
+          <div>
+            <Input 
             id="pickupLocation"
-            ref={pickupInputRef}
             type="text" 
             placeholder="출발 위치를 입력해주세요" 
             value={pickupLocation}
             onChange={(e) => setPickupLocation(e.target.value)}
             disabled={isSubmitting}
+            required
           />
+          <p style={{ fontSize: "0.8rem", color: "#666", marginTop: "4px" }}>
+            아직 정확한 위치를 모를 경우, 동네 적어주세요.
+          </p>
+          </div>
         </div>
 
-        <div className="space-y-1">
-          <Label className={reservationStyles.label} htmlFor="dropoffLocation">도착 위치</Label>
-          <Input 
+        <div className={reservationStyles.card}>
+          <Label className={reservationStyles.label} htmlFor="dropoffLocation">도착 위치: </Label>
+          <div>
+            <Input 
             id="dropoffLocation"
-            ref={dropoffInputRef}
             type="text" 
             placeholder="도착 위치를 입력해주세요" 
             value={dropoffLocation}
             onChange={(e) => setDropoffLocation(e.target.value)}
             disabled={isSubmitting}
+            required
           />
+          <p style={{ fontSize: "0.8rem", color: "#666", marginTop: "4px" }}>
+            아직 정확한 위치를 모를 경우, 동네 적어주세요.
+          </p>
+          </div>
         </div>
 
-        <div className="space-y-1">
-          <Label className={reservationStyles.label}>날짜</Label>
-          <Popover>
+        <div className={reservationStyles.card}>
+          <Label className={reservationStyles.label}>날짜: </Label>
+          <Popover open={popoverOpen} onOpenChange={setPopoverOpen}>
             <PopoverTrigger asChild>
               <Button
                 variant={"outline"}
@@ -260,25 +232,32 @@ const CustomerReservation = () => {
                 {date ? format(date, "PPP", { locale: ko }) : "날짜 선택"}
               </Button>
             </PopoverTrigger>
-            <PopoverContent className="w-auto p-0">
+            <PopoverContent className="bg-white w-auto p-0">
               <Calendar
                 mode="single"
                 selected={date}
-                onSelect={setDate}
+                onSelect={(selectedDate) => {
+                  setDate(selectedDate);
+                  setPopoverOpen(false); // close on selection
+                }}
                 initialFocus
+                classNames={{
+                  day: "rounded-md hover:font-bold hover:bg-accent hover:text-accent-foreground focus:outline-none focus:ring-2 ring-ring",
+                }}
                 disabled={(date) => date < new Date(new Date().setHours(0, 0, 0, 0))}
               />
             </PopoverContent>
           </Popover>
         </div>
 
-        <div className="space-y-1">
-          <Label className={reservationStyles.label}>시간대</Label>
+        <div className={reservationStyles.card}>
+          <Label className={reservationStyles.label}>시간대: </Label>
           <select
             className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
             value={timeWindow}
             onChange={(e) => setTimeWindow(e.target.value)}
             disabled={isSubmitting}
+            required
           >
             <option value="">시간대 선택</option>
             {TIME_WINDOWS.map((time) => (
@@ -303,10 +282,11 @@ const CustomerReservation = () => {
               onChange={() => setChecked(!checked)}
               disabled={isSubmitting}
               className="w-4 h-4 rounded border-gray-300"
+              required
             />
             <Label htmlFor="consent" className="font-normal">
               개인정보 수집 및 이용에 동의합니다
-            </Label>
+            : </Label>
           </div>
         </div>
 
