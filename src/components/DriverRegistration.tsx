@@ -98,18 +98,18 @@ const DriverRegistration = () => {
   return (
     <div className={driverStyle.signupctn}>
       <div className={driverStyle.title}>
-        mobl <span className={driverStyle.titlekr}>드라이버가 되어주세요</span> 
+        모블의 드라이버가 되어주세요 
       </div>
       <div className={driverStyle.subtext1}>
-          운전 경력만 있다면 지원해보세요! 
-          <br />다른 부업보다 고수익을 보장해드립니다.
+          운전 경력이 있으시다면 지금 바로 지원해보세요!
+          <br />원하시는 시간대에 자유롭게 근무하실 수 있습니다.
       </div>
       <div className={driverStyle.subtext2}>
-        여성 고객님만 연결해드리며 24시간 관제 센터 운영으로 기사님의 안전까지 모니터링합니다. 
-        <br />
-        <span className={driverStyle.subtext3}>
-          남성 취객을 만나는게 걱정되었던 여성 기사님들에게 최적의 환경을 제공해드립니다.
-        </span>
+        모든 기사님의 안전을 위해 24시간 관제센터를 운영하며,
+        <br /> 불안한 상황 없이 안심하고 근무하실 수 있도록 돕고 있습니다.
+      </div>
+      <div className={driverStyle.subtext3}>
+        본 서비스는 여성 고객과 여성 기사님을 매칭하는 전용 플랫폼으로, 여성 기사님만 지원이 가능합니다.
       </div>
 
         <form onSubmit={handleSubmit} className={driverStyle.formctn}>
@@ -140,7 +140,7 @@ const DriverRegistration = () => {
           </div>
 
           <div>
-            <Label className={driverStyle.label} htmlFor="name">대리기사 경험이 있으신가요? &#40;없어도 괜찮습니다&#41;</Label>
+            <Label className={driverStyle.label} htmlFor="name">대리기사 혹은 운송업 경험이 있으신가요? &#40;없으셔도 괜찮습니다&#41;</Label>
             <div className={driverStyle.radioctn}>
               <label className={driverStyle.radiobtn}>
                 <input
