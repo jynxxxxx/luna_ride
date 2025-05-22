@@ -14,10 +14,10 @@ const Footer = () => {
         (주)루나 모빌리티
       </div>
       <div className={footerStyle.text}>
-        본사  |  서울시 마포구 백범 31길 21, 422
+        본사  |  서울시 송파구 성내천로 296, 4층층
         <br />사업자  |  529-07-03278   
         <br />대표번호  |  070-4571-6500   
-        <br />이메일  |  <span className={footerStyle.email}>info.ridemobl.com </span>
+        <br />이메일  |  <span className={footerStyle.email}>info.ridemobl@gmail.com </span>
       </div>
 
       <div className={footerStyle.disclaimer}>
