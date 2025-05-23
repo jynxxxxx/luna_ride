@@ -157,7 +157,7 @@ const Customer = () => {
               <img src='/icons/phone.svg' alt="mobl" className={customerStyles.rsvIcon} />
               <div className={customerStyles.rsvText}>
                 전화로도 예약이 가능합니다 
-                <br /> 응대 시간: 24시간
+                <br /> 응대 시간: 24시간 연중무휴
               </div>
             </div>
             <button
