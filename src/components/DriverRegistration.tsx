@@ -7,7 +7,7 @@ import { Card } from "@/components/ui/card";
 import { useToast } from "@/components/ui/use-toast";
 import { supabase } from "@/integrations/supabase/client";
 import driverStyle from "@/styles/driver.module.scss";
-import { Dice1 } from "lucide-react";
+import { formatPhoneNumber } from "@/functions/formatPhoneNumber";
 
 const DriverRegistration = () => {
   const driverSignupRef = useRef(null);
@@ -20,6 +20,13 @@ const DriverRegistration = () => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
 
+  const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const formatted = formatPhoneNumber(e.target.value);
+    setFormData((prev) => ({
+      ...prev,
+      phone: formatted,
+    }));
+  };
     
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value, type, checked } = e.target;
@@ -136,7 +143,7 @@ const DriverRegistration = () => {
               placeholder="010-1234-5678"
               required
               value={formData.phone}
-              onChange={handleInputChange}
+              onChange={handlePhoneChange}
               disabled={isSubmitting}
             />
           </div>

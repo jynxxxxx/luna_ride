@@ -11,6 +11,7 @@ import { format } from "date-fns";
 import { ko } from "date-fns/locale";
 import { CalendarIcon } from "lucide-react";
 import reservationStyles from "@/styles/reservation.module.scss";
+import { formatPhoneNumber } from "@/functions/formatPhoneNumber";
 
 // Define time window options
 const TIME_WINDOWS = [
@@ -31,20 +32,6 @@ const CustomerReservation = ({setShowForm}) => {
   const [timeWindow, setTimeWindow] = useState<string>("");
   const [checked, setChecked] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
-
-  const formatPhoneNumber = (value: string) => {
-    // Remove all non-numeric characters
-    const numbers = value.replace(/\D/g, "");
-    
-    // Format as Korean phone number (010-1234-5678)
-    if (numbers.length <= 3) {
-      return numbers;
-    } else if (numbers.length <= 7) {
-      return `${numbers.slice(0, 3)}-${numbers.slice(3)}`;
-    } else {
-      return `${numbers.slice(0, 3)}-${numbers.slice(3, 7)}-${numbers.slice(7, 11)}`;
-    }
-  };
 
   const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const formatted = formatPhoneNumber(e.target.value);
