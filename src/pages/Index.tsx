@@ -6,7 +6,10 @@ const Index = () => {
   const navigate = useNavigate();
 
   const handleClick = () => {
-    navigate('/customer#signup');
+    navigate('/customer');
+    setTimeout(() => {
+      window.scrollTo(0, 0);
+    }, 0);
   };
 
   const cards = [
@@ -75,7 +78,7 @@ const Index = () => {
             className={homeStyles.introButton}
             onClick={handleClick}
           >
-            mobl 이용하기
+            왜 다들 모블할까?
           </button>
         </div>
       </section>

@@ -22,7 +22,8 @@ export default {
       fontFamily: {
         advent: ["'Advent Pro'", 'sans-serif'],
         afacad: ["'Afacad'", 'sans-serif'],
-				outfit: ["'Outfit'", 'sans-serif']
+				outfit: ["'Outfit'", 'sans-serif'],
+				alata: ["'Alata'", 'sans-serif'],
       },
 			colors: {
 				// border: 'hsl(var(--border))',

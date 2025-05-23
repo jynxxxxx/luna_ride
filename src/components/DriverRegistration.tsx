@@ -105,111 +105,94 @@ const DriverRegistration = () => {
   };
 
   return (
-    <div className={driverStyle.signupctn}>
-      <div className={driverStyle.title}>
-        모블 드라이버 되어주세요 
-      </div>
-      <div className={driverStyle.subtext1}>
-          운전 경력이 있으시다면 지금 바로 지원해보세요!
-          <br />원하시는 시간대에 자유롭게 근무하실 수 있습니다.
-      </div>
-      <div className={driverStyle.subtext2}>
-        모든 기사님의 안전을 위해 24시간 관제센터를 운영하며,
-        <br />안심하고 근무하실 수 있도록 돕고 있습니다.
-      </div>
-      <div className={driverStyle.subtext3}>
-        본 서비스는 여성 고객과 여성 기사님을 매칭하는 전용 플랫폼으로, 여성 기사님만 지원이 가능합니다.
+    <form onSubmit={handleSubmit} className={driverStyle.formctn}>
+      <div>
+        <Label className={driverStyle.label} htmlFor="name">이름</Label>
+        <Input
+          id="name"
+          name="name"
+          placeholder="홍길동"
+          required
+          value={formData.name}
+          onChange={handleInputChange}
+          disabled={isSubmitting}
+        />
       </div>
 
-        <form onSubmit={handleSubmit} className={driverStyle.formctn}>
-          <div>
-            <Label className={driverStyle.label} htmlFor="name">이름</Label>
-            <Input
-              id="name"
-              name="name"
-              placeholder="홍길동"
-              required
-              value={formData.name}
+      <div >
+        <Label className={driverStyle.label} htmlFor="phone">휴대폰 번호</Label>
+        <Input
+          id="phone"
+          name="phone"
+          placeholder="010-1234-5678"
+          required
+          value={formData.phone}
+          onChange={handlePhoneChange}
+          disabled={isSubmitting}
+        />
+      </div>
+
+      <div>
+        <Label className={driverStyle.label} htmlFor="name">대리기사 혹은 운송업 경험이 있으신가요? &#40;없으셔도 괜찮습니다&#41;</Label>
+        <div className={driverStyle.radioctn}>
+          <label className={driverStyle.radiobtn}>
+            <input
+              type="radio"
+              name="experience"
+              value="true"
+              checked={formData.experience===true}
               onChange={handleInputChange}
               disabled={isSubmitting}
-            />
-          </div>
-
-          <div >
-            <Label className={driverStyle.label} htmlFor="phone">휴대폰 번호</Label>
-            <Input
-              id="phone"
-              name="phone"
-              placeholder="010-1234-5678"
               required
-              value={formData.phone}
-              onChange={handlePhoneChange}
-              disabled={isSubmitting}
             />
-          </div>
+            예
+          </label>
+          <label className={driverStyle.radiobtn}>
+            <input
+              type="radio"
+              name="experience"
+              value="false"
+              checked={formData.experience===false}
+              onChange={handleInputChange}
+              disabled={isSubmitting}
+              required
+            />
+            아니오
+          </label>
+        </div>
+      </div>
 
-          <div>
-            <Label className={driverStyle.label} htmlFor="name">대리기사 혹은 운송업 경험이 있으신가요? &#40;없으셔도 괜찮습니다&#41;</Label>
-            <div className={driverStyle.radioctn}>
-              <label className={driverStyle.radiobtn}>
-                <input
-                  type="radio"
-                  name="experience"
-                  value="true"
-                  checked={formData.experience===true}
-                  onChange={handleInputChange}
-                  disabled={isSubmitting}
-                  required
-                />
-                예
-              </label>
-              <label className={driverStyle.radiobtn}>
-                <input
-                  type="radio"
-                  name="experience"
-                  value="false"
-                  checked={formData.experience===false}
-                  onChange={handleInputChange}
-                  disabled={isSubmitting}
-                  required
-                />
-                아니오
-              </label>
-            </div>
-          </div>
-
-          <div className={driverStyle.consentctn}>
-            <h4>개인정보 수집 및 이용 동의</h4>
-            <p>
-              제출해주신 정보는 기사 등록 정보 제공 만을 위해 사용되며, 이외의 목적으로는 사용 되지 않습니다. 
-              정보는 기사 정보 제공 이후 자동적으로 자체 폐기될 예정입니다. 
-            </p>
-            <div className={driverStyle.consentbox}>
-              <input
-                type="checkbox"
-                id="consent"
-                name="consent"
-                checked={formData.consent}
-                onChange={handleInputChange}
-                required
-                className="w-4 h-4 rounded border-gray-300"
-                disabled={isSubmitting}
-              />
-              <Label htmlFor="consent" className="font-normal">
-                개인정보 수집 및 이용에 동의합니다
-              </Label>
-            </div>
-          </div>
-
-          <Button 
-            type="submit" 
-            className={driverStyle.formbtn}
+      <div className={driverStyle.consentctn}>
+        <h4>개인정보 수집 및 이용 동의</h4>
+        <p>
+          제출해주신 정보는 기사 등록 정보 제공 만을 위해 사용되며, 이외의 목적으로는 사용 되지 않습니다. 
+          정보는 기사 정보 제공 이후 자동적으로 자체 폐기될 예정입니다. 
+        </p>
+        <div className={driverStyle.consentbox}>
+          <input
+            type="checkbox"
+            id="consent"
+            name="consent"
+            checked={formData.consent}
+            onChange={handleInputChange}
+            required
+            className="w-4 h-4 rounded border-gray-300"
             disabled={isSubmitting}
-          >
-            {isSubmitting ? "제출 중..." : "지원하기"}
-          </Button>
-        </form>
-    </div>
+          />
+          <Label htmlFor="consent" className="font-normal">
+            개인정보 수집 및 이용에 동의합니다
+          </Label>
+        </div>
+      </div>
+
+      <Button 
+        type="submit" 
+        className={driverStyle.formbtn}
+        disabled={isSubmitting}
+      >
+        {isSubmitting ? "제출 중..." : "지원하기"}
+      </Button>
+    </form>
   );
 };
 

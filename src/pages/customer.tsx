@@ -13,12 +13,12 @@ const Customer = () => {
   const [showForm, setShowForm] = useState(false);
   const [showPhoneModal, setShowPhoneModal] = useState(false);
 
-  //scroll to #signup if URL hash is present on location change
-  useEffect(() => {
-    if (location.hash === "#signup" && signupRef.current) {
-       signupRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
-    }
-  }, [location]);
+  // //scroll to #signup if URL hash is present on location change
+  // useEffect(() => {
+  //   if (location.hash === "#signup" && signupRef.current) {
+  //      signupRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
+  //   }
+  // }, [location]);
 
   useEffect(() => {
     if (showForm) {

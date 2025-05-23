@@ -161,9 +161,6 @@ const CustomerReservation = ({setShowForm}) => {
             disabled={isSubmitting}
             required
           />
-          <p style={{ fontSize: "0.8rem", color: "#666", marginTop: "4px" }}>
-            아직 정확한 위치를 모를 경우, 동네 적어주세요.
-          </p>
           </div>
         </div>
 
@@ -179,9 +176,6 @@ const CustomerReservation = ({setShowForm}) => {
             disabled={isSubmitting}
             required
           />
-          <p style={{ fontSize: "0.8rem", color: "#666", marginTop: "4px" }}>
-            아직 정확한 위치를 모를 경우, 동네 적어주세요.
-          </p>
           </div>
         </div>
 
