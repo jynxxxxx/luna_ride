@@ -108,6 +108,10 @@
 
 //mobile styles
 @media (max-width: 640px) {
+  .ctn{
+    padding: 4rem 2rem;
+  }
+  
   .formctn {
     width: 90vw;   
     padding: 1.5rem 2rem;
@@ -115,10 +119,6 @@
 
   .title {
     font-size: 2rem;  
-  }
-
-  .titlekr {
-    font-size: 1.8rem;
   }
 
   .formbtn {
@@ -139,10 +139,6 @@
 
   .title {
     font-size: 2.5rem;
-  }
-
-  .titlekr {
-    font-size: 2.2rem;
   }
 
   .formbtn {
