@@ -31,7 +31,7 @@ const CustomerReservation = ({setShowForm}) => {
   const [popoverOpen, setPopoverOpen] = useState(false);
   const [date, setDate] = useState<Date | undefined>(undefined);
   const [timeWindow, setTimeWindow] = useState<string>("");
-  const [request, setRequest] = useState("");
+  const [request, setRequest] = useState<string[]>([]);
   const [checked, setChecked] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -92,7 +92,7 @@ const CustomerReservation = ({setShowForm}) => {
         reservation_type: reservationType,
         reservation_date: formattedDate,
         time_window: finalTimeWindow,
-        request: request,
+        request: request.length > 0 ? request.join(", ") : null,
         consent_given: checked
       };
 
@@ -125,7 +125,7 @@ const CustomerReservation = ({setShowForm}) => {
         setReservationType("즉시")
         setDate(undefined);
         setTimeWindow("");
-        setRequest("")
+        setRequest([])
         setChecked(false);
 
         setShowForm(false)
@@ -282,15 +282,21 @@ const CustomerReservation = ({setShowForm}) => {
         )}
 
         <div className={reservationStyles.card}>
-          <Label className={reservationStyles.label} htmlFor="name">기타 요청 사항: </Label>
+          <Label className={reservationStyles.label} htmlFor="request">기타 요청 사항: </Label>
           <div id="request" className="space-y-2">
             <label className="flex items-center space-x-2">
               <input
-                type="radio"
+                type="checkbox"
                 name="request"
                 value="쉿, 조용히 가고 싶어요"
-                checked={request === "쉿, 조용히 가고 싶어요"}
-                onChange={(e) => setRequest(e.target.value)}
+                checked={request.includes("쉿, 조용히 가고 싶어요")}
+                onChange={(e) => {
+                  if (e.target.checked) {
+                    setRequest(prev => [...prev, "쉿, 조용히 가고 싶어요"]);
+                  } else {
+                    setRequest(prev => prev.filter(r => r !== "쉿, 조용히 가고 싶어요"));
+                  }
+                }}
                 disabled={isSubmitting}
               />
               <span>쉿, 조용히 가고 싶어요</span>
@@ -298,11 +304,17 @@ const CustomerReservation = ({setShowForm}) => {
 
             <label className="flex items-center space-x-2">
               <input
-                type="radio"
+                type="checkbox"
                 name="request"
                 value="과속하지 말고 안전운전 해주세요"
-                checked={request === "과속하지 말고 안전운전 해주세요"}
-                onChange={(e) => setRequest(e.target.value)}
+                checked={request.includes("과속하지 말고 안전운전 해주세요")}
+                onChange={(e) => {
+                  if (e.target.checked) {
+                    setRequest(prev => [...prev, "과속하지 말고 안전운전 해주세요"]);
+                  } else {
+                    setRequest(prev => prev.filter(r => r !== "과속하지 말고 안전운전 해주세요"));
+                  }
+                }}
                 disabled={isSubmitting}
               />
               <span>과속하지 말고 안전운전 해주세요</span>
@@ -310,26 +322,20 @@ const CustomerReservation = ({setShowForm}) => {
 
             <label className="flex items-center space-x-2">
               <input
-                type="radio"
+                type="checkbox"
                 name="request"
                 value="집에 도착하면 깨워주세요"
-                checked={request === "집에 도착하면 깨워주세요"}
-                onChange={(e) => setRequest(e.target.value)}
+                checked={request.includes("집에 도착하면 깨워주세요")}
+                onChange={(e) => {
+                  if (e.target.checked) {
+                    setRequest(prev => [...prev, "집에 도착하면 깨워주세요"]);
+                  } else {
+                    setRequest(prev => prev.filter(r => r !== "집에 도착하면 깨워주세요"));
+                  }
+                }}
                 disabled={isSubmitting}
               />
               <span>집에 도착하면 깨워주세요</span>
-            </label>
-
-            <label className="flex items-center space-x-2">
-              <input
-                type="radio"
-                name="request"
-                value=""
-                checked={request === ""}
-                onChange={() => setRequest("")}
-                disabled={isSubmitting}
-              />
-              <span>요청 없음</span>
             </label>
           </div>
         </div>
