@@ -56,7 +56,7 @@ const Index = () => {
             What is <strong>mobl</strong>?
           </div>
           <div className={homeStyles.introSubTitle}>
-            단 한 끗의 불편함도 없이, 조용히 집까지.
+            조금의 불편함 없이, 조용히 집까지.
             <br /> 검증된 여성 기사와 함께라면 도착까지 잠시 눈을 붙혀도 좋습니다.
             <br /> 심야 귀가는 이제, 나를 위한 룸서비스처럼 편안하게.
             <p className={homeStyles.introSubTitle2}>
