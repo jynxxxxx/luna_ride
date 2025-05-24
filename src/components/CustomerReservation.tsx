@@ -27,9 +27,11 @@ const CustomerReservation = ({setShowForm}) => {
   const [phone, setPhone] = useState("");
   const [pickupLocation, setPickupLocation] = useState("");
   const [dropoffLocation, setDropoffLocation] = useState("");
+  const [reservationType, setReservationType] = useState<"즉시" | "예약">("즉시");
   const [popoverOpen, setPopoverOpen] = useState(false);
   const [date, setDate] = useState<Date | undefined>(undefined);
   const [timeWindow, setTimeWindow] = useState<string>("");
+  const [request, setRequest] = useState("");
   const [checked, setChecked] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -42,10 +44,19 @@ const CustomerReservation = ({setShowForm}) => {
     event.preventDefault();
 
     // Form validation
-    if (!name || !phone || !pickupLocation || !dropoffLocation || !date || !timeWindow) {
+    if (!name || !phone || !pickupLocation || !dropoffLocation) {
       toast({
         title: "모든 필드를 입력해주세요",
         description: "모든 필수 정보를 입력해주세요.",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    if (reservationType === "예약" && (!date || !timeWindow)) {
+      toast({
+        title: "예약 날짜와 시간을 선택해주세요",
+        description: "예약 시 날짜와 시간을 선택해야 합니다.",
         variant: "destructive",
       });
       return;
@@ -63,16 +74,25 @@ const CustomerReservation = ({setShowForm}) => {
     setIsSubmitting(true);
     
     try {
+      let finalDate = date;
+      let finalTimeWindow = timeWindow;
+
+      if (reservationType === "즉시") {
+        finalDate = new Date();
+        finalTimeWindow = finalDate.toISOString().split("T")[1].slice(0, 5)
+      }
       // Format date for database
-      const formattedDate = format(date, "yyyy-MM-dd");
+      const formattedDate = format(finalDate, "yyyy-MM-dd");
       
       const reservationData = {
         name,
         phone,
         pickup_location: pickupLocation,
         dropoff_location: dropoffLocation,
+        reservation_type: reservationType,
         reservation_date: formattedDate,
-        time_window: timeWindow,
+        time_window: finalTimeWindow,
+        request: request,
         consent_given: checked
       };
 
@@ -102,8 +122,10 @@ const CustomerReservation = ({setShowForm}) => {
         setPhone("");
         setPickupLocation("");
         setDropoffLocation("");
+        setReservationType("즉시")
         setDate(undefined);
         setTimeWindow("");
+        setRequest("")
         setChecked(false);
 
         setShowForm(false)
@@ -153,14 +175,14 @@ const CustomerReservation = ({setShowForm}) => {
           <Label className={reservationStyles.label} htmlFor="pickupLocation">출발 위치: </Label>
           <div>
             <Input 
-            id="pickupLocation"
-            type="text" 
-            placeholder="출발 위치를 입력해주세요" 
-            value={pickupLocation}
-            onChange={(e) => setPickupLocation(e.target.value)}
-            disabled={isSubmitting}
-            required
-          />
+              id="pickupLocation"
+              type="text" 
+              placeholder="출발 위치를 입력해주세요" 
+              value={pickupLocation}
+              onChange={(e) => setPickupLocation(e.target.value)}
+              disabled={isSubmitting}
+              required
+            />
           </div>
         </div>
 
@@ -168,61 +190,107 @@ const CustomerReservation = ({setShowForm}) => {
           <Label className={reservationStyles.label} htmlFor="dropoffLocation">도착 위치: </Label>
           <div>
             <Input 
-            id="dropoffLocation"
-            type="text" 
-            placeholder="도착 위치를 입력해주세요" 
-            value={dropoffLocation}
-            onChange={(e) => setDropoffLocation(e.target.value)}
-            disabled={isSubmitting}
-            required
-          />
+              id="dropoffLocation"
+              type="text" 
+              placeholder="도착 위치를 입력해주세요" 
+              value={dropoffLocation}
+              onChange={(e) => setDropoffLocation(e.target.value)}
+              disabled={isSubmitting}
+              required
+            />
           </div>
         </div>
 
         <div className={reservationStyles.card}>
-          <Label className={reservationStyles.label}>날짜: </Label>
-          <Popover open={popoverOpen} onOpenChange={setPopoverOpen}>
-            <PopoverTrigger asChild>
-              <Button
-                variant={"outline"}
-                className={`w-full justify-start text-left font-normal ${!date && "text-muted-foreground"}`}
-              >
-                <CalendarIcon className="mr-2 h-4 w-4 z" />
-                {date ? format(date, "PPP", { locale: ko }) : "날짜 선택"}
-              </Button>
-            </PopoverTrigger>
-            <PopoverContent className="bg-white w-auto p-0 z-[9999]">
-              <Calendar
-                mode="single"
-                selected={date}
-                onSelect={(selectedDate) => {
-                  setDate(selectedDate);
-                  setPopoverOpen(false); // close on selection
+          <Label className={reservationStyles.label}>예약 유형: </Label>
+          <div style={{ display: "flex", gap: "1rem" }}>
+            <label>
+              <input
+                type="radio"
+                name="reservationType"
+                value="즉시"
+                checked={reservationType === "즉시"}
+                onChange={() => {
+                  setReservationType("즉시");
+                  setDate(undefined);
+                  setTimeWindow("");
                 }}
-                initialFocus
-                classNames={{
-                  day: "rounded-md hover:font-bold hover:bg-accent hover:text-accent-foreground focus:outline-none focus:ring-2 ring-ring",
-                }}
-                disabled={(date) => date < new Date(new Date().setHours(0, 0, 0, 0))}
+                disabled={isSubmitting}
               />
-            </PopoverContent>
-          </Popover>
+              즉시 호출
+            </label>
+            <label>
+              <input
+                type="radio"
+                name="reservationType"
+                value="예약"
+                checked={reservationType === "예약"}
+                onChange={() => setReservationType("예약")}
+                disabled={isSubmitting}
+              />
+              예약
+            </label>
+          </div>
         </div>
+        {reservationType === "예약" && (
+          <>
+            <div className={reservationStyles.card}>
+              <Label className={reservationStyles.label}>날짜: </Label>
+              <Popover open={popoverOpen} onOpenChange={setPopoverOpen}>
+                <PopoverTrigger asChild>
+                  <Button
+                    variant={"outline"}
+                    className={`w-full justify-start text-left font-normal ${!date && "text-muted-foreground"}`}
+                  >
+                    <CalendarIcon className="mr-2 h-4 w-4 z" />
+                    {date ? format(date, "PPP", { locale: ko }) : "날짜 선택"}
+                  </Button>
+                </PopoverTrigger>
+                <PopoverContent className="bg-white w-auto p-0 z-[9999]">
+                  <Calendar
+                    mode="single"
+                    selected={date}
+                    onSelect={(selectedDate) => {
+                      setDate(selectedDate);
+                      setPopoverOpen(false); // close on selection
+                    }}
+                    initialFocus
+                    classNames={{
+                      day: "rounded-md hover:font-bold hover:bg-accent hover:text-accent-foreground focus:outline-none focus:ring-2 ring-ring",
+                    }}
+                    disabled={(date) => date < new Date(new Date().setHours(0, 0, 0, 0))}
+                  />
+                </PopoverContent>
+              </Popover>
+            </div>
+
+            <div className={reservationStyles.card}>
+              <Label className={reservationStyles.label}>시간대: </Label>
+              <select
+                className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                value={timeWindow}
+                onChange={(e) => setTimeWindow(e.target.value)}
+                disabled={isSubmitting}
+              >
+                <option value="">시간대 선택</option>
+                {TIME_WINDOWS.map((time) => (
+                  <option key={time} value={time}>{time}</option>
+                ))}
+              </select>
+            </div>
+          </>
+        )}
 
         <div className={reservationStyles.card}>
-          <Label className={reservationStyles.label}>시간대: </Label>
-          <select
-            className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
-            value={timeWindow}
-            onChange={(e) => setTimeWindow(e.target.value)}
+          <Label className={reservationStyles.label} htmlFor="name">기타 요청 사항: </Label>
+          <Input 
+            id="request"
+            type="text" 
+            placeholder="조용히 가기 등"
+            value={request}
+            onChange={(e) => setRequest(e.target.value)}
             disabled={isSubmitting}
-            required
-          >
-            <option value="">시간대 선택</option>
-            {TIME_WINDOWS.map((time) => (
-              <option key={time} value={time}>{time}</option>
-            ))}
-          </select>
+          />
         </div>
 
         <div className={reservationStyles.consentctn}>

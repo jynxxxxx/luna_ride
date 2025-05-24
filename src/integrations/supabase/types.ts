@@ -66,8 +66,10 @@ export type Database = {
           name: string
           phone: string
           pickup_location: string
+          reservation_type: string
           reservation_date: string
           time_window: string
+          request: string
         }
         Insert: {
           consent_given?: boolean
@@ -77,8 +79,10 @@ export type Database = {
           name: string
           phone: string
           pickup_location: string
+          reservation_type: string
           reservation_date: string
           time_window: string
+          request?: string
         }
         Update: {
           consent_given?: boolean
@@ -88,8 +92,10 @@ export type Database = {
           name?: string
           phone?: string
           pickup_location?: string
+          reservation_type?: string
           reservation_date?: string
           time_window?: string
+          request?: string
         }
         Relationships: []
       }
