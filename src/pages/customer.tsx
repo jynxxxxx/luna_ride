@@ -1,6 +1,7 @@
 
 import { useRef, useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
+import { useSearchParams } from "react-router-dom"; 
 import CustomerFeatureSection from "@/components/CustomerFeatureSection";
 import CustomerReservation from "@/components/CustomerReservation";
 import customerStyles from "@/styles/customer.module.scss";
@@ -9,26 +10,16 @@ import CustomerFAQs from "@/components/CustomerFAQs";
 
 const Customer = () => {
   const signupRef = useRef(null);
-  const location = useLocation();
+  const [searchParams] = useSearchParams();
   const [showForm, setShowForm] = useState(false);
   const [showPhoneModal, setShowPhoneModal] = useState(false);
 
-  // //scroll to #signup if URL hash is present on location change
-  // useEffect(() => {
-  //   if (location.hash === "#signup" && signupRef.current) {
-  //      signupRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
-  //   }
-  // }, [location]);
-
   useEffect(() => {
-    if (showForm) {
-      document.body.classList.add('lock-scroll');
-    } else {
-      document.body.classList.remove('lock-scroll');
+    if (searchParams.get("reserve") === "open") {
+      setShowForm(true);
+      window.history.replaceState({}, document.title, window.location.pathname);
     }
-
-    return () => document.body.classList.remove('lock-scroll'); // clean up on unmount
-  }, [showForm]);
+  }, [searchParams]);
 
   //scroll to signup section on button click
   const handleScrollToSignup = () => {

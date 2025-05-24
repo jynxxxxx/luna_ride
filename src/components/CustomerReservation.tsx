@@ -39,15 +39,6 @@ const CustomerReservation = ({setShowForm}) => {
     const formatted = formatPhoneNumber(e.target.value);
     setPhone(formatted);
   };
-  useEffect(() => {
-    if (request !== undefined) {
-      console.log("Request preference changed:", request);
-
-      // You can trigger analytics, validation, autosave, etc. here
-      // Example: sendRequestToServer(request);
-
-    }
-  }, [request]);
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
