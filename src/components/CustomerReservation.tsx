@@ -39,6 +39,15 @@ const CustomerReservation = ({setShowForm}) => {
     const formatted = formatPhoneNumber(e.target.value);
     setPhone(formatted);
   };
+  useEffect(() => {
+    if (request !== undefined) {
+      console.log("Request preference changed:", request);
+
+      // You can trigger analytics, validation, autosave, etc. here
+      // Example: sendRequestToServer(request);
+
+    }
+  }, [request]);
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
@@ -203,7 +212,7 @@ const CustomerReservation = ({setShowForm}) => {
 
         <div className={reservationStyles.card}>
           <Label className={reservationStyles.label}>예약 유형: </Label>
-          <div style={{ display: "flex", gap: "1rem" }}>
+          <div style={{ display: "flex", gap: "1rem", alignItems: "center" }}>
             <label>
               <input
                 type="radio"
@@ -283,14 +292,55 @@ const CustomerReservation = ({setShowForm}) => {
 
         <div className={reservationStyles.card}>
           <Label className={reservationStyles.label} htmlFor="name">기타 요청 사항: </Label>
-          <Input 
-            id="request"
-            type="text" 
-            placeholder="조용히 가기 등"
-            value={request}
-            onChange={(e) => setRequest(e.target.value)}
-            disabled={isSubmitting}
-          />
+          <div id="request" className="space-y-2">
+            <label className="flex items-center space-x-2">
+              <input
+                type="radio"
+                name="request"
+                value="쉿, 조용히 가고 싶어요"
+                checked={request === "쉿, 조용히 가고 싶어요"}
+                onChange={(e) => setRequest(e.target.value)}
+                disabled={isSubmitting}
+              />
+              <span>쉿, 조용히 가고 싶어요</span>
+            </label>
+
+            <label className="flex items-center space-x-2">
+              <input
+                type="radio"
+                name="request"
+                value="과속하지 말고 안전운전 해주세요"
+                checked={request === "과속하지 말고 안전운전 해주세요"}
+                onChange={(e) => setRequest(e.target.value)}
+                disabled={isSubmitting}
+              />
+              <span>과속하지 말고 안전운전 해주세요</span>
+            </label>
+
+            <label className="flex items-center space-x-2">
+              <input
+                type="radio"
+                name="request"
+                value="집에 도착하면 깨워주세요"
+                checked={request === "집에 도착하면 깨워주세요"}
+                onChange={(e) => setRequest(e.target.value)}
+                disabled={isSubmitting}
+              />
+              <span>집에 도착하면 깨워주세요</span>
+            </label>
+
+            <label className="flex items-center space-x-2">
+              <input
+                type="radio"
+                name="request"
+                value=""
+                checked={request === ""}
+                onChange={() => setRequest("")}
+                disabled={isSubmitting}
+              />
+              <span>요청 없음</span>
+            </label>
+          </div>
         </div>
 
         <div className={reservationStyles.consentctn}>
