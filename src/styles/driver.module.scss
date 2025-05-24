@@ -20,17 +20,21 @@
 }
 
 .title{
-  font-family: $english-font;
   font-size: 3rem;
   font-weight: bolder;
 }
 
+.subtext1{
+  font-size:1.5rem;
+}
+
 .subtext2{
-  font-family: $english-font;
-  font-weight: bold;
+  font-size:1.5rem;
+  font-weight:bold;
 }
 
 .subtext3{
+  font-size: 1.5rem;
   font-weight: normal;
 }
 
@@ -186,7 +190,19 @@
   }
 
   .title {
-    font-size: 2rem;  
+    font-size: 1.8rem;  
+  }
+
+  .subtext1{
+    font-size:0.9rem;
+  }
+
+  .subtext2{
+    font-size:0.9rem;
+  }
+
+  .subtext3{
+    font-size: 0.9rem;
   }
 
   .formbtn {
@@ -223,6 +239,18 @@
 
   .title {
     font-size: 2.5rem;
+  }
+
+  .subtext1{
+    font-size:1.5rem;
+  }
+
+  .subtext2{
+    font-size:1.5rem;
+  }
+
+  .subtext3{
+    font-size: 1.5rem;
   }
 
   .formbtn {

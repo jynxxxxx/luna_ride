@@ -9,7 +9,7 @@ const Driver = () => {
     <div className={driverStyle.ctn}>
       <div className={driverStyle.signupctn}>
         <div className={driverStyle.title}>
-          모블 드라이버 되어주세요 
+          모블 드라이버가 되어주세요 
         </div>
         <div className={driverStyle.subtext1}>
             운전 경력이 있으시다면 지금 바로 지원해보세요!
