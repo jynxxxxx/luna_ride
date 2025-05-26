@@ -106,48 +106,50 @@ const Customer = () => {
 
       <section id="signup" ref={signupRef} className={customerStyles.signupSection}>
         <div className={customerStyles.fttitle}>
-          지금 바로 예약해보세요.
+          지금 바로 mobl 불러보세요
         </div>
         <div className={customerStyles.ftsubtext}>
-          강남 외 지역은 사전 예약제로 운영되고 있어, 2시간 전 예약이 필요합니다.
-          <br />더 많은 지역에서 바로 서비스를 이용하실 수 있도록 준비 중입니다. 조금만 기다려 주세요.
+          실시간 호출 또는 사전 예약이 가능합니다.
+          <br />필요한 순간, 언제든지 mobl을 불러주세요.
+          {/* 강남 외 지역은 사전 예약제로 운영되고 있어, 2시간 전 예약이 필요합니다.
+          <br />더 많은 지역에서 바로 서비스를 이용하실 수 있도록 준비 중입니다. 조금만 기다려 주세요. */}
         </div>
         <div className={customerStyles.rsvMethods}>
           <div className={customerStyles.rsvCard}>
             <div className={customerStyles.rsvContent}>
               <img src='/icons/white_logo.svg' alt="mobl" className={customerStyles.rsvIcon} />
               <div className={customerStyles.rsvText}>
-                웹사이트에서 
-                <br /> 빠르고 간편하게 예약하세요
+                웹사이트에서 빠르고 간편하게
+                <br /> 예약 또는 실시간 호출 하세요
               </div>
             </div>
             <button
               className={customerStyles.rsvButton}
               onClick={handleFormClick}
             >
-              웹사이트에서 예약하기
+              웹사이트으로 이용하기
             </button>
           </div>
           <div className={customerStyles.rsvCard}>
             <div className={customerStyles.rsvContent}>
               <img src='/icons/kakao_logo.svg' alt="mobl" className={customerStyles.rsvIcon} />
               <div className={customerStyles.rsvText}>
-                카카오톡 공식 채널에서
-                <br /> 언제든 간편하게 예약하세요
+                카카오톡 공식 채널에서 언제든
+                <br />예약 또는 실시간 호출 하세요
               </div>
             </div>
             <button
               className={customerStyles.rsvButton}
               onClick={handleKakaoClick}
             >
-              카카오톡으로 예약하기
+              카카오톡으로 이용하기
             </button>
           </div>
           <div className={customerStyles.rsvCard}>
             <div className={customerStyles.rsvContent}>
               <img src='/icons/phone.svg' alt="mobl" className={customerStyles.rsvIcon} />
               <div className={customerStyles.rsvText}>
-                전화로도 예약이 가능합니다 
+                전화로도 가능합니다 
                 <br /> 응대 시간: 24시간 연중무휴
               </div>
             </div>
@@ -155,7 +157,7 @@ const Customer = () => {
               className={customerStyles.rsvButton}
               onClick={handlePhoneClick}
             >
-              전화로 예약하기
+              전화로 이용하기
             </button>
           </div>
         </div>
